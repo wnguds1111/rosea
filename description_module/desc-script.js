@@ -49,11 +49,7 @@ window.lastObservedKey = getTargetKey();
 window.lastShowBadgesState = false;
 
 function shouldShowBadges() {
-    if (window.isAdminIP) {
-        const panel = document.getElementById('pageDescPanel');
-        return panel && panel.classList.contains('active');
-    }
-    return true; // For general IPs, always show badges
+    return true; // Always show badges
 }
 
 function loadAndRenderMarks() {
@@ -190,22 +186,9 @@ function renderBuilderMarks() {
             `<div class="mark-sub editable" contenteditable="true" oninput="updateMarkText('${m.id}', 'sub', this.innerText)" style="margin-top:4px;" placeholder="상세 설명 입력">${m.sub}</div>` :
             `<div class="mark-sub">${m.sub}</div>`;
 
-        let linkHTML = '';
-        if (!window.isBuilderLocked) {
-            if (m.link) {
-                linkHTML = `<div style="margin-top:10px;"><input type="text" value="${m.link}" oninput="updateMarkText('${m.id}', 'link', this.value)" style="width:70%; border:1px solid #cbd5e1; border-radius:6px; padding:6px 10px; font-size:12px; margin-right:5px; outline:none;" placeholder="https://"><button onclick="updateMarkText('${m.id}', 'link', '')" style="background:#fee2e2; border:none; color:#ef4444; padding:6px 10px; border-radius:6px; font-size:11px; font-weight:800; cursor:pointer;" title="링크 삭제">[X]</button></div>`;
-            } else {
-                linkHTML = `<div style="margin-top:10px;"><button onclick="promptForLink('${m.id}')" style="background:#f1f5f9; border:none; color:#0ea5e9; font-weight:800; font-size:12px; padding:6px 12px; border-radius:8px; cursor:pointer; display:flex; align-items:center;">+ 🔗 외부 링크 삽입</button></div>`;
-            }
-        } else {
-            if (m.link) {
-                linkHTML = `<div style="margin-top:10px;"><a href="${m.link}" target="_blank" style="display:inline-block; background:#0ea5e9; color:#fff; text-decoration:none; padding:6px 12px; border-radius:20px; font-size:12px; font-weight:800; transition:0.2s;" onmouseover="this.style.background='#0284c7'" onmouseout="this.style.background='#0ea5e9'">🔗 관련 링크 이동 ></a></div>`;
-            }
-        }
-
         html += `<div class="md-line" onmouseenter="highlightBadge('${m.id}')" onmouseleave="resetBadge('${m.id}')" style="position:relative; padding-right:30px; display:flex;">
             <span class="badgenum" style="color:#0ea5e9; font-weight:900; margin-right:10px; vertical-align:top; font-size:16px;">${m.num}.</span>
-            <div style="flex:1; display:flex; flex-direction:column;">${titleHTML}${subHTML}${linkHTML}</div>
+            <div style="flex:1; display:flex; flex-direction:column;">${titleHTML}${subHTML}</div>
             ${deleteBtn}
         </div>`;
     });
@@ -227,13 +210,6 @@ function renderBuilderMarks() {
             lockBtn.style.color = '#fff';
             lockBtn.style.background = '#ef4444';
         }
-    }
-}
-
-function promptForLink(id) {
-    let url = prompt("연결할 외부 링크 URL을 입력하세요. (예: https://example.com)");
-    if (url && url.trim().length > 0) {
-        updateMarkText(id, 'link', url.trim());
     }
 }
 
