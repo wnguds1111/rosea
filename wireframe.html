@@ -144,6 +144,29 @@
     padding: 0 6px; font-size: 11px; font-weight: 800; color: #fff;
     text-shadow: 1px 1px 0 #000;
   }
+  
+  /* RO Basic Info Menu (Section Navigation) */
+  .ro-nav-window {
+    width: 100%; max-width: 280px; margin-bottom: 20px;
+    background: rgba(255,255,255,0.9); border: 1px solid #cbd5e0;
+    border-radius: 4px; display: flex; flex-direction: column;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.05); font-family: 'Tahoma', sans-serif;
+  }
+  .ro-nav-header {
+    background: #e2e8f0; height: 24px; border-bottom: 1px solid #cbd5e0;
+    display: flex; align-items: center; padding: 0 10px; font-size: 11px;
+    font-weight: 800; color: #475569;
+  }
+  .ro-nav-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px; padding: 8px;
+  }
+  .ro-nav-btn {
+    background: #f8fafc; border: 1px solid #cbd5e0; border-radius: 2px;
+    padding: 6px 0; font-size: 11px; font-weight: 700; color: #475569;
+    cursor: pointer; text-align: center; transition: 0.2s;
+  }
+  .ro-nav-btn:hover { background: #e2e8f0; }
+  .ro-nav-btn.active { background: #64748b; color: #fff; border-color: #475569; }
   .ro-character-area {
     width: 100%; flex: 1; min-height: 200px;
     margin: 20px 0;
@@ -253,6 +276,9 @@
 
 <!-- SECTION 1: HERO VISUAL (NO LEFT PANEL, FULL WIDTH) -->
 <div class="hero-section section" data-index="0" data-prd="1">
+  <div style="width: 200px; height: 80px; border: 2px dashed rgba(255,255,255,0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); font-weight: 800; font-size: 16px; margin-bottom: 30px;">
+    RO LOGO
+  </div>
   <h1 class="hero-title">RAGNAROK ONLINE</h1>
   <div class="hero-slogan" style="margin-bottom: 20px;">THE CLASSIC RETURNS</div>
   <div style="font-size: 20px; font-weight: 800; color: #cbd5e0; margin-bottom: 40px; letter-spacing: 2px;">1/9/2026 ~ 1/12/2026</div>
@@ -291,10 +317,20 @@
       CHARACTER AREA
     </div>
 
+    <!-- RO Basic Info Menu (Section Navigation) -->
+    <div class="ro-nav-window">
+      <div class="ro-nav-header">Basic Info / Events</div>
+      <div class="ro-nav-grid">
+        <div class="ro-nav-btn" onclick="scrollToPrd(2)">Quest: Participation</div>
+        <div class="ro-nav-btn" onclick="scrollToPrd(3)">Quest: Milestone</div>
+        <div class="ro-nav-btn" onclick="scrollToPrd(4)">Quest: Veteran</div>
+        <div class="ro-nav-btn" onclick="scrollToPrd(5)">Quest: Daily Spin</div>
+      </div>
+    </div>
+
     <div class="ro-chat-box">
       <div class="ro-chat-tabs">
         <div class="ro-chat-tab active">General Message</div>
-        <div class="ro-chat-tab">Battle Message</div>
         <div class="ro-chat-icons">
           <span>✉️</span><span>⚙️</span>
         </div>
@@ -302,9 +338,6 @@
       <div class="ro-chat-body" id="hookText">
          <div class="chat-sys">[System] QUEST FOUND: PARTICIPATION EVENT</div>
          <div class="chat-normal">PRE-REGISTER NOW TO RECEIVE MASSIVE SETTLEMENT FUNDS!</div>
-      </div>
-      <div class="ro-chat-input">
-        Press the Enter key to start chatting.
       </div>
     </div>
   </div>
@@ -410,6 +443,13 @@
     { level: 'Lv. 70', sprite: 'LORD KNIGHT', hp: '9800 / 9800', sp: '450 / 450', chat: '<div class="chat-sys">[System] QUEST FOUND: VETERAN REWARDS EVENT</div><div class="chat-normal">APPRAISE YOUR PAST ADVENTURE RECORDS IN MIDGARD.</div>' },
     { level: 'Lv. 99', sprite: 'RUNE KNIGHT', hp: '24000 / 24000', sp: '1200 / 1200', chat: '<div class="chat-sys">[System] QUEST FOUND: DAILY SPIN EVENT</div><div class="chat-normal">COLLECT TICKETS DAILY TO SPIN THE NIGHT MARKET ROULETTE!</div>' }
   ];
+
+  window.scrollToPrd = function(prdNum) {
+    const targetSec = document.querySelector('.section[data-prd="' + prdNum + '"]');
+    if (targetSec) {
+        targetSec.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
