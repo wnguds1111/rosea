@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RO FACTORY — 정책 확인 체크리스트 v2.0</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Pretendard', 'Poppins', sans-serif; background: #f1f5f9; color: #1e293b; }
+
+        /* ─── TOP BAR ─── */
+        .top-bar { background: #0f172a; padding: 16px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+        .top-bar h1 { font-size: 16px; font-weight: 900; color: #fff; }
+        .btn-home { text-decoration: none; color: #94a3b8; font-weight: 700; font-size: 12px; padding: 6px 14px; border: 1px solid #334155; border-radius: 6px; transition: 0.2s; }
+        .btn-home:hover { color: #fff; border-color: #64748b; }
+
+        /* ─── HERO ─── */
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #1d4ed8 100%); border-radius: 20px; padding: 36px 48px; margin-bottom: 28px; color: white; overflow: hidden; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+        .hero-left { flex: 1; min-width: 0; }
+        .hero h2 { font-size: 24px; font-weight: 900; margin-bottom: 6px; white-space: nowrap; }
+        .hero-date { font-size: 13px; color: #93c5fd; font-weight: 600; }
+        .hero-select-wrap { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+        .hero-select-label { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.6); white-space: nowrap; }
+        .version-select {
+            appearance: none;
+            background: rgba(255,255,255,0.12) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") no-repeat right 14px center;
+            border: 1.5px solid rgba(255,255,255,0.25);
+            border-radius: 10px;
+            padding: 10px 40px 10px 18px;
+            font-size: 15px;
+            font-weight: 800;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+            min-width: 130px;
+        }
+        .version-select:focus { outline: none; border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.18); }
+        .version-select:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.4); }
+        .version-select option { background: #1e3a5f; color: #fff; }
+        .v1-notice.show { display: block; }
+
+        /* ─── SECTION CARD ─── */
+        /* ─── WRAP ─── */
+        .wrap { max-width: 1350px; margin: 0 auto; padding: 32px 24px; }
+
+        .section-card { background: #fff; border-radius: 16px; padding: 28px 32px; margin-bottom: 20px; border: 1px solid #e2e8f0; transition: box-shadow 0.2s; }
+        .section-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
+        .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+        .section-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+        .section-title { font-size: 17px; font-weight: 900; color: #0f172a; }
+
+        /* ─── TABLE ─── */
+        table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+        th { background: #f8fafc; font-weight: 800; color: #475569; text-align: left; padding: 10px 14px; border: 1px solid #e2e8f0; }
+        td { padding: 11px 14px; border: 1px solid #e2e8f0; color: #334155; line-height: 1.6; vertical-align: middle; }
+        td.item { font-weight: 800; color: #0f172a; background: #fafbfc; white-space: nowrap; width: 160px; }
+        td.content { width: 320px; color: #334155; }
+        td.decision { color: #475569; }
+        td.status-col { width: 110px; text-align: center; vertical-align: middle; }
+
+        /* ─── STATUS BADGE ─── */
+        .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 800; white-space: nowrap; }
+        .badge-ok     { background: #dcfce7; color: #166534; }
+        .badge-warn   { background: #fef9c3; color: #854d0e; }
+        .badge-danger { background: #fee2e2; color: #991b1b; }
+        .badge-gray   { background: #f1f5f9; color: #475569; }
+        .badge-blue   { background: #eff6ff; color: #1d4ed8; }
+        .badge-purple { background: #f5f3ff; color: #6d28d9; }
+
+        /* ─── ROW HIGHLIGHT ─── */
+        .updated-row td, .new-row td { background: inherit; }
+        .updated-row td.item, .new-row td.item { background: #fafbfc; }
+
+        /* ─── SUB TABLE (state grid) ─── */
+        .sub-table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-bottom: 20px; }
+        .sub-table th { background: #f1f5f9; font-weight: 800; color: #475569; text-align: center; padding: 8px 12px; border: 1px solid #e2e8f0; }
+        .sub-table td { padding: 8px 12px; border: 1px solid #e2e8f0; color: #334155; text-align: center; vertical-align: middle; }
+        .sub-table td.status-ok { background: #dcfce7; font-weight: 700; color: #166534; }
+        .sub-table td.status-no { background: #fee2e2; font-weight: 700; color: #991b1b; }
+        .sub-table td.state-name { font-weight: 800; color: #0f172a; text-align: left; background: #fafbfc; width: 130px; }
+
+        /* ─── TAB CONTENT ─── */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        @media (max-width: 700px) {
+            .wrap { padding: 16px; }
+            .section-card { padding: 20px 16px; }
+            td.item { white-space: normal; width: auto; }
+            .top-bar { padding: 12px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <h1>정책 확인 체크리스트</h1>
+    <a href="index.html" class="btn-home">← 포털 홈으로</a>
+</div>
+
+<div class="wrap">
+
+    <!-- Hero Banner + Select -->
+    <div class="hero">
+        <div class="hero-left">
+            <h2 id="heroTitle">🗂️ 정책 확인 체크리스트 V2.0</h2>
+            <p class="hero-date" id="heroDate">업데이트: 2026.04.17</p>
+        </div>
+        <div class="hero-select-wrap">
+            <span class="hero-select-label">버전 선택</span>
+            <select class="version-select" id="versionSelect" onchange="switchVersion(this.value)">
+                <option value="v2">V2.0</option>
+                <option value="v1">V1.0</option>
+            </select>
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════
+         V2.0
+    ══════════════════════════════════════ -->
+    <div id="tab-v2" class="tab-content active">
+
+        <!-- 1. 등록 횟수 정책 -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon" style="background:#eff6ff;">📦</div>
+                <div class="section-title">1. 등록 횟수 정책</div>
+            </div>
+            <table>
+                <thead><tr>
+                    <th style="width:160px;">항목</th>
+                    <th style="width:320px;">내용</th>
+                    <th>결정사항</th>
+                    <th style="width:110px; text-align:center;">상태</th>
+                </tr></thead>
+                <tbody>
+                    <tr class="updated-row">
+                        <td class="item">기본 등록 권한</td>
+                        <td class="content">정액제 가입 계정당 1회 등록 권한 제공<br>추가 등록은 KP가 아닌 <strong>이용권 형태</strong>로 제공</td>
+                        <td class="decision">BM 이슈 회피 목적 — KP 사용 시 비즈니스 모델로 간주될 가능성 있어 이용권 형태로 대체</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr>
+                        <td class="item">이용권 구조</td>
+                        <td class="content">향후 이용권 구매 구조 도입 예정<br>이벤트·배포를 통한 이용권 지급 가능</td>
+                        <td class="decision">Alpha 이후 검토 — 현재는 정액제 기본 1회 제공만 운영</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 2. 파일 포맷 정책 -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon" style="background:#fef9c3;">📁</div>
+                <div class="section-title">2. 파일 포맷 정책</div>
+            </div>
+            <table>
+                <thead><tr>
+                    <th style="width:160px;">항목</th>
+                    <th style="width:320px;">내용</th>
+                    <th>결정사항</th>
+                    <th style="width:110px; text-align:center;">상태</th>
+                </tr></thead>
+                <tbody>
+                    <tr>
+                        <td class="item">파일 세트</td>
+                        <td class="content">.foot + .mp4 + .png 4종 필수</td>
+                        <td class="decision">기존 확정 유지</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr>
+                        <td class="item">동영상 용량</td>
+                        <td class="content">.mp4 사용 가능 — 500KB 이하 허용</td>
+                        <td class="decision">기존 확정 유지</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr class="new-row">
+                        <td class="item">파일 보안</td>
+                        <td class="content">.foot / .mp4 암·복호화 적용 검토</td>
+                        <td class="decision">파일 위변조 방지 및 악성코드 대응 목적 — 필요성 여부 추가 협의 필요</td>
+                        <td class="status-col"><span class="badge badge-warn">⚠️ 협의 중</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 3. 구매 정책 -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon" style="background:#f0fdf4;">🛒</div>
+                <div class="section-title">3. 구매 정책</div>
+            </div>
+            <table>
+                <thead><tr>
+                    <th style="width:160px;">항목</th>
+                    <th style="width:320px;">내용</th>
+                    <th>결정사항</th>
+                    <th style="width:110px; text-align:center;">상태</th>
+                </tr></thead>
+                <tbody>
+                    <tr class="updated-row">
+                        <td class="item">일일 구매 제한</td>
+                        <td class="content">계정당 일일 3개 제한</td>
+                        <td class="decision">Alpha 버전 기준 — 정식 런칭 시 재검토 가능</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr>
+                        <td class="item">중복 구매</td>
+                        <td class="content">동일 작품 중복 구매 불가</td>
+                        <td class="decision">불필요한 기능으로 제외</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr>
+                        <td class="item">구매 방식</td>
+                        <td class="content">최초 오픈 시 FREE 버전으로만 진행</td>
+                        <td class="decision">KP 구매 구조는 추후 BM 도입 시 적용</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr>
+                        <td class="item">구매 취소/환불</td>
+                        <td class="content">FREE 정책으로 인해 환불 정책 불필요</td>
+                        <td class="decision">유료 전환 시 별도 정책 수립 필요</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 4. 수정/삭제/취소 정책 -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon" style="background:#fef2f2;">🔒</div>
+                <div class="section-title">4. 수정 / 삭제 / 취소 정책</div>
+            </div>
+
+            <p style="font-size:13px; font-weight:700; color:#475569; margin-bottom:10px;">▸ 상태별 수정·삭제 가능 여부</p>
+            <table class="sub-table">
+                <thead><tr>
+                    <th style="text-align:left; width:130px;">상태</th>
+                    <th>상태 설명</th>
+                    <th style="width:80px;">수정</th>
+                    <th style="width:80px;">삭제</th>
+                </tr></thead>
+                <tbody>
+                    <tr>
+                        <td class="state-name">⏳ 변환 중</td>
+                        <td style="text-align:left;">유저가 등록을 마친 상태 (S3에 적재)</td>
+                        <td class="status-ok">가능</td>
+                        <td class="status-ok">가능</td>
+                    </tr>
+                    <tr>
+                        <td class="state-name">⏸ 판매대기</td>
+                        <td style="text-align:left;">패치 데이터로 취합되었거나 패치 중/완료 상태 (상품 등록 요청 전)</td>
+                        <td class="status-no">불가</td>
+                        <td class="status-no">불가</td>
+                    </tr>
+                    <tr>
+                        <td class="state-name">🟢 판매 중</td>
+                        <td style="text-align:left;">현재 게시되어 판매 중인 상품</td>
+                        <td class="status-no">불가</td>
+                        <td class="status-ok">가능</td>
+                    </tr>
+                    <tr>
+                        <td class="state-name">⚪ 작품만료</td>
+                        <td style="text-align:left;">게재 기한 만료 또는 유저 직접 등록 취소한 경우 (7일 후 자동 삭제)</td>
+                        <td class="status-no">불가</td>
+                        <td class="status-no">불가</td>
+                    </tr>
+                    <tr>
+                        <td class="state-name">❌ 변환실패</td>
+                        <td style="text-align:left;">스튜디오 유효성 검사 실패 (기본 사유: 변환 실패 고지)</td>
+                        <td class="status-no">불가</td>
+                        <td class="status-no">불가</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p style="font-size:13px; font-weight:700; color:#475569; margin-bottom:10px;">▸ 주요 정책 및 고지</p>
+            <table>
+                <thead><tr>
+                    <th style="width:160px;">항목</th>
+                    <th style="width:320px;">내용</th>
+                    <th>결정사항</th>
+                    <th style="width:110px; text-align:center;">상태</th>
+                </tr></thead>
+                <tbody>
+                    <tr class="updated-row">
+                        <td class="item">판매대기 이후</td>
+                        <td class="content">판매대기 상태부터 수정/삭제 불가</td>
+                        <td class="decision">패치 준비 단계 데이터 프리징 필요 — 부서 간 운영 혼선 방지</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr class="new-row">
+                        <td class="item">유저 고지 문구</td>
+                        <td class="content">"판매대기 상태의 발자국은 수정 및 삭제가 불가합니다."</td>
+                        <td class="decision">등록 화면 내 해당 문구 추가 필요</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr class="updated-row">
+                        <td class="item">어드민 강제 삭제</td>
+                        <td class="content">유효한 침해 통지에 한해 문제 작품 제거 가능</td>
+                        <td class="decision">유효한 침해 통지(저작권·법적 요청)에 한해 어드민이 해당 작품을 강제 제거할 수 있도록 진행</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 5. 패치 및 상품 게재 프로세스 -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon" style="background:#f0f9ff;">🔄</div>
+                <div class="section-title">5. 패치 및 상품 게재 프로세스 <span style="font-size:12px; background:#dcfce7; color:#166534; padding:2px 8px; border-radius:20px; font-weight:700; margin-left:8px;">신규</span></div>
+            </div>
+            <table>
+                <thead><tr>
+                    <th style="width:50px; text-align:center;">Step</th>
+                    <th style="width:160px;">단계</th>
+                    <th>내용</th>
+                    <th style="width:110px; text-align:center;">상태</th>
+                </tr></thead>
+                <tbody>
+                    <tr class="new-row">
+                        <td style="font-weight:900; text-align:center; background:#f0fdf4;">1</td>
+                        <td class="item" style="width:160px;">유저 등록</td>
+                        <td>유저 파일 업로드 → S3 업로드</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr class="new-row">
+                        <td style="font-weight:900; text-align:center; background:#f0fdf4;">2</td>
+                        <td class="item" style="width:160px;">패치툴 취합</td>
+                        <td>주 단위 취합 (WebID 기준)</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr class="new-row">
+                        <td style="font-weight:900; text-align:center; background:#f0fdf4;">3</td>
+                        <td class="item" style="width:160px;">업데이트 진행</td>
+                        <td>스튜디오 변환 처리</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr class="new-row">
+                        <td style="font-weight:900; text-align:center; background:#f0fdf4;">4</td>
+                        <td class="item" style="width:160px;">WebID 전달</td>
+                        <td>스튜디오 → 운영팀에 패치된 WebID 전달</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr class="new-row">
+                        <td style="font-weight:900; text-align:center; background:#f0fdf4;">5</td>
+                        <td class="item" style="width:160px;">상품 게시</td>
+                        <td>운영팀에서 상점 상품 게시</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 6. 변환 실패 정책 -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon" style="background:#faf5ff;">⚙️</div>
+                <div class="section-title">6. 변환 실패 정책</div>
+            </div>
+            <table>
+                <thead><tr>
+                    <th style="width:160px;">항목</th>
+                    <th style="width:320px;">내용</th>
+                    <th>결정사항</th>
+                    <th style="width:110px; text-align:center;">상태</th>
+                </tr></thead>
+                <tbody>
+                    <tr class="updated-row">
+                        <td class="item">실패 안내 문구</td>
+                        <td class="content">"등록하신 발자국 파일을 처리하는 과정에서 변환이 완료되지 않았습니다."</td>
+                        <td class="decision">고정 문구 사용 — 번역 이슈 대응 목적</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr class="updated-row">
+                        <td class="item">자동 삭제</td>
+                        <td class="content">변환 실패 리스트 전달 시점 기준 7일 이내 자동 삭제</td>
+                        <td class="decision">7일 후 자동 삭제 처리 — 개발 구현 필요</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr class="updated-row">
+                        <td class="item">이용권 환급</td>
+                        <td class="content">변환 실패 시 이용권 환급 진행<br>처리: 스튜디오 → Admin WebID 전달 시 이용권 복구</td>
+                        <td class="decision">변환 실패 = 유저 입력 오류이나 정상 절차 수행으로 판단하여 이용권 환급 진행</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr class="updated-row">
+                        <td class="item">재등록 방식</td>
+                        <td class="content">별도 재등록 기능 미제공<br>단, 변환 실패 시 이용권 환급 후 신규 등록 가능</td>
+                        <td class="decision">별도 재등록 기능 제공 X — 변환 실패 시 이용권 환급으로 대체하며, 유저는 이용권으로 재등록 가능</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 7. 상품 게재 기간 -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon" style="background:#ecfdf5;">📅</div>
+                <div class="section-title">7. 상품 게재 기간</div>
+            </div>
+            <table>
+                <thead><tr>
+                    <th style="width:160px;">항목</th>
+                    <th style="width:320px;">내용</th>
+                    <th>결정사항</th>
+                    <th style="width:110px; text-align:center;">상태</th>
+                </tr></thead>
+                <tbody>
+                    <tr class="updated-row">
+                        <td class="item">게재 기간</td>
+                        <td class="content">90일 고정</td>
+                        <td class="decision">Alpha 기간 유저 피드백 수집 후 정책 유지 or 개선 판단 예정</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr class="updated-row">
+                        <td class="item">기간 시작 기준</td>
+                        <td class="content">상점 게시 시점부터 90일 카운트</td>
+                        <td class="decision">등록 시점이 아닌 상점 게시 시점 기준</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 8. 변환 처리 SLA -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon" style="background:#fff7ed;">📊</div>
+                <div class="section-title">8. 작품 변환 처리 (SLA)</div>
+            </div>
+            <table>
+                <thead><tr>
+                    <th style="width:160px;">항목</th>
+                    <th style="width:320px;">내용</th>
+                    <th>결정사항</th>
+                    <th style="width:110px; text-align:center;">상태</th>
+                </tr></thead>
+                <tbody>
+                    <tr class="updated-row">
+                        <td class="item">주간 등록 제한</td>
+                        <td class="content">주간 최대 100개 제한<br>기준: UTC+0 월요일 00:00:00 ~ 일요일 23:59:59</td>
+                        <td class="decision">주간 단위 자동 초기화 — 개발 구현 필요</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr>
+                        <td class="item">자동화 방안</td>
+                        <td class="content">스튜디오 자동화 방안 검토 중</td>
+                        <td class="decision">스튜디오 측 검토 후 개발 반영</td>
+                        <td class="status-col"><span class="badge badge-warn">⚠️ 검토 중</span></td>
+                    </tr>
+                    <tr class="updated-row">
+                        <td class="item">유저 안내 문구</td>
+                        <td class="content">"등록된 발자국은 차후 업데이트에서 상점에 순차적으로 등록됩니다."</td>
+                        <td class="decision">등록 완료 화면 또는 안내 팝업에 적용</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 9. 계정/접근 정책 -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon" style="background:#f0f9ff;">🔑</div>
+                <div class="section-title">9. 계정 / 접근 정책</div>
+            </div>
+            <table>
+                <thead><tr>
+                    <th style="width:160px;">항목</th>
+                    <th style="width:320px;">내용</th>
+                    <th>결정사항</th>
+                    <th style="width:110px; text-align:center;">상태</th>
+                </tr></thead>
+                <tbody>
+                    <tr>
+                        <td class="item">로그인 방식</td>
+                        <td class="content">GNJOY 계정 사용</td>
+                        <td class="decision">확정 완료</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr class="updated-row">
+                        <td class="item">계정 정지/탈퇴</td>
+                        <td class="content">해당 유저 상품 상점에서 제거 가능<br>IR 전달 리스트 기준 일괄 처리</td>
+                        <td class="decision">처리 방식 확정 — 운영팀 IR 리스트 기반 일괄 처리</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr class="updated-row">
+                        <td class="item">법적 이슈 발생</td>
+                        <td class="content">운영: 상품 게시 중단 / 스튜디오: 업데이트 시 회수 처리</td>
+                        <td class="decision">절차 확정 — 법무 이슈 발생 시 즉시 대응 가능 구조</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr class="updated-row">
+                        <td class="item">어드민 권한 구분</td>
+                        <td class="content">운영 담당자: 탈퇴 유저 상품 삭제<br>스튜디오: 변환 회수 처리</td>
+                        <td class="decision">역할 분리 확정 — 단일 어드민에서 역할 기반 구조로 전환</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 10. 배지/노출 알고리즘 정책 -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon" style="background:#ecfdf5;">📣</div>
+                <div class="section-title">10. 배지 / 노출 알고리즘 정책</div>
+            </div>
+            <table>
+                <thead><tr>
+                    <th style="width:160px;">항목</th>
+                    <th style="width:320px;">내용</th>
+                    <th>결정사항</th>
+                    <th style="width:110px; text-align:center;">상태</th>
+                </tr></thead>
+                <tbody>
+                    <tr>
+                        <td class="item">BEST 배지</td>
+                        <td class="content">자동 처리 — 상위 10% 구매 발자국</td>
+                        <td class="decision">자동 부여 기준 확정 — 구매 수 기준 상위 10%</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr>
+                        <td class="item">HOT 배지</td>
+                        <td class="content">자동 처리 — 상위 10% 찜 발자국</td>
+                        <td class="decision">자동 부여 기준 확정 — 찜 수 기준 상위 10%</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr>
+                        <td class="item">NEW 배지</td>
+                        <td class="content">자동 처리 — 최근 30일 이내 등록 발자국</td>
+                        <td class="decision">자동 부여 기준 확정 — 상점 게시 기준 30일</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                    <tr>
+                        <td class="item">신고 시스템</td>
+                        <td class="content">현재 미구현</td>
+                        <td class="decision">유저 간 작품 신고 기능 미도입으로 확정 — 추후 도입 시 별도 정책 수립</td>
+                        <td class="status-col"><span class="badge badge-ok">✅ 확정</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div><!-- /tab-v2 -->
+
+
+    <!-- ══════════════════════════════════════
+         V1.0 ARCHIVE
+    ══════════════════════════════════════ -->
+    <div id="tab-v1" class="tab-content">
+
+        <!-- 1. 등록 정책 -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon" style="background:#eff6ff;">📦</div>
+                <div class="section-title">1. 작품 등록 정책</div>
+            </div>
+            <table>
+                <thead><tr>
+                    <th style="width:160px;">항목</th>
+                    <th style="width:240px;">내용</th>
+                    <th>결정사항</th>
+                    <th style="width:110px; text-align:center;">상태</th>
+                </tr></thead>
+                <tbody>
+                    <tr><td class="item">1일 등록 횟수</td><td class="content">수치 미확정</td><td>❓ 최대 일 몇 회 등록 가능한지 수치 확정 필요</td><td class="status-col"><span class="badge badge-warn">⚠️ 미확정</span></td></tr>
+                    <tr><td class="item">파일 포맷</td><td class="content">.foot + .mp4 + .png 4종 필수</td><td>❓ 보안을 위해 파일 식별자를 foot 파일 내 부여하여 전달 가능할지</td><td class="status-col"><span class="badge badge-ok">✅ 포맷확정</span></td></tr>
+                    <tr><td class="item">영상 파일 크기</td><td class="content">500KB 이하</td><td>✅ 완료</td><td class="status-col"><span class="badge badge-ok">✅ 확정</span></td></tr>
+                    <tr><td class="item">작품명 규칙</td><td class="content">영문 최대 20자</td><td>✅ 완료</td><td class="status-col"><span class="badge badge-ok">✅ 확정</span></td></tr>
+                    <tr><td class="item">작품 만료일</td><td class="content">유저가 등록 기준 최소 30일 이상 입력</td><td>❓ 초기 오픈 시 모든 작품 만료일은 영구인지 확인 / 유저가 입력하는게 맞는지</td><td class="status-col"><span class="badge badge-warn">⚠️ 미확정</span></td></tr>
+                    <tr><td class="item">가격 정책</td><td class="content">FREE 고정</td><td>✅ 정식 런칭 시 FREE 버전으로 진행</td><td class="status-col"><span class="badge badge-ok">✅ 확정</span></td></tr>
+                    <tr><td class="item">작품 타입</td><td class="content">해시태그, 작품 색상</td><td>❓ 추가 작품 등록 시 필요한 타입 정리</td><td class="status-col"><span class="badge badge-warn">⚠️ 미확정</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 2. 구매 정책 -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon" style="background:#f0fdf4;">🛒</div>
+                <div class="section-title">2. 구매 정책</div>
+            </div>
+            <table>
+                <thead><tr>
+                    <th style="width:160px;">항목</th>
+                    <th style="width:240px;">내용</th>
+                    <th>결정사항</th>
+                    <th style="width:110px; text-align:center;">상태</th>
+                </tr></thead>
+                <tbody>
+                    <tr><td class="item">1일 구매 횟수</td><td class="content">명시 없음</td><td>❓ 일일 구매 횟수 제한 여부 — 무제한인지 확정 필요</td><td class="status-col"><span class="badge badge-danger">❌ 미정의</span></td></tr>
+                    <tr><td class="item">중복 구매</td><td class="content">불가</td><td>✅ 불필요한 기능</td><td class="status-col"><span class="badge badge-ok">✅ 확정</span></td></tr>
+                    <tr><td class="item">구매 취소/환불</td><td class="content">정책 없음</td><td>✅ 완료</td><td class="status-col"><span class="badge badge-ok">✅ 확정</span></td></tr>
+                    <tr><td class="item">구매 방식</td><td class="content">KP 구매</td><td>✅ 완료 / 최초 오픈 시 FREE만 진행</td><td class="status-col"><span class="badge badge-ok">✅ 확정</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 3. 수정/삭제 -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon" style="background:#fef2f2;">🔒</div>
+                <div class="section-title">3. 수정 / 삭제 / 취소 정책</div>
+            </div>
+            <table>
+                <thead><tr>
+                    <th style="width:160px;">항목</th>
+                    <th style="width:240px;">내용</th>
+                    <th>결정사항</th>
+                    <th style="width:110px; text-align:center;">상태</th>
+                </tr></thead>
+                <tbody>
+                    <tr><td class="item">등록 후 수정</td><td class="content">수정 불가</td><td>❓ 수정 권한이 필요한지 — ex. 등록 후 몇 일까지 or 정기 인게임 배치 전까지</td><td class="status-col"><span class="badge badge-warn">⚠️ 미확정</span></td></tr>
+                    <tr><td class="item">변환 실패</td><td class="content">영구 보관 및 삭제 기능 없음</td><td>❓ 영구 보관 vs 일정 기간 후 자동 삭제 정책</td><td class="status-col"><span class="badge badge-danger">❌ 미정의</span></td></tr>
+                    <tr><td class="item">등록 작품 만료</td><td class="content">영구 보관 및 삭제 기능 없음</td><td>❓ 영구 보관 vs 일정 기간 후 자동 삭제 정책</td><td class="status-col"><span class="badge badge-danger">❌ 미정의</span></td></tr>
+                    <tr><td class="item">구매 작품 만료</td><td class="content">영구 보관 및 삭제 기능 없음</td><td>❓ 영구 보관 vs 일정 기간 후 자동 삭제 정책</td><td class="status-col"><span class="badge badge-danger">❌ 미정의</span></td></tr>
+                    <tr><td class="item">어드민 강제 삭제</td><td class="content">불가</td><td>❓ 운영 방식에 따라 강제 삭제 기능 필요한지</td><td class="status-col"><span class="badge badge-warn">⚠️ 미확정</span></td></tr>
+                    <tr><td class="item">취소 정책</td><td class="content">미구현</td><td>❓ 스튜디오 변환 전 단계에 '등록 취소' 기능이 필요한지 검토</td><td class="status-col"><span class="badge badge-danger">❌ 미구현</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 4. 작품 변환 처리 -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon" style="background:#faf5ff;">📊</div>
+                <div class="section-title">4. 작품 변환 처리</div>
+            </div>
+            <table>
+                <thead><tr>
+                    <th style="width:160px;">항목</th>
+                    <th style="width:240px;">내용</th>
+                    <th>결정사항</th>
+                    <th style="width:110px; text-align:center;">상태</th>
+                </tr></thead>
+                <tbody>
+                    <tr><td class="item">변환 기준</td><td class="content">파일 무결성</td><td>✅ 완료 — 유저가 올린 콘텐츠 확장자만 판단하여 변환</td><td class="status-col"><span class="badge badge-ok">✅ 확정</span></td></tr>
+                    <tr><td class="item">변환 처리 SLA</td><td class="content">미정의 (대략 1~2주)</td><td>❓ 등록 후 최대 몇 일 이내 변환 처리 할 예정인지</td><td class="status-col"><span class="badge badge-warn">⚠️ 미정의</span></td></tr>
+                    <tr><td class="item">실패 사유 통보</td><td class="content">단순 '변환 실패' 안내만</td><td>✅ 완료</td><td class="status-col"><span class="badge badge-ok">✅ 확정</span></td></tr>
+                    <tr><td class="item">재검토 요청</td><td class="content">미구현</td><td>❓ 변환 실패 후 재등록 가능한지 or 삭제 후 다시 등록인지</td><td class="status-col"><span class="badge badge-danger">❌ 미구현</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 5. 계정/접근 -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon" style="background:#f0f9ff;">🔑</div>
+                <div class="section-title">5. 계정 / 접근 정책</div>
+            </div>
+            <table>
+                <thead><tr>
+                    <th style="width:160px;">항목</th>
+                    <th style="width:240px;">내용</th>
+                    <th>결정사항</th>
+                    <th style="width:110px; text-align:center;">상태</th>
+                </tr></thead>
+                <tbody>
+                    <tr><td class="item">로그인 필수</td><td class="content">GNJOY 계정 확정</td><td>✅ 완료</td><td class="status-col"><span class="badge badge-ok">✅ 확정</span></td></tr>
+                    <tr><td class="item">계정 정지/탈퇴 시</td><td class="content">미정의</td><td>❓ 계정 정지·탈퇴 시 기등록 작품 및 판매 중 작품 처리 방식</td><td class="status-col"><span class="badge badge-danger">❌ 미정의</span></td></tr>
+                    <tr><td class="item">어드민 권한 관리</td><td class="content">단일 어드민 (권한 구분 없음)</td><td>❓ 운영 담당자 · 변환 담당자 역할 분리 필요 — 추후 별도 운영 전환 시 검토</td><td class="status-col"><span class="badge badge-warn">⚠️ 미확정</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 6. 배지/노출 -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon" style="background:#ecfdf5;">📣</div>
+                <div class="section-title">6. 배지 / 노출 알고리즘 정책</div>
+            </div>
+            <table>
+                <thead><tr>
+                    <th style="width:160px;">항목</th>
+                    <th style="width:240px;">내용</th>
+                    <th>결정사항</th>
+                    <th style="width:110px; text-align:center;">상태</th>
+                </tr></thead>
+                <tbody>
+                    <tr><td class="item">BEST 배지</td><td class="content">자동 처리 — 상위 10% 구매 발자국</td><td>❓ 자동 부여 기준 정의 필요</td><td class="status-col"><span class="badge badge-warn">⚠️ 기준 미정</span></td></tr>
+                    <tr><td class="item">HOT 배지</td><td class="content">자동 처리 — 상위 10% 찜 발자국</td><td>❓ 자동 부여 기준 정의 필요</td><td class="status-col"><span class="badge badge-warn">⚠️ 기준 미정</span></td></tr>
+                    <tr><td class="item">NEW 배지</td><td class="content">자동 처리 — 최근 30일 이내 등록 발자국</td><td>❓ 자동 부여 기준 정의 필요</td><td class="status-col"><span class="badge badge-warn">⚠️ 기준 미정</span></td></tr>
+                    <tr><td class="item">신고 시스템</td><td class="content">미구현</td><td>❓ 유저 간 작품 신고 기능 도입 여부</td><td class="status-col"><span class="badge badge-danger">❌ 미구현</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div><!-- /tab-v1 -->
+
+</div><!-- /wrap -->
+
+<script>
+    const versionMeta = {
+        v2: { title: '🗂️ 정책 확인 체크리스트 V2.0', date: '업데이트: 2026.04.17' },
+        v1: { title: '🗂️ 정책 확인 체크리스트 V1.0', date: '최초 작성: 2026.04.01' }
+    };
+
+    function switchVersion(val) {
+        // 탭 전환
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        document.getElementById('tab-' + val).classList.add('active');
+
+        // 히어로 업데이트
+        const meta = versionMeta[val];
+        document.getElementById('heroTitle').textContent = meta.title;
+        document.getElementById('heroDate').textContent = meta.date;
+    }
+</script>
+</body>
+</html>

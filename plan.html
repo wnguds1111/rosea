@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROSEA 기획서 정리 - In-Game Concept</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Pretendard', 'Poppins', sans-serif; background: #f1f5f9; color: #1e293b; }
+
+        .top-bar { background: #0f172a; padding: 16px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+        .top-bar h1 { font-size: 16px; font-weight: 900; color: #fff; }
+        .btn-home { text-decoration: none; color: #94a3b8; font-weight: 700; font-size: 12px; padding: 6px 14px; border: 1px solid #334155; border-radius: 6px; transition: 0.2s; }
+        .btn-home:hover { color: #fff; border-color: #64748b; }
+        .btn-wire { background: #0064e0; color: #fff; text-decoration: none; font-weight: 700; font-size: 12px; padding: 6px 14px; border-radius: 6px; transition: 0.2s; border: 1px solid #0064e0; margin-left: 10px; }
+        .btn-wire:hover { background: #0056b3; }
+
+        .hero { background: linear-gradient(135deg, #2d3748 0%, #1a202c 60%, #4a5568 100%); border-radius: 20px; padding: 36px 48px; margin-bottom: 28px; color: white; position: relative; overflow: hidden; }
+        .hero::after { content: 'GAME CLIENT UI CONCEPT'; position: absolute; right: -20px; bottom: -20px; font-size: 80px; font-weight: 900; color: rgba(255,255,255,0.03); white-space: nowrap; }
+        .hero h2 { font-size: 26px; font-weight: 900; margin-bottom: 8px; color: #63b3ed; }
+        .hero p { font-size: 15px; font-weight: 500; color: #cbd5e0; line-height: 1.5; max-width: 800px; }
+
+        .wrap { max-width: 1350px; margin: 0 auto; padding: 32px 24px; }
+
+        .section-card { background: #fff; border-radius: 16px; padding: 28px 32px; margin-bottom: 20px; border: 1px solid #e2e8f0; transition: box-shadow 0.2s; }
+        .section-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
+        .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .section-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900; flex-shrink: 0; background: #ebf8ff; color: #3182ce; }
+        .section-title { font-size: 19px; font-weight: 900; color: #2d3748; }
+
+        .section-desc { font-size: 14.5px; font-weight: 600; color: #4a5568; margin-bottom: 20px; line-height: 1.6; background: #f7fafc; padding: 14px 20px; border-radius: 8px; border-left: 5px solid #3182ce; }
+
+        table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        th { background: #edf2f7; font-weight: 800; color: #4a5568; text-align: left; padding: 12px 16px; border: 1px solid #e2e8f0; }
+        td { padding: 12px 16px; border: 1px solid #e2e8f0; color: #2d3748; line-height: 1.6; vertical-align: middle; }
+        td.item { font-weight: 800; color: #1a202c; background: #f8fafc; white-space: nowrap; width: 220px; }
+        td.content { color: #4a5568; }
+
+        .highlight-text { color: #e53e3e; font-weight: 700; }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <h1>ROSEA 사전예약 게이미피케이션 기획서</h1>
+    <div>
+        <a href="index.html" class="btn-home">← 인덱스 홈</a>
+        <a href="wireframe.html" class="btn-wire">화면설계서</a>
+    </div>
+</div>
+
+<div class="wrap">
+    <div class="hero">
+        <h2>ROSEA 웹 클라이언트 사전예약 기획서</h2>
+        <p>기존의 위아래로 스크롤하는 웹사이트 방식을 버리고, 웹 브라우저 전체를 하나의 <b>'라그나로크 온라인 인게임 클라이언트'</b>처럼 작동하게 만드는 혁신적인 게이미피케이션 기획입니다. 캐릭터 생성창에서 사전예약을 완료하고, 인게임 퀘스트 창을 통해 이벤트에 참여합니다.</p>
+    </div>
+
+    <!-- Phase 1 -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-icon">1</div>
+            <div class="section-title">Phase 1: 접속 및 사전예약 (캐릭터 생성 UI)</div>
+        </div>
+        <p class="section-desc">일반적인 웹 랜딩 페이지가 아닌, 친숙한 <b>[라그나로크 캐릭터 선택/생성창]</b>이 전체 화면으로 나타납니다. 유저는 실제 게임을 시작하듯 사전예약을 진행합니다.</p>
+        <table>
+            <thead><tr><th>UI 컴포넌트</th><th>기능 상세 및 연출 로직</th></tr></thead>
+            <tbody>
+                <tr><td class="item">로그인 제어 (2차 비밀번호 UI)</td><td class="content">빈 캐릭터 슬롯을 클릭하면 '2차 비밀번호 키패드' 팝업이 연출되며, 이를 통해 로그인/본인인증을 유도.</td></tr>
+                <tr><td class="item">캐릭터 생성창 (사전예약 폼)</td><td class="content">닉네임 입력란이 곧 사전예약자 정보/추천인 코드 입력 필드로 작동. (헤어스타일 등 클릭하며 노는 기능 포함)</td></tr>
+                <tr><td class="item">Start Game 버튼 (사전예약 완료)</td><td class="content">우측 하단의 포링 형태 [Start Game] 버튼을 누르면 인게임 진입 사운드와 함께 하얗게 화면이 트랜지션 되며 <b>Phase 2(인게임 월드)</b>로 진입.</td></tr>
+                <tr><td class="item">사전예약 기본 보상</td><td class="content">C_10Grade_Balloon x1, 전투교범 x2, 풍선껌 x2, 노란 포션 상자 x3, <span class="highlight-text">Daily Spin 티켓 3장 즉시 지급</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-icon">2</div>
+            <div class="section-title">Phase 2: 인게임 월드 진입 (이벤트 허브 UI)</div>
+        </div>
+        <p class="section-desc">캐릭터를 생성(사전예약)하고 진입한 메인 화면입니다. 스크롤이 없는 1 화면 구조이며, 배경은 라그나로크 아카데미나 프론테라 마을로 설정되고 인게임 HUD가 배치됩니다.</p>
+        <table>
+            <thead><tr><th>UI 컴포넌트</th><th>기능 상세 및 연출 로직</th></tr></thead>
+            <tbody>
+                <tr><td class="item">상태창 (좌측 상단 HP/SP 바)</td><td class="content">유저의 프로필, 레벨(가입기간 등), 그리고 <b>보유 중인 데일리 스핀 티켓 수량</b>을 SP 바 형태로 시각화.</td></tr>
+                <tr><td class="item">시스템 채팅창 (좌측 하단)</td><td class="content">마일스톤 돌파 소식, "ㅇㅇㅇ님이 가챠에서 1등에 당첨되었습니다" 등의 서버 알림이 인게임 시스템 폰트로 실시간 타이핑됨.</td></tr>
+                <tr><td class="item">단축키 메뉴 (우측 하단)</td><td class="content">인덱스 이동, 공지사항, FAQ 버튼 등을 인게임 가방/설정 아이콘 형태로 배치.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-icon">3</div>
+            <div class="section-title">Phase 3: 퀘스트 창을 통한 이벤트 진행</div>
+        </div>
+        <p class="section-desc">기존 웹사이트의 스크롤 구역(섹션)을 완벽히 대체하는 <b>[인게임 Quest 창]</b>입니다. 유저는 화면 중앙에 뜬 퀘스트 목록을 클릭해 이벤트를 수행합니다.</p>
+        <table>
+            <thead><tr><th>퀘스트 명 (이벤트)</th><th>기능 상세 및 보상 데이터</th></tr></thead>
+            <tbody>
+                <tr><td class="item">Quest 1. 마일스톤 달성</td><td class="content"><b>내용:</b> 글로벌 사전등록 인원 누적 게이지 표시.<br><b>보상:</b><br>- 10k: 민첩성/블레싱 10레벨 스크롤 x10<br>- 50k: 보험증서x3, 지크프리드x3, 파리의날개 1일 x1<br>- 100k: 전투교범x2, 풍선껌x2, 하얀포션상자x3<br>- 200k: 생명수/마나수 세트<br>- 300k: 10레벨 요리 세트</td></tr>
+                <tr><td class="item">Quest 2. 베테랑 라운지 인증</td><td class="content"><b>내용:</b> 기존 GGH/GGL 플랫폼 플레이 타임 감정. 퀘스트 클릭 시 인게임 NPC 대화창 연출 등장.<br><b>보상:</b><br>- 다이아 (5년 이상): Selection Box x1 + 대형 소모품<br>- 플래티넘 (3년 이상): C_Mini_Glasses x1 + 중형 소모품<br>- 골드 (1년 이상): Lincoln_Hat x1 + 소형 소모품<br>- 실버 (1년 이하): 기본 포션 세트</td></tr>
+                <tr><td class="item">Quest 3. 데일리 캡슐 룰렛</td><td class="content"><b>내용:</b> 매일 출석(95% 1장, 5% 2장) 및 초대(건당 3장)로 획득한 티켓 사용처.<br><b>연출:</b> [퀘스트 진행] 클릭 시 퀘스트 창이 닫히고 화면 중앙에 커다란 가챠 머신 UI가 등장하여 17종 보상 룰렛 진행.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

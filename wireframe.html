@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROSEA - Blueprint Wireframe</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+  :root {
+    --bg-color: #f8fafc;
+    --border-color: #cbd5e0;
+    --text-color: #2d3748;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Pretendard', sans-serif; background: var(--bg-color); color: var(--text-color); overflow-x: hidden; }
+
+  /* PRD Toggle Button */
+  .prd-toggle { 
+    position: fixed; top: 30px; right: 40px; z-index: 1000; 
+    background: #e53e3e; color: #fff; padding: 12px 24px;
+    font-weight: 800; font-size: 14px; cursor: pointer; 
+    border-radius: 6px; border: none; transition: 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  .prd-toggle:hover { background: #c53030; }
+
+  /* SECTION 1: HERO VISUAL (FULL WIDTH) */
+  .hero-section {
+    width: 100%; height: 100vh; background: #1a202c; color: #fff;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; position: relative;
+  }
+  .hero-section h1 { font-size: 72px; font-weight: 900; letter-spacing: -1px; margin-bottom: 20px; }
+  .hero-section p { font-size: 24px; font-weight: 400; color: #a0aec0; margin-bottom: 50px; text-transform: uppercase; letter-spacing: 2px; }
+  .hero-btn { 
+    padding: 18px 50px; font-size: 18px; font-weight: 800; background: #fff; color: #1a202c; 
+    border-radius: 4px; border: none; cursor: pointer; text-transform: uppercase; transition: 0.2s;
+  }
+  .hero-btn:hover { background: #e2e8f0; }
+
+  /* MAIN CONTENT WRAPPER */
+  .main-content { display: flex; width: 100%; }
+
+  /* LEFT PANEL - STICKY */
+  .left-panel {
+    position: sticky; top: 0; width: 380px; height: 100vh;
+    background: #fff; border-right: 1px solid var(--border-color);
+    display: flex; flex-direction: column; align-items: center; padding: 40px 30px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.02);
+  }
+  .doc-title { font-weight: 800; font-size: 14px; color: #a0aec0; text-transform: uppercase; width: 100%; text-align: left; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+  
+  .char-container { margin-top: 10vh; text-align: center; width: 100%; position: relative; height: 350px; display: flex; flex-direction: column; align-items: center; }
+  .char-box {
+    width: 220px; height: 260px; border: 2px dashed #a0aec0; border-radius: 8px;
+    background: #f7fafc; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    position: absolute; top: 0; transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+  .char-level { font-weight: 800; font-size: 14px; background: var(--text-color); color: #fff; padding: 4px 12px; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); border-radius: 4px; }
+  .char-sprite { font-weight: 800; font-size: 20px; color: var(--text-color); text-transform: uppercase; }
+  
+  /* RO Chat Box */
+  .ro-chat-box { 
+    margin-top: auto; margin-bottom: 20px; width: 100%; height: 180px; 
+    background: rgba(0,0,0,0.85); border-radius: 4px; 
+    display: flex; flex-direction: column;
+  }
+  .ro-chat-header { 
+    height: 30px; background: rgba(0,0,0,0.9); border-bottom: 1px solid #4a5568; 
+    padding: 0 15px; display: flex; align-items: center; color: #cbd5e0; font-size: 12px; font-weight: 700; 
+  }
+  .ro-chat-body { 
+    flex: 1; padding: 15px; overflow-y: auto; color: #fff; font-size: 14px; 
+    line-height: 1.6; font-family: 'Pretendard', sans-serif;
+  }
+  .chat-sys { color: #fbd38d; font-weight: 700; margin-bottom: 6px; }
+  .chat-normal { color: #e2e8f0; font-weight: 400; }
+
+  /* RIGHT SCROLLING PANEL */
+  .right-panel { width: calc(100% - 380px); }
+  .section { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px dashed var(--border-color); padding: 40px; }
+
+  /* FLAT WIREFRAME COMPONENTS */
+  .wire-window {
+    width: 100%; max-width: 900px; height: 70vh; min-height: 550px; max-height: 750px;
+    background: #fff; border: 1px solid var(--border-color); border-radius: 8px;
+    display: flex; flex-direction: column; box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    position: relative;
+  }
+  .wire-header { 
+    height: 50px; background: #f7fafc; color: var(--text-color); border-bottom: 1px solid var(--border-color);
+    display: flex; align-items: center; padding: 0 25px; border-radius: 8px 8px 0 0;
+    font-weight: 800; font-size: 16px; text-transform: uppercase; 
+  }
+  .wire-body { flex: 1; display: flex; flex-direction: column; overflow: hidden; padding: 40px; position: relative; }
+  
+  .wire-title { font-size: 24px; font-weight: 800; color: var(--text-color); margin-bottom: 10px; text-transform: uppercase; }
+  .wire-sub { font-size: 16px; font-weight: 500; color: #718096; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color); text-transform: uppercase; }
+  
+  .wire-content-box { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  
+  /* NORMAL RECTANGLE BUTTON */
+  .wire-btn {
+    align-self: center; margin-top: auto;
+    padding: 16px 40px; font-size: 16px; font-weight: 700; 
+    border: 1px solid #cbd5e0; background: #fff; cursor: pointer; color: var(--text-color);
+    border-radius: 4px; transition: 0.2s; text-transform: uppercase;
+  }
+  .wire-btn:hover { background: #f7fafc; border-color: #a0aec0; }
+
+  /* Custom inner elements for realism */
+  .input-box { width: 100%; max-width: 500px; height: 50px; border: 1px solid var(--border-color); border-radius: 4px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 500; color: #a0aec0; background: #fdfbfb; }
+  .gauge-box { width: 100%; max-width: 700px; border: 1px solid var(--border-color); border-radius: 4px; height: 40px; position: relative; margin: 30px 0; background: #f7fafc; overflow: hidden; }
+  .gauge-fill { width: 45%; height: 100%; background: #3182ce; }
+  .gauge-text { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); font-weight: 700; font-size: 14px; color: #fff; mix-blend-mode: difference; }
+  .tier-container { display: flex; gap: 15px; width: 100%; max-width: 800px; margin: 30px 0; }
+  .tier-box { flex: 1; height: 120px; border: 1px solid var(--border-color); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fdfbfb; }
+  .tier-title { font-weight: 800; font-size: 18px; margin-bottom: 8px; color: #2d3748; }
+  .tier-desc { font-weight: 500; font-size: 13px; color: #718096; }
+  .roulette-circle { width: 220px; height: 220px; border-radius: 50%; border: 4px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 20px; color: #a0aec0; margin-bottom: 20px; }
+
+  /* Red Badge for Description */
+  .desc-badge {
+    position: absolute; width: 32px; height: 32px; background: #e53e3e; color: #fff; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px;
+    border: 2px solid #fff; cursor: pointer; z-index: 50; top: -10px; right: -10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+</style>
+</head>
+<body>
+
+<button class="prd-toggle" onclick="togglePrdPanel()">PRD DESCRIPTION: OFF</button>
+
+<!-- SECTION 1: HERO VISUAL (NO LEFT PANEL, FULL WIDTH) -->
+<div class="hero-section section" data-index="0" data-prd="1">
+  <h1>RAGNAROK ONLINE : SEA</h1>
+  <p>A NEW JOURNEY AWAITS</p>
+  <button class="hero-btn">GNJOY AUTO-LOGIN & PRE-REGISTER</button>
+  <div class="desc-badge" style="position: absolute; top: 40px; right: 40px;">1</div>
+</div>
+
+<!-- MAIN CONTENT FOR SECTIONS 2~5 -->
+<div class="main-content">
+
+  <!-- LEFT PANEL -->
+  <div class="left-panel">
+    <div class="doc-title">ROSEA Pre-Registration</div>
+    
+    <div class="char-container">
+      <div class="char-box" id="charBox">
+        <div class="char-level" id="charLevel">LV. 10</div>
+        <div class="char-sprite" id="charSprite">SWORDSMAN</div>
+      </div>
+    </div>
+
+    <div class="ro-chat-box">
+      <div class="ro-chat-header">System Message</div>
+      <div class="ro-chat-body" id="hookText">
+         <div class="chat-sys">[System] QUEST FOUND: PARTICIPATION EVENT</div>
+         <div class="chat-normal">PRE-REGISTER NOW TO RECEIVE MASSIVE SETTLEMENT FUNDS!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT SCROLLING PANEL -->
+  <div class="right-panel">
+
+    <!-- SECTION 2: Participation Event -->
+    <div class="section" data-index="1" data-prd="2">
+      <div class="wire-window">
+        <div class="wire-header">2. Pre-registration Participation Event</div>
+        <div class="wire-body">
+          <div class="wire-title">PRE-REGISTRATION PARTICIPATION EVENT</div>
+          <div class="wire-sub">PRE-REGISTER NOW TO RECEIVE MASSIVE SETTLEMENT FUNDS!</div>
+          <div class="wire-content-box">
+            <div class="input-box">PHONE NUMBER / EMAIL ADDRESS</div>
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom: 40px; font-weight:600; font-size:14px; color:#4a5568;">
+               <div style="width:16px; height:16px; border:2px solid #a0aec0; border-radius:3px;"></div> I AGREE TO THE PRIVACY POLICY (REQUIRED)
+            </div>
+          </div>
+          <button class="wire-btn">COMPLETE PRE-REGISTRATION</button>
+        </div>
+        <div class="desc-badge">2</div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: Milestone Event -->
+    <div class="section" data-index="2" data-prd="3">
+      <div class="wire-window">
+        <div class="wire-header">3. Pre-registration Milestone Event</div>
+        <div class="wire-body">
+          <div class="wire-title">GLOBAL MILESTONE EVENT</div>
+          <div class="wire-sub">GATHER ADVENTURERS GLOBALLY TO UNLOCK SERVER-WIDE REWARDS!</div>
+          <div class="wire-content-box">
+            <div style="font-size:20px; font-weight:800; color:#e53e3e;">CURRENT GLOBAL PARTICIPANTS: 12,450</div>
+            <div class="gauge-box">
+              <div class="gauge-fill"></div>
+              <div class="gauge-text">PROGRESS 45%</div>
+            </div>
+            <div style="display:flex; gap:20px; width:100%; max-width:700px; font-weight:700; font-size:12px; justify-content:space-between; color:#718096;">
+               <div>10K REACHED</div><div>50K REACHED</div><div>100K REACHED</div><div>200K REACHED</div><div>300K REACHED</div>
+            </div>
+          </div>
+          <button class="wire-btn">CHECK ACCUMULATED REWARDS</button>
+        </div>
+        <div class="desc-badge">3</div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: Veteran Rewards Event -->
+    <div class="section" data-index="3" data-prd="4">
+      <div class="wire-window">
+        <div class="wire-header">4. Veteran Rewards Event</div>
+        <div class="wire-body">
+          <div class="wire-title">VETERAN REWARDS EVENT</div>
+          <div class="wire-sub">APPRAISE YOUR PAST ADVENTURE RECORDS IN MIDGARD.</div>
+          <div class="wire-content-box">
+            <div style="font-size:15px; font-weight:600; margin-bottom:20px; color:#4a5568;">RECEIVE SPECIAL REWARDS BASED ON YOUR GGH/GGL SERVICE HISTORY.</div>
+            <div class="tier-container">
+               <div class="tier-box"><div class="tier-title">DIAMOND</div><div class="tier-desc">5+ YEARS</div></div>
+               <div class="tier-box"><div class="tier-title">PLATINUM</div><div class="tier-desc">3+ YEARS</div></div>
+               <div class="tier-box"><div class="tier-title">GOLD</div><div class="tier-desc">1+ YEARS</div></div>
+               <div class="tier-box"><div class="tier-title">SILVER</div><div class="tier-desc">< 1 YEAR</div></div>
+            </div>
+          </div>
+          <button class="wire-btn">APPRAISE MY PLAY RECORD</button>
+        </div>
+        <div class="desc-badge">4</div>
+      </div>
+    </div>
+
+    <!-- SECTION 5: Daily Spin Event -->
+    <div class="section" data-index="4" data-prd="5">
+      <div class="wire-window">
+        <div class="wire-header">5. Pre-Registration Daily Spin Event</div>
+        <div class="wire-body">
+          <div class="wire-title">DAILY SPIN EVENT</div>
+          <div class="wire-sub">COLLECT TICKETS DAILY TO SPIN THE NIGHT MARKET ROULETTE!</div>
+          <div class="wire-content-box">
+            <div class="roulette-circle">ROULETTE</div>
+            <div style="font-size:18px; font-weight:800; margin-bottom:10px; color:#2d3748;">TICKETS OWNED: <span style="color:#e53e3e;">3</span></div>
+            <div style="font-size:13px; font-weight:500; color:#718096;">* EARN EXTRA TICKETS THROUGH DAILY ATTENDANCE & INVITES.</div>
+          </div>
+          <button class="wire-btn">SPIN ROULETTE (COST: 1 TICKET)</button>
+        </div>
+        <div class="desc-badge">5</div>
+      </div>
+    </div>
+
+  </div> <!-- End Right Panel -->
+</div> <!-- End Main Content -->
+
+<script>
+  window.currentPrdPageNum = 1;
+
+  const sections = document.querySelectorAll('.section');
+  const charLevel = document.getElementById('charLevel');
+  const charSprite = document.getElementById('charSprite');
+  const hookText = document.getElementById('hookText');
+  const charBox = document.getElementById('charBox');
+
+  // data index 0 is Section 2 (Participation)
+  const data = [
+    { level: 'LV. 10', sprite: 'SWORDSMAN', yOffset: 0, chat: '<div class="chat-sys">[System] QUEST FOUND: PARTICIPATION EVENT</div><div class="chat-normal">PRE-REGISTER NOW TO RECEIVE MASSIVE SETTLEMENT FUNDS!</div>' },
+    { level: 'LV. 40', sprite: 'KNIGHT', yOffset: 25, chat: '<div class="chat-sys">[System] QUEST FOUND: MILESTONE EVENT</div><div class="chat-normal">GATHER ADVENTURERS GLOBALLY TO UNLOCK SERVER-WIDE REWARDS!</div>' },
+    { level: 'LV. 70', sprite: 'LORD KNIGHT', yOffset: 50, chat: '<div class="chat-sys">[System] QUEST FOUND: VETERAN REWARDS EVENT</div><div class="chat-normal">APPRAISE YOUR PAST ADVENTURE RECORDS IN MIDGARD.</div>' },
+    { level: 'LV. 99', sprite: 'RUNE KNIGHT', yOffset: 75, chat: '<div class="chat-sys">[System] QUEST FOUND: DAILY SPIN EVENT</div><div class="chat-normal">COLLECT TICKETS DAILY TO SPIN THE NIGHT MARKET ROULETTE!</div>' }
+  ];
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idxStr = entry.target.dataset.index;
+        window.currentPrdPageNum = parseInt(entry.target.dataset.prd);
+
+        if (idxStr !== "0") {
+            const i = parseInt(idxStr) - 1;
+            charLevel.innerText = data[i].level;
+            charSprite.innerText = data[i].sprite;
+            hookText.innerHTML = data[i].chat;
+            
+            charBox.style.top = data[i].yOffset + 'px';
+            charBox.style.transform = 'scale(1.02)';
+            setTimeout(() => charBox.style.transform = 'scale(1)', 300);
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+
+  sections.forEach(sec => observer.observe(sec));
+
+  function togglePrdPanel() {
+      const panel = document.getElementById('pageDescPanel');
+      if (panel) {
+          panel.classList.toggle('active');
+          const btn = document.querySelector('.prd-toggle');
+          btn.innerText = panel.classList.contains('active') ? "PRD DESCRIPTION: ON" : "PRD DESCRIPTION: OFF";
+      } else {
+          // If the user's custom logic hasn't loaded yet
+          console.log("Description Module DB Not Connected yet.");
+      }
+  }
+</script>
+
+<!-- DB / Description Custom Logic will be appended below by the user -->
+
+</body>
+</html>

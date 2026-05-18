@@ -1,0 +1,48 @@
+/* ==================== PRD DESCRIPTION MODULE ==================== */
+.page-desc-btn { position: fixed; top: 30px; right: 40px; z-index: 10001; background: #1e293b; color: #fff; border-radius: 30px; padding: 12px 24px; font-size: 15px; font-weight: 900; cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.2); border: 2px solid rgba(255,255,255,0.1); transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+.page-desc-btn:hover { background: #0f172a; color: #fff; transform: translateY(-3px); }
+.page-desc-panel { position: fixed; top: 90px; right: 40px; width: 450px; background: #fff; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); border: 1px solid #e2e8f0; z-index: 10000; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: 0.3s; overflow: hidden; text-align: left; display:flex; flex-direction:column; max-height:calc(100vh - 120px); }
+.page-desc-panel.active { opacity: 1; visibility: visible; transform: translateY(0); }
+.pdp-header { background: #f8fafc; border-bottom: 1px solid #e2e8f0; padding: 20px 25px; font-weight: 900; color: #0ea5e9; font-size: 16px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; text-transform: uppercase; letter-spacing: 1px; }
+.pdp-body { padding: 25px; font-size: 14px; color: #475569; line-height: 1.8; overflow-y: auto; flex: 1; }
+.md-line { margin-bottom:10px; cursor: pointer; transition: 0.2s; padding: 12px 10px; border-radius: 8px; border: 1px solid transparent; }
+.md-line:hover { background: #f8fafc; border: 1px solid #e2e8f0; }
+
+.mark-title { font-size: 14px; font-weight: 900; color: #0f172a; margin-bottom: 4px; }
+.mark-sub { font-size: 13px; color: #64748b; line-height: 1.6; }
+
+.pdp-top-title { font-size: 24px; font-weight: 900; color: #0f172a; margin-bottom: 8px; transition: 0.2s; padding-bottom: 2px; }
+.pdp-top-overview { font-size: 14px; color: #475569; line-height: 1.6; margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; transition: 0.2s; }
+
+.editable { border-bottom: 1px dashed transparent; }
+.editable:hover { border-bottom: 1px dashed #cbd5e1; }
+.editable:focus { outline: none; border-bottom: 2px dashed #0ea5e9; }
+.editable:empty:before { content: attr(placeholder); color: #94a3b8; }
+
+@keyframes ui-pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239,68,68,0.7); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(239,68,68,0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239,68,68,0); }
+}
+.coach-mark-badge {
+    position: absolute;
+    background: #ef4444;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 15px;
+    border: 2px solid #fff;
+    z-index: 99999;
+    pointer-events: none;
+    user-select: none;
+    transition: 0.3s transform, 0.3s box-shadow;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.coach-mark-badge.draggable { pointer-events: auto; cursor: grab; }
+.coach-mark-badge.draggable:active { cursor: grabbing; }
+.coach-mark-badge.pulsing { animation: ui-pulse 1.5s infinite; }
