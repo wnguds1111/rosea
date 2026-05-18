@@ -166,13 +166,13 @@ function renderBuilderMarks() {
 
     if (window.pageTitle || !window.isBuilderLocked) {
         let titleHtml = !window.isBuilderLocked
-            ? `<div class="pdp-top-title editable" contenteditable="true" onblur="window.updatePageMeta('title', this.innerText)" placeholder="페이지 제목을 입력하세요">${window.pageTitle || ''}</div>`
+            ? `<div class="pdp-top-title editable" contenteditable="true" oninput="window.updatePageMeta('title', this.innerText)" placeholder="페이지 제목을 입력하세요">${window.pageTitle || ''}</div>`
             : `<div class="pdp-top-title">${window.pageTitle}</div>`;
         html += titleHtml;
     }
     if (window.pageOverview || !window.isBuilderLocked) {
         let overviewHtml = !window.isBuilderLocked
-            ? `<div class="pdp-top-overview editable" contenteditable="true" onblur="window.updatePageMeta('overview', this.innerText)" placeholder="페이지 개요를 입력하세요">${window.pageOverview || ''}</div>`
+            ? `<div class="pdp-top-overview editable" contenteditable="true" oninput="window.updatePageMeta('overview', this.innerText)" placeholder="페이지 개요를 입력하세요">${window.pageOverview || ''}</div>`
             : `<div class="pdp-top-overview">${window.pageOverview}</div>`;
         html += overviewHtml;
     }
@@ -184,16 +184,16 @@ function renderBuilderMarks() {
     window.currentMarks.forEach(m => {
         let deleteBtn = !window.isBuilderLocked ? `<button onclick="deleteMark('${m.id}')" style="position:absolute; right:5px; top:10px; background:#fee2e2; border:none; color:#ef4444; font-weight:900; width:24px; height:24px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center;" title="삭제">×</button>` : '';
         let titleHTML = !window.isBuilderLocked ?
-            `<div class="mark-title editable" contenteditable="true" onblur="updateMarkText('${m.id}', 'title', this.innerText)" placeholder="제목 입력">${m.title}</div>` :
+            `<div class="mark-title editable" contenteditable="true" oninput="updateMarkText('${m.id}', 'title', this.innerText)" placeholder="제목 입력">${m.title}</div>` :
             `<div class="mark-title">${m.title}</div>`;
         let subHTML = !window.isBuilderLocked ?
-            `<div class="mark-sub editable" contenteditable="true" onblur="updateMarkText('${m.id}', 'sub', this.innerText)" style="margin-top:4px;" placeholder="상세 설명 입력">${m.sub}</div>` :
+            `<div class="mark-sub editable" contenteditable="true" oninput="updateMarkText('${m.id}', 'sub', this.innerText)" style="margin-top:4px;" placeholder="상세 설명 입력">${m.sub}</div>` :
             `<div class="mark-sub">${m.sub}</div>`;
 
         let linkHTML = '';
         if (!window.isBuilderLocked) {
             if (m.link) {
-                linkHTML = `<div style="margin-top:10px;"><input type="text" value="${m.link}" onblur="updateMarkText('${m.id}', 'link', this.value)" style="width:70%; border:1px solid #cbd5e1; border-radius:6px; padding:6px 10px; font-size:12px; margin-right:5px; outline:none;" placeholder="https://"><button onclick="updateMarkText('${m.id}', 'link', '')" style="background:#fee2e2; border:none; color:#ef4444; padding:6px 10px; border-radius:6px; font-size:11px; font-weight:800; cursor:pointer;" title="링크 삭제">[X]</button></div>`;
+                linkHTML = `<div style="margin-top:10px;"><input type="text" value="${m.link}" oninput="updateMarkText('${m.id}', 'link', this.value)" style="width:70%; border:1px solid #cbd5e1; border-radius:6px; padding:6px 10px; font-size:12px; margin-right:5px; outline:none;" placeholder="https://"><button onclick="updateMarkText('${m.id}', 'link', '')" style="background:#fee2e2; border:none; color:#ef4444; padding:6px 10px; border-radius:6px; font-size:11px; font-weight:800; cursor:pointer;" title="링크 삭제">[X]</button></div>`;
             } else {
                 linkHTML = `<div style="margin-top:10px;"><button onclick="promptForLink('${m.id}')" style="background:#f1f5f9; border:none; color:#0ea5e9; font-weight:800; font-size:12px; padding:6px 12px; border-radius:8px; cursor:pointer; display:flex; align-items:center;">+ 🔗 외부 링크 삽입</button></div>`;
             }
