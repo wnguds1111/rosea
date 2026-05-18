@@ -156,19 +156,33 @@
   /* RO Chat Box */
   .ro-chat-box { 
     margin-top: auto; margin-bottom: 20px; width: 100%; height: 180px; 
-    background: rgba(0,0,0,0.85); border-radius: 4px; 
-    display: flex; flex-direction: column;
+    background: rgba(0, 0, 0, 0.6); border: 1px solid rgba(255,255,255,0.2); border-radius: 2px; 
+    display: flex; flex-direction: column; font-family: 'Tahoma', sans-serif;
   }
-  .ro-chat-header { 
-    height: 30px; background: rgba(0,0,0,0.9); border-bottom: 1px solid #4a5568; 
-    padding: 0 15px; display: flex; align-items: center; color: #cbd5e0; font-size: 12px; font-weight: 700; 
+  .ro-chat-tabs {
+    display: flex; height: 24px; border-bottom: 1px solid rgba(255,255,255,0.2);
+  }
+  .ro-chat-tab {
+    padding: 0 10px; font-size: 11px; font-weight: bold; color: #9ca3af;
+    display: flex; align-items: center; justify-content: center;
+    border-right: 1px solid rgba(255,255,255,0.2); cursor: pointer;
+  }
+  .ro-chat-tab.active {
+    background: rgba(255, 255, 255, 0.1); color: #fff;
+  }
+  .ro-chat-icons {
+    margin-left: auto; display: flex; align-items: center; gap: 8px; padding-right: 8px; font-size: 12px;
   }
   .ro-chat-body { 
-    flex: 1; padding: 15px; overflow-y: auto; color: #fff; font-size: 14px; 
-    line-height: 1.6; font-family: 'Pretendard', sans-serif;
+    flex: 1; padding: 8px; overflow-y: auto; color: #fff; font-size: 12px; 
+    line-height: 1.5; text-shadow: 1px 1px 0 #000;
   }
-  .chat-sys { color: #fbd38d; font-weight: 700; margin-bottom: 6px; }
-  .chat-normal { color: #e2e8f0; font-weight: 400; }
+  .chat-sys { color: #fde047; margin-bottom: 2px; }
+  .chat-normal { color: #f3f4f6; }
+  .ro-chat-input {
+    height: 24px; background: rgba(0, 0, 0, 0.8); border-top: 1px solid rgba(255,255,255,0.2);
+    display: flex; align-items: center; padding: 0 10px; font-size: 11px; color: #9ca3af;
+  }
 
   /* RIGHT SCROLLING PANEL */
   .right-panel { width: calc(100% - 380px); }
@@ -277,10 +291,19 @@
     </div>
 
     <div class="ro-chat-box">
-      <div class="ro-chat-header">System Message</div>
+      <div class="ro-chat-tabs">
+        <div class="ro-chat-tab active">General Message</div>
+        <div class="ro-chat-tab">Battle Message</div>
+        <div class="ro-chat-icons">
+          <span>✉️</span><span>⚙️</span>
+        </div>
+      </div>
       <div class="ro-chat-body" id="hookText">
          <div class="chat-sys">[System] QUEST FOUND: PARTICIPATION EVENT</div>
          <div class="chat-normal">PRE-REGISTER NOW TO RECEIVE MASSIVE SETTLEMENT FUNDS!</div>
+      </div>
+      <div class="ro-chat-input">
+        Press the Enter key to start chatting.
       </div>
     </div>
   </div>
