@@ -23,7 +23,7 @@ fetch('https://api.ipify.org?format=json')
         if (data.ip === '119.192.146.202') {
             window.isAdminIP = true;
             const btn = document.querySelector('.prd-toggle');
-            if(btn) btn.style.display = 'block';
+            if (btn) btn.style.display = 'block';
         }
         if (shouldShowBadges()) loadAndRenderMarks();
     })
@@ -72,11 +72,11 @@ function loadAndRenderMarks() {
 setInterval(() => {
     let currentKey = getTargetKey();
     let currentShowBadges = shouldShowBadges();
-    
+
     if (currentKey !== window.lastObservedKey || currentShowBadges !== window.lastShowBadgesState) {
         window.lastObservedKey = currentKey;
         window.lastShowBadgesState = currentShowBadges;
-        
+
         if (currentShowBadges) {
             loadAndRenderMarks();
         } else {
@@ -115,7 +115,7 @@ window.updatePageMeta = function (type, txt) {
 
 function renderBuilderMarks() {
     document.querySelectorAll('.coach-mark-badge').forEach(e => e.remove());
-    
+
     if (!shouldShowBadges()) return;
 
     window.currentMarks.forEach(m => {
@@ -125,11 +125,11 @@ function renderBuilderMarks() {
         mark.id = 'coach-badge-' + m.id;
         mark.style.top = m.top + 'px';
         mark.style.left = m.left + 'px';
-        
+
         if (window.isAdminIP && !window.isBuilderLocked) {
             mark.classList.add('draggable');
         }
-        
+
         if (!window.isAdminIP) {
             mark.addEventListener('mouseenter', (e) => {
                 const tooltip = document.getElementById('badgeTooltip');
@@ -147,13 +147,13 @@ function renderBuilderMarks() {
                 if (tooltip) tooltip.style.display = 'none';
             });
         }
-        
+
         document.body.appendChild(mark);
     });
 
     const target = document.getElementById('descContent');
     if (!target) return;
-    
+
     if (!window.isAdminIP) {
         target.innerHTML = '';
         return;
@@ -336,7 +336,7 @@ document.addEventListener('mouseup', function (e) {
     }
 });
 
-window.scrollToBadge = function(id) {
+window.scrollToBadge = function (id) {
     const badge = document.getElementById('coach-badge-' + id);
     if (badge) {
         badge.scrollIntoView({ behavior: 'smooth', block: 'center' });
