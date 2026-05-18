@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ROSEA - Blueprint Wireframe</title>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<link rel="stylesheet" href="description_module/desc-styles.css" />
 <style>
   :root {
     --bg-color: #f8fafc;
@@ -16,12 +17,36 @@
 
   /* PRD Toggle Button */
   .prd-toggle { 
-    position: fixed; top: 30px; right: 40px; z-index: 1000; 
+    position: fixed; top: 100px; right: 40px; z-index: 1000; 
     background: #e53e3e; color: #fff; padding: 12px 24px;
     font-weight: 800; font-size: 14px; cursor: pointer; 
     border-radius: 6px; border: none; transition: 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: none; /* Hidden by default, shown via IP check */
   }
   .prd-toggle:hover { background: #c53030; }
+
+  /* GLOBAL HEADER */
+  .global-header {
+    position: fixed; top: 0; left: 0; width: 100%; height: 60px;
+    background: transparent; z-index: 2000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; transition: background 0.3s, border-bottom 0.3s;
+  }
+  .global-header.scrolled {
+    background: rgba(26, 32, 44, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .logo-area { font-size: 24px; font-weight: 900; color: #fff; letter-spacing: -1px; display: flex; align-items: center; gap: 10px; }
+  .logo-area img { height: 30px; display: none; /* Optional logo image */ }
+  .header-right { display: flex; align-items: center; gap: 20px; }
+  .header-link { color: #fff; font-weight: 600; font-size: 15px; text-decoration: none; transition: color 0.2s; }
+  .header-link:hover { color: #cbd5e0; }
+  .lang-select { display: flex; align-items: center; gap: 5px; color: #fff; font-weight: 600; font-size: 15px; cursor: pointer; }
+  .btn-signup { background: transparent; border: 1px solid #fff; color: #fff; padding: 8px 20px; border-radius: 20px; font-weight: 700; font-size: 14px; cursor: pointer; transition: 0.2s; }
+  .btn-signup:hover { background: rgba(255,255,255,0.1); }
+  .btn-login { background: #fff; border: none; color: #0284c7; padding: 8px 24px; border-radius: 20px; font-weight: 800; font-size: 14px; cursor: pointer; transition: 0.2s; }
+  .btn-login:hover { background: #f1f5f9; }
 
   /* SECTION 1: HERO VISUAL (FULL WIDTH) */
   .hero-section {
@@ -42,7 +67,7 @@
 
   /* LEFT PANEL - STICKY */
   .left-panel {
-    position: sticky; top: 0; width: 380px; height: 100vh;
+    position: sticky; top: 60px; width: 380px; height: calc(100vh - 60px);
     background: #fff; border-right: 1px solid var(--border-color);
     display: flex; flex-direction: column; align-items: center; padding: 40px 30px;
     box-shadow: 2px 0 10px rgba(0,0,0,0.02);
@@ -117,16 +142,26 @@
   .tier-title { font-weight: 800; font-size: 18px; margin-bottom: 8px; color: #2d3748; }
   .tier-desc { font-weight: 500; font-size: 13px; color: #718096; }
   .roulette-circle { width: 220px; height: 220px; border-radius: 50%; border: 4px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 20px; color: #a0aec0; margin-bottom: 20px; }
-
-  /* Red Badge for Description */
-  .desc-badge {
-    position: absolute; width: 32px; height: 32px; background: #e53e3e; color: #fff; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px;
-    border: 2px solid #fff; cursor: pointer; z-index: 50; top: -10px; right: -10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
 </style>
 </head>
 <body>
+
+<!-- GLOBAL HEADER -->
+<header class="global-header" id="globalHeader">
+  <div class="logo-area">
+    <img src="https://member.gnjoy.com/images/common/logo_gnjoy.png" alt="GNJOY" style="height: 22px; display: block;" onerror="this.outerHTML='<span style=\'color:#fff;font-weight:900;font-size:20px;letter-spacing:-1px;\'>GNJOY</span>'">
+  </div>
+  <div class="header-right">
+    <a href="#" class="header-link">Customer Support</a>
+    <div class="lang-select">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+      EN 
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </div>
+    <button class="btn-signup">SIGN UP</button>
+    <button class="btn-login">LOGIN</button>
+  </div>
+</header>
 
 <button class="prd-toggle" onclick="togglePrdPanel()">PRD DESCRIPTION: OFF</button>
 
@@ -135,7 +170,6 @@
   <h1>RAGNAROK ONLINE : SEA</h1>
   <p>A NEW JOURNEY AWAITS</p>
   <button class="hero-btn">GNJOY AUTO-LOGIN & PRE-REGISTER</button>
-  <div class="desc-badge" style="position: absolute; top: 40px; right: 40px;">1</div>
 </div>
 
 <!-- MAIN CONTENT FOR SECTIONS 2~5 -->
@@ -179,7 +213,6 @@
           </div>
           <button class="wire-btn">COMPLETE PRE-REGISTRATION</button>
         </div>
-        <div class="desc-badge">2</div>
       </div>
     </div>
 
@@ -202,7 +235,6 @@
           </div>
           <button class="wire-btn">CHECK ACCUMULATED REWARDS</button>
         </div>
-        <div class="desc-badge">3</div>
       </div>
     </div>
 
@@ -224,7 +256,6 @@
           </div>
           <button class="wire-btn">APPRAISE MY PLAY RECORD</button>
         </div>
-        <div class="desc-badge">4</div>
       </div>
     </div>
 
@@ -242,7 +273,6 @@
           </div>
           <button class="wire-btn">SPIN ROULETTE (COST: 1 TICKET)</button>
         </div>
-        <div class="desc-badge">5</div>
       </div>
     </div>
 
@@ -288,6 +318,16 @@
 
   sections.forEach(sec => observer.observe(sec));
 
+  // Global Header Scroll Effect
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('globalHeader');
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
   function togglePrdPanel() {
       const panel = document.getElementById('pageDescPanel');
       if (panel) {
@@ -301,7 +341,17 @@
   }
 </script>
 
-<!-- DB / Description Custom Logic will be appended below by the user -->
+<!-- Description Module Container -->
+<div class="page-desc-panel" id="pageDescPanel">
+    <div class="pdp-header">
+        <h2 style="font-size:16px; font-weight:900; color:#0f172a;">ROSEA 상세 기획서</h2>
+        <button id="lockToggleBtn" onclick="toggleLock()" style="background:#0f172a; color:#fff; border:none; padding:6px 12px; border-radius:8px; font-size:12px; font-weight:800; cursor:pointer;">🔒 편집 자물쇠 풀기</button>
+    </div>
+    <div class="pdp-body" id="descContent">
+        <!-- DB / Description Custom Logic loaded here -->
+    </div>
+</div>
+<script src="description_module/desc-script.js"></script>
 
 </body>
 </html>

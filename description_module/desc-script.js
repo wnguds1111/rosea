@@ -1,18 +1,35 @@
 /**
  * PRD Description Module - Reusable Script
  * 다른 프로젝트에 소스 복사 후 바로 사용 가능
- * 
- * 사용법:
- * 1. desc-styles.css와 desc-script.js를 프로젝트에 복사
- * 2. HTML에서 window.currentPrdPageNum 설정
- * 3. RO_Factory_Detailed_Features.md 파일에 기획 데이터 작성
  */
 
-window.currentPrdPageNum = 1; // 페이지 번호: 프로젝트별로 변경
+window.currentPrdPageNum = 1;
 window.currentMarks = [];
 window.pageTitle = "";
 window.pageOverview = "";
 window.isBuilderLocked = true;
+window.isAdminIP = false;
+
+// Append Tooltip DOM for non-admin IPs
+const badgeTooltip = document.createElement('div');
+badgeTooltip.id = 'badgeTooltip';
+badgeTooltip.style.cssText = 'position:fixed; display:none; background:rgba(15,23,42,0.95); color:#fff; padding:15px 20px; border-radius:10px; z-index:999999; max-width:320px; box-shadow:0 10px 25px rgba(0,0,0,0.3); font-family:"Pretendard", sans-serif; pointer-events:none; border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(5px);';
+document.body.appendChild(badgeTooltip);
+
+// Check IP
+fetch('https://api.ipify.org?format=json')
+    .then(res => res.json())
+    .then(data => {
+        if (data.ip === '119.192.146.202') {
+            window.isAdminIP = true;
+            const btn = document.querySelector('.prd-toggle');
+            if(btn) btn.style.display = 'block';
+        }
+        if (shouldShowBadges()) loadAndRenderMarks();
+    })
+    .catch(err => {
+        if (shouldShowBadges()) loadAndRenderMarks();
+    });
 
 function getTargetKey() {
     let key = window.currentPrdPageNum.toString();
@@ -29,14 +46,45 @@ function getTargetKey() {
 }
 
 window.lastObservedKey = getTargetKey();
+window.lastShowBadgesState = false;
+
+function shouldShowBadges() {
+    if (window.isAdminIP) {
+        const panel = document.getElementById('pageDescPanel');
+        return panel && panel.classList.contains('active');
+    }
+    return true; // For general IPs, always show badges
+}
+
+function loadAndRenderMarks() {
+    const targetKey = getTargetKey();
+    const savedStateStr = localStorage.getItem('rofactory_marks_builder_p' + targetKey);
+    let savedStateObj = savedStateStr ? JSON.parse(savedStateStr) : null;
+
+    if (savedStateObj && !Array.isArray(savedStateObj)) {
+        window.currentMarks = savedStateObj.marks || [];
+        window.pageTitle = savedStateObj.title || "";
+        window.pageOverview = savedStateObj.overview || "";
+    } else {
+        window.currentMarks = [];
+        window.pageTitle = "";
+        window.pageOverview = "";
+    }
+    renderBuilderMarks();
+}
 
 setInterval(() => {
     let currentKey = getTargetKey();
-    if (currentKey !== window.lastObservedKey) {
+    let currentShowBadges = shouldShowBadges();
+    
+    if (currentKey !== window.lastObservedKey || currentShowBadges !== window.lastShowBadgesState) {
         window.lastObservedKey = currentKey;
-        const panel = document.getElementById('pageDescPanel');
-        if (panel && panel.classList.contains('active')) {
-            showDynamicDescPanel(window.currentPrdPageNum, true);
+        window.lastShowBadgesState = currentShowBadges;
+        
+        if (currentShowBadges) {
+            loadAndRenderMarks();
+        } else {
+            document.querySelectorAll('.coach-mark-badge').forEach(e => e.remove());
         }
     }
 }, 500);
@@ -45,113 +93,8 @@ async function showDynamicDescPanel(pageNum, silent = false) {
     const panel = document.getElementById('pageDescPanel');
     if (!silent) panel.classList.toggle('active');
 
-    if (panel.classList.contains('active')) {
-        const targetKey = getTargetKey();
-        const savedStateStr = localStorage.getItem('rofactory_marks_builder_p' + targetKey);
-        let savedStateObj = savedStateStr ? JSON.parse(savedStateStr) : null;
-
-        if (savedStateObj && !Array.isArray(savedStateObj)) {
-            window.currentMarks = savedStateObj.marks || [];
-            window.pageTitle = savedStateObj.title || "";
-            window.pageOverview = savedStateObj.overview || "";
-            renderBuilderMarks();
-        } else {
-            document.getElementById('descContent').innerHTML = '<div style="text-align:center; padding:20px;">로딩 중...</div>';
-            try {
-                const res = await fetch('RO_Factory_Detailed_Features.md?t=' + new Date().getTime());
-                if (!res.ok) throw new Error("Failed to load MD file");
-                const text = await res.text();
-
-                const searchStr = '## PAGE ' + targetKey;
-                const startIdx = text.indexOf(searchStr);
-                if (startIdx === -1) {
-                    document.getElementById('descContent').innerHTML = '<div style="text-align:center; padding:40px 20px; color:#94a3b8; font-weight:700;">해당 뷰(PAGE ' + targetKey + ')에 작성된 데이터가 없습니다.<br>빌더 모드를 켜고 직접 기획서를 생성하세요.</div>';
-                    window.currentMarks = [];
-                    window.pageTitle = "";
-                    window.pageOverview = "";
-                    renderBuilderMarks();
-                    return;
-                }
-
-                let endIdx = text.indexOf('---', startIdx + 1);
-                let endIdx2 = text.indexOf('## PAGE', startIdx + 1);
-                endIdx = endIdx === -1 ? endIdx2 : (endIdx2 === -1 ? endIdx : Math.min(endIdx, endIdx2));
-                if (endIdx === -1) endIdx = text.length;
-
-                window.currentMarks = [];
-                window.pageTitle = "";
-                window.pageOverview = "";
-
-                const rawLines = text.substring(startIdx, endIdx).split('\n');
-                let isParsingList = false;
-
-                rawLines.forEach(line => {
-                    line = line.trim();
-                    if (line.startsWith(searchStr)) {
-                        const colonIdx = line.indexOf(':');
-                        if (colonIdx !== -1) {
-                            window.pageTitle = line.substring(colonIdx + 1).trim();
-                        }
-                    } else if (line.length > 0 && !line.match(/^\d+\./) && !isParsingList && !line.startsWith('##')) {
-                        window.pageOverview += line + " ";
-                    } else if (line.match(/^\d+\./)) {
-                        isParsingList = true;
-                        const num = parseInt(line.substring(0, line.indexOf('.')));
-                        let content = line.substring(line.indexOf('.') + 1).trim();
-
-                        let selector = '';
-                        let top = window.scrollY + 100 + (num * 40);
-                        let left = window.scrollX + 100 + (num * 40);
-
-                        const selMatch = content.match(/\{selector:(.*?)\}/);
-                        if (selMatch) {
-                            selector = selMatch[1].trim();
-                            content = content.replace(selMatch[0], '').trim();
-                            const el = document.querySelector(selector);
-                            if (el && el.offsetParent !== null) {
-                                const rect = el.getBoundingClientRect();
-                                top = window.scrollY + Math.max(0, rect.top - 10);
-                                left = window.scrollX + Math.max(0, rect.left - 10);
-                            }
-                        }
-
-                        let link = '';
-                        const linkMatch = content.match(/\{link:(.*?)\}/);
-                        if (linkMatch) {
-                            link = linkMatch[1].trim();
-                            content = content.replace(linkMatch[0], '').trim();
-                        }
-
-                        content = content.replace(/\*\*(.*?)\*\*/g, '$1');
-
-                        let titleStr = "설명없음";
-                        let subStr = content;
-
-                        if (content.includes(':')) {
-                            let splitIdx = content.indexOf(':');
-                            titleStr = content.substring(0, splitIdx).trim();
-                            subStr = content.substring(splitIdx + 1).trim();
-                        }
-
-                        window.currentMarks.push({
-                            id: 'id_' + Date.now() + Math.random().toString(36).substr(2, 5),
-                            num: num,
-                            title: titleStr,
-                            sub: subStr,
-                            top: top,
-                            left: left,
-                            link: link
-                        });
-                    }
-                });
-
-                saveBuilderMarks(false);
-                renderBuilderMarks();
-            } catch (e) {
-                console.error(e);
-                document.getElementById('descContent').innerHTML = '초기 파일 파싱 에러: ' + e.message;
-            }
-        }
+    if (shouldShowBadges()) {
+        loadAndRenderMarks();
     } else {
         document.querySelectorAll('.coach-mark-badge').forEach(e => e.remove());
     }
@@ -176,6 +119,9 @@ window.updatePageMeta = function (type, txt) {
 
 function renderBuilderMarks() {
     document.querySelectorAll('.coach-mark-badge').forEach(e => e.remove());
+    
+    if (!shouldShowBadges()) return;
+
     window.currentMarks.forEach(m => {
         const mark = document.createElement('div');
         mark.className = 'coach-mark-badge';
@@ -183,11 +129,39 @@ function renderBuilderMarks() {
         mark.id = 'coach-badge-' + m.id;
         mark.style.top = m.top + 'px';
         mark.style.left = m.left + 'px';
-        if (!window.isBuilderLocked) mark.classList.add('draggable');
+        
+        if (window.isAdminIP && !window.isBuilderLocked) {
+            mark.classList.add('draggable');
+        }
+        
+        if (!window.isAdminIP) {
+            mark.addEventListener('mouseenter', (e) => {
+                const tooltip = document.getElementById('badgeTooltip');
+                if (tooltip) {
+                    let linkHtml = m.link ? `<div style="margin-top:10px; font-size:12px; color:#0ea5e9; font-weight:700;">🔗 관련 링크 제공됨</div>` : '';
+                    tooltip.innerHTML = `<div style="font-weight:900; font-size:15px; margin-bottom:6px; color:#f8fafc;">${m.title}</div><div style="font-size:13px; color:#cbd5e1; line-height:1.5;">${m.sub}</div>${linkHtml}`;
+                    tooltip.style.display = 'block';
+                    const rect = mark.getBoundingClientRect();
+                    tooltip.style.top = (rect.top + 35) + 'px';
+                    tooltip.style.left = rect.left + 'px';
+                }
+            });
+            mark.addEventListener('mouseleave', () => {
+                const tooltip = document.getElementById('badgeTooltip');
+                if (tooltip) tooltip.style.display = 'none';
+            });
+        }
+        
         document.body.appendChild(mark);
     });
 
     const target = document.getElementById('descContent');
+    if (!target) return;
+    
+    if (!window.isAdminIP) {
+        target.innerHTML = '';
+        return;
+    }
     let html = '';
 
     if (window.pageTitle || !window.isBuilderLocked) {
@@ -385,3 +359,16 @@ document.addEventListener('mouseup', function (e) {
         draggedBadge = null;
     }
 });
+
+window.scrollToBadge = function(id) {
+    const badge = document.getElementById('coach-badge-' + id);
+    if (badge) {
+        badge.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        badge.style.transform = 'scale(1.8)';
+        badge.style.boxShadow = '0 0 0 15px rgba(239,68,68,0.4)';
+        setTimeout(() => {
+            badge.style.transform = '';
+            badge.style.boxShadow = '';
+        }, 1200);
+    }
+};
