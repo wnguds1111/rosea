@@ -73,23 +73,45 @@
     display: flex; flex-direction: column; align-items: center; padding: 40px 30px;
     box-shadow: 2px 0 10px rgba(0,0,0,0.02);
   }
-  .doc-title { font-weight: 800; font-size: 14px; color: #a0aec0; text-transform: uppercase; width: 100%; text-align: left; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
-  
   .ro-logo-placeholder {
     width: 100%; height: 110px; border: 2px dashed #cbd5e0; background: #f8fafc;
     display: flex; align-items: center; justify-content: center;
     font-weight: 900; font-size: 18px; color: #a0aec0; letter-spacing: 1px;
-    margin-top: 20px; border-radius: 8px;
+    margin-bottom: 20px; border-radius: 8px;
   }
   
-  .char-container { margin-top: 6vh; text-align: center; width: 100%; position: relative; height: 350px; display: flex; flex-direction: column; align-items: center; }
-  .char-box {
-    width: 220px; height: 260px; border: 2px dashed #a0aec0; border-radius: 8px;
-    background: #f7fafc; display: flex; flex-direction: column; align-items: center; justify-content: center;
-    position: absolute; top: 0; transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  /* RO PLAYER UI (Top-Left Style) */
+  .ro-player-ui {
+    width: 100%; max-width: 280px; font-family: 'Tahoma', 'Pretendard', sans-serif;
+    margin-top: 10px; transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
-  .char-level { font-weight: 800; font-size: 14px; background: var(--text-color); color: #fff; padding: 4px 12px; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); border-radius: 4px; }
-  .char-sprite { font-weight: 800; font-size: 20px; color: var(--text-color); text-transform: uppercase; }
+  .ro-player-header {
+    font-size: 12px; font-weight: 800; color: #fff;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    margin-bottom: 4px; text-align: left; letter-spacing: 0.5px;
+  }
+  .ro-player-body { display: flex; gap: 4px; }
+  .ro-job-icon {
+    width: 48px; height: 48px; background: #e2e8f0;
+    border: 2px solid #64748b; border-radius: 2px;
+    box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #94a3b8;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ro-bars { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+  .ro-bar {
+    flex: 1; background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #64748b; border-radius: 2px;
+    box-shadow: inset 1px 1px 0 #0f172a, inset -1px -1px 0 #334155;
+    position: relative; overflow: hidden;
+  }
+  .ro-bar.hp-bar .bar-fill { height: 100%; background: #22c55e; transition: width 0.3s; }
+  .ro-bar.sp-bar .bar-fill { height: 100%; background: #3b82f6; transition: width 0.3s; }
+  .ro-bar .bar-text {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 6px; font-size: 11px; font-weight: 800; color: #fff;
+    text-shadow: 1px 1px 0 #000;
+  }
   
   /* RO Chat Box */
   .ro-chat-box { 
@@ -187,13 +209,26 @@
 
   <!-- LEFT PANEL -->
   <div class="left-panel">
-    <div class="doc-title">ROSEA Pre-Registration</div>
     <div class="ro-logo-placeholder">RO LOGO AREA</div>
     
-    <div class="char-container">
-      <div class="char-box" id="charBox">
-        <div class="char-level" id="charLevel">LV. 10</div>
-        <div class="char-sprite" id="charSprite">SWORDSMAN</div>
+    <div class="ro-player-ui">
+      <div class="ro-player-header">
+        <span id="charSprite">SWORDSMAN</span> <span id="charLevel">Lv. 10</span> Adventurer
+      </div>
+      <div class="ro-player-body">
+        <div class="ro-job-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </div>
+        <div class="ro-bars">
+          <div class="ro-bar hp-bar">
+            <div class="bar-fill" style="width:100%;"></div>
+            <div class="bar-text"><span id="hpText">120 / 120</span><span>100%</span></div>
+          </div>
+          <div class="ro-bar sp-bar">
+            <div class="bar-fill" style="width:100%;"></div>
+            <div class="bar-text"><span id="spText">30 / 30</span><span>100%</span></div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -297,14 +332,15 @@
   const charLevel = document.getElementById('charLevel');
   const charSprite = document.getElementById('charSprite');
   const hookText = document.getElementById('hookText');
-  const charBox = document.getElementById('charBox');
+  const hpText = document.getElementById('hpText');
+  const spText = document.getElementById('spText');
 
   // data index 0 is Section 2 (Participation)
   const data = [
-    { level: 'LV. 10', sprite: 'SWORDSMAN', yOffset: 0, chat: '<div class="chat-sys">[System] QUEST FOUND: PARTICIPATION EVENT</div><div class="chat-normal">PRE-REGISTER NOW TO RECEIVE MASSIVE SETTLEMENT FUNDS!</div>' },
-    { level: 'LV. 40', sprite: 'KNIGHT', yOffset: 25, chat: '<div class="chat-sys">[System] QUEST FOUND: MILESTONE EVENT</div><div class="chat-normal">GATHER ADVENTURERS GLOBALLY TO UNLOCK SERVER-WIDE REWARDS!</div>' },
-    { level: 'LV. 70', sprite: 'LORD KNIGHT', yOffset: 50, chat: '<div class="chat-sys">[System] QUEST FOUND: VETERAN REWARDS EVENT</div><div class="chat-normal">APPRAISE YOUR PAST ADVENTURE RECORDS IN MIDGARD.</div>' },
-    { level: 'LV. 99', sprite: 'RUNE KNIGHT', yOffset: 75, chat: '<div class="chat-sys">[System] QUEST FOUND: DAILY SPIN EVENT</div><div class="chat-normal">COLLECT TICKETS DAILY TO SPIN THE NIGHT MARKET ROULETTE!</div>' }
+    { level: 'Lv. 10', sprite: 'SWORDSMAN', hp: '120 / 120', sp: '30 / 30', chat: '<div class="chat-sys">[System] QUEST FOUND: PARTICIPATION EVENT</div><div class="chat-normal">PRE-REGISTER NOW TO RECEIVE MASSIVE SETTLEMENT FUNDS!</div>' },
+    { level: 'Lv. 40', sprite: 'KNIGHT', hp: '2500 / 2500', sp: '150 / 150', chat: '<div class="chat-sys">[System] QUEST FOUND: MILESTONE EVENT</div><div class="chat-normal">GATHER ADVENTURERS GLOBALLY TO UNLOCK SERVER-WIDE REWARDS!</div>' },
+    { level: 'Lv. 70', sprite: 'LORD KNIGHT', hp: '9800 / 9800', sp: '450 / 450', chat: '<div class="chat-sys">[System] QUEST FOUND: VETERAN REWARDS EVENT</div><div class="chat-normal">APPRAISE YOUR PAST ADVENTURE RECORDS IN MIDGARD.</div>' },
+    { level: 'Lv. 99', sprite: 'RUNE KNIGHT', hp: '24000 / 24000', sp: '1200 / 1200', chat: '<div class="chat-sys">[System] QUEST FOUND: DAILY SPIN EVENT</div><div class="chat-normal">COLLECT TICKETS DAILY TO SPIN THE NIGHT MARKET ROULETTE!</div>' }
   ];
 
   const observer = new IntersectionObserver((entries) => {
@@ -317,11 +353,15 @@
             const i = parseInt(idxStr) - 1;
             charLevel.innerText = data[i].level;
             charSprite.innerText = data[i].sprite;
+            hpText.innerText = data[i].hp;
+            spText.innerText = data[i].sp;
             hookText.innerHTML = data[i].chat;
             
-            charBox.style.top = data[i].yOffset + 'px';
-            charBox.style.transform = 'scale(1.02)';
-            setTimeout(() => charBox.style.transform = 'scale(1)', 300);
+            const playerUI = document.querySelector('.ro-player-ui');
+            if (playerUI) {
+                playerUI.style.transform = 'scale(1.03)';
+                setTimeout(() => playerUI.style.transform = 'scale(1)', 200);
+            }
         }
       }
     });
