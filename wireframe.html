@@ -51,48 +51,44 @@
 
   /* SECTION 1: HERO VISUAL (FULL WIDTH) */
   .hero-section {
-    width: 100%; height: 100vh; background: #1a202c; color: #fff;
+    width: 100%; height: 100vh; background: #f8fafc; color: #334155;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center; position: relative;
-    /* Adding a subtle background texture/gradient for depth */
-    background: radial-gradient(circle at center, #2d3748 0%, #0f172a 100%);
+    background: radial-gradient(circle at center, #ffffff 0%, #e2e8f0 100%);
   }
   .hero-title { 
     font-size: 85px; font-weight: 900; 
-    color: #fff;
-    background: linear-gradient(to bottom, #ffffff 20%, #7dc0ff 60%, #005ce6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.6));
+    color: #cbd5e1;
+    -webkit-text-stroke: 2px #475569;
     text-transform: uppercase; 
     line-height: 1.1; 
     margin-bottom: 25px; 
     letter-spacing: -2px;
   }
   .hero-slogan {
-    font-size: 20px; font-weight: 900; color: #0f172a;
-    background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.85) 15%, rgba(255,255,255,0.85) 85%, rgba(255,255,255,0));
+    font-size: 20px; font-weight: 800; color: #64748b;
+    border-top: 2px solid #cbd5e1; border-bottom: 2px solid #cbd5e1;
     padding: 12px 100px; margin-bottom: 50px;
     letter-spacing: 4px; text-transform: uppercase; position: relative;
   }
   .hero-slogan::before, .hero-slogan::after {
-    content: '✦'; position: absolute; color: #475569; font-size: 18px; top: 50%; transform: translateY(-50%);
+    content: '■'; position: absolute; color: #cbd5e1; font-size: 14px; top: 50%; transform: translateY(-50%);
   }
-  .hero-slogan::before { left: 50px; }
-  .hero-slogan::after { right: 50px; }
+  .hero-slogan::before { left: 40px; }
+  .hero-slogan::after { right: 40px; }
 
   .hero-btn { 
     padding: 22px 65px; font-size: 22px; font-weight: 900; 
-    background: linear-gradient(to bottom, #4cb8f3, #0a74d7); 
-    color: #fff; border-radius: 4px; border: none; cursor: pointer; 
+    background: #fff; 
+    color: #334155; border-radius: 4px; border: 2px solid #475569; cursor: pointer; 
     text-transform: uppercase; transition: all 0.2s;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5), inset 0 2px 0 rgba(255,255,255,0.4);
+    box-shadow: 6px 6px 0 #cbd5e1;
     letter-spacing: 1px;
   }
   .hero-btn:hover { 
-    background: linear-gradient(to bottom, #5ec1ff, #1979df); 
-    transform: translateY(-3px); 
-    box-shadow: 0 15px 30px rgba(0,0,0,0.6), inset 0 2px 0 rgba(255,255,255,0.5);
+    background: #f1f5f9; 
+    transform: translate(2px, 2px); 
+    box-shadow: 4px 4px 0 #cbd5e1;
   }
 
   /* MAIN CONTENT WRAPPER */
@@ -232,7 +228,7 @@
 <!-- SECTION 1: HERO VISUAL (NO LEFT PANEL, FULL WIDTH) -->
 <div class="hero-section section" data-index="0" data-prd="1">
   <h1 class="hero-title">RAGNAROK ONLINE : SEA</h1>
-  <div class="hero-slogan">LIKE THE FIRST TIME</div>
+  <div class="hero-slogan">GRAND OPENING EVENT</div>
   <button class="hero-btn">PRE-REGISTER NOW ➔</button>
 </div>
 
@@ -278,78 +274,149 @@
 
     <!-- SECTION 2: Participation Event -->
     <div class="section" data-index="1" data-prd="2">
-      <div class="wire-window">
-        <div class="wire-header">2. Pre-registration Participation Event</div>
-        <div class="wire-body">
-          <div class="wire-title">PRE-REGISTRATION PARTICIPATION EVENT</div>
-          <div class="wire-sub">PRE-REGISTER NOW TO RECEIVE MASSIVE SETTLEMENT FUNDS!</div>
-          <div class="wire-content-box">
-            <div class="input-box">PHONE NUMBER / EMAIL ADDRESS</div>
-            <div style="display:flex; align-items:center; gap:10px; margin-bottom: 40px; font-weight:600; font-size:14px; color:#4a5568;">
-               <div style="width:16px; height:16px; border:2px solid #a0aec0; border-radius:3px;"></div> I AGREE TO THE PRIVACY POLICY (REQUIRED)
+      <div class="quest-ui-wireframe">
+        <div class="quest-ui-header"><span>Quest</span><span style="cursor:pointer; font-weight:900;">X</span></div>
+        <div class="quest-ui-body">
+          <div class="quest-ui-tabs"><div class="quest-tab active">Active</div><div class="quest-tab">News</div><div class="quest-tab">On Hold</div></div>
+          <div class="quest-ui-content">
+            <div class="quest-ui-topbar">
+              <select style="border:1px solid #94a3b8; padding:2px 5px;"><option>&lt;ALL&gt;</option></select>
+              <input type="text" style="flex:1; border:1px solid #94a3b8; padding:2px 5px;" placeholder="Search">
+              <label><input type="checkbox"> Simple Quest UI</label>
             </div>
+            <div class="quest-ui-split">
+              <div class="quest-ui-list">
+                <div style="font-weight:bold; margin-bottom:10px;">► Event: Pre-registration</div>
+                <div style="color:#64748b; margin-left:15px; margin-bottom:5px;">- Sign up reward</div>
+                <div style="color:#64748b; margin-left:15px; margin-bottom:5px;">- Invite friend</div>
+              </div>
+              <div class="quest-ui-detail">
+                <div style="font-weight:bold; font-size:16px; margin-bottom:15px;">Event: Pre-registration</div>
+                <div style="color:#475569; line-height:1.6; font-size:13px;">
+                  Welcome adventurer.<br><br>
+                  Register now to receive your starting settlement funds. The Kingdom of Rune-Midgarts is waiting for your return.<br><br>
+                  <b>[ Reward ]</b><br>
+                  - 10Grade Balloon<br>
+                  - Field Manual x2<br>
+                  - Bubble Gum x2<br>
+                  - Yellow Potion Box x3<br>
+                  - Daily Spin Ticket x3
+                </div>
+              </div>
+            </div>
+            <div class="quest-ui-footer"><button style="border:2px solid #64748b; background:#e2e8f0; padding:6px 20px; font-weight:bold; cursor:pointer;">Set Active</button></div>
           </div>
-          <button class="wire-btn">COMPLETE PRE-REGISTRATION</button>
         </div>
       </div>
     </div>
 
     <!-- SECTION 3: Milestone Event -->
     <div class="section" data-index="2" data-prd="3">
-      <div class="wire-window">
-        <div class="wire-header">3. Pre-registration Milestone Event</div>
-        <div class="wire-body">
-          <div class="wire-title">GLOBAL MILESTONE EVENT</div>
-          <div class="wire-sub">GATHER ADVENTURERS GLOBALLY TO UNLOCK SERVER-WIDE REWARDS!</div>
-          <div class="wire-content-box">
-            <div style="font-size:20px; font-weight:800; color:#e53e3e;">CURRENT GLOBAL PARTICIPANTS: 12,450</div>
-            <div class="gauge-box">
-              <div class="gauge-fill"></div>
-              <div class="gauge-text">PROGRESS 45%</div>
+      <div class="quest-ui-wireframe">
+        <div class="quest-ui-header"><span>Quest</span><span style="cursor:pointer; font-weight:900;">X</span></div>
+        <div class="quest-ui-body">
+          <div class="quest-ui-tabs"><div class="quest-tab active">Active</div><div class="quest-tab">News</div><div class="quest-tab">On Hold</div></div>
+          <div class="quest-ui-content">
+            <div class="quest-ui-topbar">
+              <select style="border:1px solid #94a3b8; padding:2px 5px;"><option>&lt;ALL&gt;</option></select>
+              <input type="text" style="flex:1; border:1px solid #94a3b8; padding:2px 5px;" placeholder="Search">
+              <label><input type="checkbox"> Simple Quest UI</label>
             </div>
-            <div style="display:flex; gap:20px; width:100%; max-width:700px; font-weight:700; font-size:12px; justify-content:space-between; color:#718096;">
-               <div>10K REACHED</div><div>50K REACHED</div><div>100K REACHED</div><div>200K REACHED</div><div>300K REACHED</div>
+            <div class="quest-ui-split">
+              <div class="quest-ui-list">
+                <div style="font-weight:bold; margin-bottom:10px;">► Event: Milestone</div>
+                <div style="color:#64748b; margin-left:15px;">- 100k Registrations</div>
+                <div style="color:#64748b; margin-left:15px;">- 500k Registrations</div>
+              </div>
+              <div class="quest-ui-detail">
+                <div style="font-weight:bold; font-size:16px; margin-bottom:15px;">Event: Milestone</div>
+                <div style="color:#475569; line-height:1.6; font-size:13px;">
+                  Gather adventurers globally to unlock server-wide rewards. The more people join, the greater the treasure!<br><br>
+                  <b>[ Goal & Rewards ]</b><br>
+                  - 10k: Agi/Blessing Lv.10 Scroll x10<br>
+                  - 50k: Insurance x3, Siegfried x3, Fly Wing (1D) x1<br>
+                  - 100k: Field Manual x2, Bubble Gum x2, White Potion Box x3<br>
+                  - 200k: Life Water / Mana Water Set<br>
+                  - 300k: Lv.10 Cooking Set<br><br>
+                  Status: In Progress...<br>
+                  Current: 12,450 / 300,000
+                </div>
+              </div>
             </div>
+            <div class="quest-ui-footer"><button style="border:2px solid #64748b; background:#e2e8f0; padding:6px 20px; font-weight:bold; cursor:pointer;">Set Active</button></div>
           </div>
-          <button class="wire-btn">CHECK ACCUMULATED REWARDS</button>
         </div>
       </div>
     </div>
 
     <!-- SECTION 4: Veteran Rewards Event -->
     <div class="section" data-index="3" data-prd="4">
-      <div class="wire-window">
-        <div class="wire-header">4. Veteran Rewards Event</div>
-        <div class="wire-body">
-          <div class="wire-title">VETERAN REWARDS EVENT</div>
-          <div class="wire-sub">APPRAISE YOUR PAST ADVENTURE RECORDS IN MIDGARD.</div>
-          <div class="wire-content-box">
-            <div style="font-size:15px; font-weight:600; margin-bottom:20px; color:#4a5568;">RECEIVE SPECIAL REWARDS BASED ON YOUR GGH/GGL SERVICE HISTORY.</div>
-            <div class="tier-container">
-               <div class="tier-box"><div class="tier-title">DIAMOND</div><div class="tier-desc">5+ YEARS</div></div>
-               <div class="tier-box"><div class="tier-title">PLATINUM</div><div class="tier-desc">3+ YEARS</div></div>
-               <div class="tier-box"><div class="tier-title">GOLD</div><div class="tier-desc">1+ YEARS</div></div>
-               <div class="tier-box"><div class="tier-title">SILVER</div><div class="tier-desc">< 1 YEAR</div></div>
+      <div class="quest-ui-wireframe">
+        <div class="quest-ui-header"><span>Quest</span><span style="cursor:pointer; font-weight:900;">X</span></div>
+        <div class="quest-ui-body">
+          <div class="quest-ui-tabs"><div class="quest-tab active">Active</div><div class="quest-tab">News</div><div class="quest-tab">On Hold</div></div>
+          <div class="quest-ui-content">
+            <div class="quest-ui-topbar">
+              <select style="border:1px solid #94a3b8; padding:2px 5px;"><option>&lt;ALL&gt;</option></select>
+              <input type="text" style="flex:1; border:1px solid #94a3b8; padding:2px 5px;" placeholder="Search">
+              <label><input type="checkbox"> Simple Quest UI</label>
             </div>
+            <div class="quest-ui-split">
+              <div class="quest-ui-list">
+                <div style="font-weight:bold; margin-bottom:10px;">► Event: Veteran Rewards</div>
+                <div style="color:#64748b; margin-left:15px;">- Account linking</div>
+              </div>
+              <div class="quest-ui-detail">
+                <div style="font-weight:bold; font-size:16px; margin-bottom:15px;">Event: Veteran Rewards</div>
+                <div style="color:#475569; line-height:1.6; font-size:13px;">
+                  Welcome back, veteran. Appraise your past adventure records in Midgard.<br>
+                  Link your previous RO account to claim legacy rewards.<br><br>
+                  <b>[ Appraisal Rewards ]</b><br>
+                  - Diamond (5+ years): Selection Box x1 + Large Consumable Set<br>
+                  - Platinum (3+ years): C_Mini_Glasses x1 + Medium Consumable Set<br>
+                  - Gold (1+ years): Lincoln_Hat x1 + Small Consumable Set<br>
+                  - Silver (< 1 year): Basic Potion Set
+                </div>
+              </div>
+            </div>
+            <div class="quest-ui-footer"><button style="border:2px solid #64748b; background:#e2e8f0; padding:6px 20px; font-weight:bold; cursor:pointer;">Set Active</button></div>
           </div>
-          <button class="wire-btn">APPRAISE MY PLAY RECORD</button>
         </div>
       </div>
     </div>
 
     <!-- SECTION 5: Daily Spin Event -->
     <div class="section" data-index="4" data-prd="5">
-      <div class="wire-window">
-        <div class="wire-header">5. Pre-Registration Daily Spin Event</div>
-        <div class="wire-body">
-          <div class="wire-title">DAILY SPIN EVENT</div>
-          <div class="wire-sub">COLLECT TICKETS DAILY TO SPIN THE NIGHT MARKET ROULETTE!</div>
-          <div class="wire-content-box">
-            <div class="roulette-circle">ROULETTE</div>
-            <div style="font-size:18px; font-weight:800; margin-bottom:10px; color:#2d3748;">TICKETS OWNED: <span style="color:#e53e3e;">3</span></div>
-            <div style="font-size:13px; font-weight:500; color:#718096;">* EARN EXTRA TICKETS THROUGH DAILY ATTENDANCE & INVITES.</div>
+      <div class="quest-ui-wireframe">
+        <div class="quest-ui-header"><span>Quest</span><span style="cursor:pointer; font-weight:900;">X</span></div>
+        <div class="quest-ui-body">
+          <div class="quest-ui-tabs"><div class="quest-tab active">Active</div><div class="quest-tab">News</div><div class="quest-tab">On Hold</div></div>
+          <div class="quest-ui-content">
+            <div class="quest-ui-topbar">
+              <select style="border:1px solid #94a3b8; padding:2px 5px;"><option>&lt;ALL&gt;</option></select>
+              <input type="text" style="flex:1; border:1px solid #94a3b8; padding:2px 5px;" placeholder="Search">
+              <label><input type="checkbox"> Simple Quest UI</label>
+            </div>
+            <div class="quest-ui-split">
+              <div class="quest-ui-list">
+                <div style="font-weight:bold; margin-bottom:10px;">► Event: Daily Spin</div>
+                <div style="color:#64748b; margin-left:15px;">- Get Ticket</div>
+                <div style="color:#64748b; margin-left:15px;">- Spin Roulette</div>
+              </div>
+              <div class="quest-ui-detail">
+                <div style="font-weight:bold; font-size:16px; margin-bottom:15px;">Event: Daily Spin</div>
+                <div style="color:#475569; line-height:1.6; font-size:13px;">
+                  Collect tickets daily to spin the night market roulette!<br><br>
+                  <b>[ How to get Tickets ]</b><br>
+                  - Basic Reward: 3 Tickets<br>
+                  - Invite Friend: 3 Tickets per invite (Max 15)<br>
+                  - Daily Login: 1~2 Tickets<br><br>
+                  (Roulette UI loads here...)
+                </div>
+              </div>
+            </div>
+            <div class="quest-ui-footer"><button style="border:2px solid #64748b; background:#e2e8f0; padding:6px 20px; font-weight:bold; cursor:pointer;">Set Active</button></div>
           </div>
-          <button class="wire-btn">SPIN ROULETTE (COST: 1 TICKET)</button>
         </div>
       </div>
     </div>
@@ -369,10 +436,10 @@
 
   // data index 0 is Section 2 (Participation)
   const data = [
-    { level: 'Lv. 10', sprite: 'SWORDSMAN', hp: '120 / 120', sp: '30 / 30', chat: '<div class="chat-sys">[System] QUEST FOUND: PARTICIPATION EVENT</div><div class="chat-normal">PRE-REGISTER NOW TO RECEIVE MASSIVE SETTLEMENT FUNDS!</div>' },
-    { level: 'Lv. 40', sprite: 'KNIGHT', hp: '2500 / 2500', sp: '150 / 150', chat: '<div class="chat-sys">[System] QUEST FOUND: MILESTONE EVENT</div><div class="chat-normal">GATHER ADVENTURERS GLOBALLY TO UNLOCK SERVER-WIDE REWARDS!</div>' },
-    { level: 'Lv. 70', sprite: 'LORD KNIGHT', hp: '9800 / 9800', sp: '450 / 450', chat: '<div class="chat-sys">[System] QUEST FOUND: VETERAN REWARDS EVENT</div><div class="chat-normal">APPRAISE YOUR PAST ADVENTURE RECORDS IN MIDGARD.</div>' },
-    { level: 'Lv. 99', sprite: 'RUNE KNIGHT', hp: '24000 / 24000', sp: '1200 / 1200', chat: '<div class="chat-sys">[System] QUEST FOUND: DAILY SPIN EVENT</div><div class="chat-normal">COLLECT TICKETS DAILY TO SPIN THE NIGHT MARKET ROULETTE!</div>' }
+    { level: 'Lv. 10', sprite: 'SWORDSMAN', hp: '120 / 120', sp: '30 / 30', chat: '<div class="chat-sys">[System] Welcome to the Rune-Midgarts Kingdom.</div><div class="chat-normal">Event: Sign up to receive your starter pack.</div>' },
+    { level: 'Lv. 40', sprite: 'KNIGHT', hp: '2500 / 2500', sp: '150 / 150', chat: '<div class="chat-sys">[System] A new quest has been added to your log.</div><div class="chat-normal">Event: Invite your friends to unlock bonus items!</div>' },
+    { level: 'Lv. 70', sprite: 'LORD KNIGHT', hp: '9800 / 9800', sp: '450 / 450', chat: '<div class="chat-sys">[System] You have received mail from Prontera.</div><div class="chat-normal">Event: Claim your legacy veteran rewards today.</div>' },
+    { level: 'Lv. 99', sprite: 'RUNE KNIGHT', hp: '24000 / 24000', sp: '1200 / 1200', chat: '<div class="chat-sys">[System] The Daily Spin event is currently active.</div><div class="chat-normal">Event: Get free tickets and spin the roulette!</div>' }
   ];
 
   const observer = new IntersectionObserver((entries) => {
