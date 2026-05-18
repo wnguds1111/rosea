@@ -54,14 +54,46 @@
     width: 100%; height: 100vh; background: #1a202c; color: #fff;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center; position: relative;
+    /* Adding a subtle background texture/gradient for depth */
+    background: radial-gradient(circle at center, #2d3748 0%, #0f172a 100%);
   }
-  .hero-section h1 { font-size: 72px; font-weight: 900; letter-spacing: -1px; margin-bottom: 20px; }
-  .hero-section p { font-size: 24px; font-weight: 400; color: #a0aec0; margin-bottom: 50px; text-transform: uppercase; letter-spacing: 2px; }
+  .hero-title { 
+    font-size: 85px; font-weight: 900; 
+    color: #fff;
+    background: linear-gradient(to bottom, #ffffff 20%, #7dc0ff 60%, #005ce6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.6));
+    text-transform: uppercase; 
+    line-height: 1.1; 
+    margin-bottom: 25px; 
+    letter-spacing: -2px;
+  }
+  .hero-slogan {
+    font-size: 20px; font-weight: 900; color: #0f172a;
+    background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.85) 15%, rgba(255,255,255,0.85) 85%, rgba(255,255,255,0));
+    padding: 12px 100px; margin-bottom: 50px;
+    letter-spacing: 4px; text-transform: uppercase; position: relative;
+  }
+  .hero-slogan::before, .hero-slogan::after {
+    content: '✦'; position: absolute; color: #475569; font-size: 18px; top: 50%; transform: translateY(-50%);
+  }
+  .hero-slogan::before { left: 50px; }
+  .hero-slogan::after { right: 50px; }
+
   .hero-btn { 
-    padding: 18px 50px; font-size: 18px; font-weight: 800; background: #fff; color: #1a202c; 
-    border-radius: 4px; border: none; cursor: pointer; text-transform: uppercase; transition: 0.2s;
+    padding: 22px 65px; font-size: 22px; font-weight: 900; 
+    background: linear-gradient(to bottom, #4cb8f3, #0a74d7); 
+    color: #fff; border-radius: 4px; border: none; cursor: pointer; 
+    text-transform: uppercase; transition: all 0.2s;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5), inset 0 2px 0 rgba(255,255,255,0.4);
+    letter-spacing: 1px;
   }
-  .hero-btn:hover { background: #e2e8f0; }
+  .hero-btn:hover { 
+    background: linear-gradient(to bottom, #5ec1ff, #1979df); 
+    transform: translateY(-3px); 
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6), inset 0 2px 0 rgba(255,255,255,0.5);
+  }
 
   /* MAIN CONTENT WRAPPER */
   .main-content { display: flex; width: 100%; }
@@ -199,9 +231,9 @@
 
 <!-- SECTION 1: HERO VISUAL (NO LEFT PANEL, FULL WIDTH) -->
 <div class="hero-section section" data-index="0" data-prd="1">
-  <h1>RAGNAROK ONLINE : SEA</h1>
-  <p>A NEW JOURNEY AWAITS</p>
-  <button class="hero-btn">GNJOY AUTO-LOGIN & PRE-REGISTER</button>
+  <h1 class="hero-title">RAGNAROK ONLINE : SEA</h1>
+  <div class="hero-slogan">LIKE THE FIRST TIME</div>
+  <button class="hero-btn">PRE-REGISTER NOW ➔</button>
 </div>
 
 <!-- MAIN CONTENT FOR SECTIONS 2~5 -->
