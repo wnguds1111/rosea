@@ -43,9 +43,10 @@
   .header-link { color: #fff; font-weight: 600; font-size: 15px; text-decoration: none; transition: color 0.2s; }
   .header-link:hover { color: #cbd5e0; }
   .lang-select { display: flex; align-items: center; gap: 5px; color: #fff; font-weight: 600; font-size: 15px; cursor: pointer; }
+  .auth-btns { display: flex; gap: 8px; margin-left: 10px; }
   .btn-signup { background: transparent; border: 1px solid #fff; color: #fff; padding: 8px 20px; border-radius: 20px; font-weight: 700; font-size: 14px; cursor: pointer; transition: 0.2s; }
   .btn-signup:hover { background: rgba(255,255,255,0.1); }
-  .btn-login { background: #fff; border: none; color: #0284c7; padding: 8px 24px; border-radius: 20px; font-weight: 800; font-size: 14px; cursor: pointer; transition: 0.2s; }
+  .btn-login { background: #fff; border: none; color: #0284c7; padding: 8px 20px; border-radius: 20px; font-weight: 700; font-size: 14px; cursor: pointer; transition: 0.2s; }
   .btn-login:hover { background: #f1f5f9; }
 
   /* SECTION 1: HERO VISUAL (FULL WIDTH) */
@@ -74,7 +75,14 @@
   }
   .doc-title { font-weight: 800; font-size: 14px; color: #a0aec0; text-transform: uppercase; width: 100%; text-align: left; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
   
-  .char-container { margin-top: 10vh; text-align: center; width: 100%; position: relative; height: 350px; display: flex; flex-direction: column; align-items: center; }
+  .ro-logo-placeholder {
+    width: 100%; height: 110px; border: 2px dashed #cbd5e0; background: #f8fafc;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 18px; color: #a0aec0; letter-spacing: 1px;
+    margin-top: 20px; border-radius: 8px;
+  }
+  
+  .char-container { margin-top: 6vh; text-align: center; width: 100%; position: relative; height: 350px; display: flex; flex-direction: column; align-items: center; }
   .char-box {
     width: 220px; height: 260px; border: 2px dashed #a0aec0; border-radius: 8px;
     background: #f7fafc; display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -158,8 +166,10 @@
       EN 
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
     </div>
-    <button class="btn-signup">SIGN UP</button>
-    <button class="btn-login">LOGIN</button>
+    <div class="auth-btns">
+      <button class="btn-signup">SIGN UP</button>
+      <button class="btn-login">LOGIN</button>
+    </div>
   </div>
 </header>
 
@@ -178,6 +188,7 @@
   <!-- LEFT PANEL -->
   <div class="left-panel">
     <div class="doc-title">ROSEA Pre-Registration</div>
+    <div class="ro-logo-placeholder">RO LOGO AREA</div>
     
     <div class="char-container">
       <div class="char-box" id="charBox">
