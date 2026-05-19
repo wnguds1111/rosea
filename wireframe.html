@@ -650,9 +650,8 @@
                     <button style="padding: 12px 24px; background: #fff; color: #000; border: 1px solid #000; border-radius: 4px; font-weight: 800; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#f7fafc'" onmouseout="this.style.background='#fff'">SIGN UP</button>
                   </div>
                 </div>
-                <div style="font-weight: 900; font-size: 15px; color: #2d3748; margin-bottom: 15px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
-                  <span>TICKET ACQUISITION RULES</span>
-                  <span style="font-size: 12px; font-weight: 700; color: #a0aec0; text-decoration: underline; cursor: pointer;" onclick="openPrecautions('Daily Roulette Precautions')">Event precautions</span>
+                <div style="font-weight: 900; font-size: 15px; color: #2d3748; margin-bottom: 15px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">
+                  TICKET ACQUISITION RULES
                 </div>
                 
                 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
@@ -692,6 +691,11 @@
                 </div>
               </div>
 
+              <!-- MIDDLE: Ticket History Button -->
+              <div style="text-align: center; margin-top: -10px;">
+                <button onclick="document.getElementById('q4TicketHistoryModal').style.display='flex'" style="padding: 10px 25px; background: #edf2f7; color: #4a5568; border: 1px dashed #cbd5e0; border-radius: 8px; font-weight: 800; font-size: 13px; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#e2e8f0'" onmouseout="this.style.background='#edf2f7'">🎫 VIEW TICKET ACQUISITION HISTORY</button>
+              </div>
+
               <!-- BOTTOM: Machine -->
               <div style="display: flex; justify-content: center;">
                 <div style="width: 100%; max-width: 450px; background: #fff; border-radius: 16px; border: 4px solid #4a5568; padding: 15px; display: flex; flex-direction: column;">
@@ -716,14 +720,17 @@
                   </div>
 
                   <!-- Action Buttons -->
-                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
-                    <button onclick="document.getElementById('q4RewardsModal').style.display='flex'" style="grid-column: span 2; padding: 14px; background: #3182ce; color: #fff; border: none; border-radius: 8px; font-weight: 900; font-size: 15px; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#2b6cb0'" onmouseout="this.style.background='#3182ce'">REWARD LIST</button>
-                    <button onclick="document.getElementById('q4RewardHistoryModal').style.display='flex'" style="padding: 12px 10px; background: #4a5568; color: #fff; border: none; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#2d3748'" onmouseout="this.style.background='#4a5568'">REWARD HISTORY</button>
-                    <button onclick="document.getElementById('q4TicketHistoryModal').style.display='flex'" style="padding: 12px 10px; background: #4a5568; color: #fff; border: none; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#2d3748'" onmouseout="this.style.background='#4a5568'">TICKET HISTORY</button>
+                  <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <button onclick="document.getElementById('q4RewardsModal').style.display='flex'" style="flex: 1; padding: 14px; background: #3182ce; color: #fff; border: none; border-radius: 8px; font-weight: 900; font-size: 14px; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#2b6cb0'" onmouseout="this.style.background='#3182ce'">REWARD LIST</button>
+                    <button onclick="document.getElementById('q4RewardHistoryModal').style.display='flex'" style="flex: 1; padding: 14px; background: #4a5568; color: #fff; border: none; border-radius: 8px; font-weight: 900; font-size: 14px; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#2d3748'" onmouseout="this.style.background='#4a5568'">REWARD HISTORY</button>
                   </div>
                 </div>
               </div>
 
+              <!-- Precautions Footer -->
+              <div style="text-align: center; margin-top: 10px;">
+                <span style="font-size: 12px; font-weight: 700; color: #a0aec0; text-decoration: underline; cursor: pointer;" onclick="openPrecautions('Daily Roulette Precautions')">Daily Roulette Event precautions</span>
+              </div>
             </div>
           </div> <!-- End wire-body -->
         </div> <!-- End wire-main -->
