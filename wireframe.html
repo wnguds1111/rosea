@@ -407,17 +407,20 @@
                   </div>
                 </div>
                 
-                <!-- DEMO CONTROLS (QUEST 1 ONLY) -->
-                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 10px;">
-                  <span style="font-size: 11px; font-weight: 800; color: #a0aec0; margin-right: 5px;">QUEST 1 DEMO</span>
-                  <button onclick="setDemoState(0)" style="padding: 4px 8px; background: #fff; border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[1] Not Logged In</button>
-                  <button onclick="setDemoState(1)" style="padding: 4px 8px; background: #fff; border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[2] Logged In</button>
-                  <button onclick="setDemoState(2)" style="padding: 4px 8px; background: #fff; border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[3] Registered</button>
-                </div>
+
               </div>
 
+            <div style="text-align: center; margin-top: 20px; padding-bottom: 20px;">
+              <span style="font-size: 12px; font-weight: 700; color: #a0aec0; text-decoration: underline; cursor: pointer;" onclick="openPrecautions('Pre-Registration Precautions')">Pre-Registration precautions</span>
             </div>
           </div>
+        </div>
+        <!-- QUEST 1 DEMO (Moved out of window) -->
+        <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 15px;">
+          <span style="font-size: 11px; font-weight: 800; color: #718096; margin-right: 5px;">QUEST 1 DEMO</span>
+          <button onclick="setDemoState(0)" style="padding: 4px 8px; background: rgba(255,255,255,0.5); border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[1] Not Logged In</button>
+          <button onclick="setDemoState(1)" style="padding: 4px 8px; background: rgba(255,255,255,0.5); border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[2] Logged In</button>
+          <button onclick="setDemoState(2)" style="padding: 4px 8px; background: rgba(255,255,255,0.5); border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[3] Registered</button>
         </div>
       </div>
     </div>
@@ -440,8 +443,8 @@
             <div class="wire-tab" onclick="scrollToPrd(5)">Q4</div>
           </div>
           <div class="wire-body">
-            <div class="wire-title">GLOBAL MILESTONE EVENT</div>
-            <div class="wire-sub">GATHER ADVENTURERS GLOBALLY TO UNLOCK SERVER-WIDE REWARDS!<br><span style="font-size: 14px; color: #a0aec0; margin-top: 10px; display: block;">1/9/2026 ~ 1/12/2026 (UTC+8)</span></div>
+            <div class="wire-title">PRE-REGISTRATION MILESTONE EVENT</div>
+            <div class="wire-sub">JOIN FORCES WITH PLAYERS WORLDWIDE TO UNLOCK EXCLUSIVE GIFTS!<br><span style="font-size: 14px; color: #a0aec0; margin-top: 10px; display: block;">1/9/2026 ~ 1/12/2026 (UTC+8)</span></div>
             <div class="wire-content-box">
               <div style="font-size:20px; font-weight:800; color:#e53e3e;">CURRENT GLOBAL PARTICIPANTS: 12,450</div>
               <div class="gauge-box">
@@ -643,6 +646,26 @@
         <!-- DB / Description Custom Logic loaded here -->
     </div>
 </div>
+
+<!-- PRECAUTIONS MODAL -->
+<div id="precautionsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+  <div style="background: #fff; width: 500px; padding: 30px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); position: relative;">
+    <button onclick="document.getElementById('precautionsModal').style.display='none'" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #a0aec0;">&times;</button>
+    <h3 id="precautionsModalTitle" style="margin-bottom: 15px; color: #2d3748; font-size: 18px; font-weight: 800;">Precautions</h3>
+    <ul style="font-size: 13px; color: #4a5568; line-height: 1.6; font-weight: 500; margin-bottom: 0; padding-left: 20px;">
+      <li style="margin-bottom: 8px;">Rewards will be distributed after the official launch.</li>
+      <li style="margin-bottom: 8px;">Event details are subject to change without prior notice.</li>
+      <li style="margin-bottom: 8px;">Users participating through illegitimate means will be excluded from rewards.</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+function openPrecautions(title) {
+  document.getElementById('precautionsModalTitle').innerText = title;
+  document.getElementById('precautionsModal').style.display = 'flex';
+}
+</script>
 
 <!-- PROMO MODAL -->
 <div id="promoModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
