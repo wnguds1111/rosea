@@ -1,0 +1,305 @@
+id="q4RewardsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+  <div style="background: #fff; width: 500px; max-height: 80vh; border-radius: 8px; position: relative; display: flex; flex-direction: column;">
+    <div style="padding: 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+      <div style="font-size: 18px; font-weight: 900; color: #2d3748;">ROULETTE REWARD LIST</div>
+      <button onclick="document.getElementById('q4RewardsModal').style.display='none'" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #a0aec0;">&times;</button>
+    </div>
+    <div style="padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;">
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Khalitzburg_KN_Helm</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Ifrit's_Ear</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Magic_Circle_Rainbow</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Premium_Box_1d</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Comp_Battle_Manual</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Comp_Bubble_Gum</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Wing_Of_Fly_1Day_Para</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Regeneration_Potion</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Small_Life_Potion</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Med_Life_Potion</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Comp_Small_Mana_Potion</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">White_Potion_B</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Yellow_Potion_B</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Orange_Potion_B</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Green_Potion_B</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Inc_Agi_10_Scroll</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Blessing_10_Scroll</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+<!-- Description Module Container -->
+<div class="page-desc-panel" id="pageDescPanel">
+    <div class="pdp-header">
+        <h2 style="font-size:16px; font-weight:900; color:#0f172a;">ROSEA 상세 기획서</h2>
+        <button id="lockToggleBtn" onclick="toggleLock()" style="background:#0f172a; color:#fff; border:none; padding:6px 12px; border-radius:8px; font-size:12px; font-weight:800; cursor:pointer;">🔒 편집 자물쇠 풀기</button>
+    </div>
+    <div class="pdp-body" id="descContent">
+        <!-- DB / Description Custom Logic loaded here -->
+    </div>
+</div>
+
+<!-- PRECAUTIONS MODAL -->
+<div id="precautionsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+  <div style="background: #fff; width: 500px; padding: 30px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); position: relative;">
+    <button onclick="document.getElementById('precautionsModal').style.display='none'" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #a0aec0;">&times;</button>
+    <h3 id="precautionsModalTitle" style="margin-bottom: 15px; color: #2d3748; font-size: 18px; font-weight: 800;">Precautions</h3>
+    <ul style="font-size: 13px; color: #4a5568; line-height: 1.6; font-weight: 500; margin-bottom: 0; padding-left: 20px;">
+      <li style="margin-bottom: 8px;">Rewards will be distributed after the official launch.</li>
+      <li style="margin-bottom: 8px;">Event details are subject to change without prior notice.</li>
+      <li style="margin-bottom: 8px;">Users participating through illegitimate means will be excluded from rewards.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Q4 REWARDS MODAL -->
+<div id="q4RewardsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+  <div style="background: #fff; width: 500px; max-height: 80vh; border-radius: 8px; position: relative; display: flex; flex-direction: column;">
+    <div style="padding: 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+      <div style="font-size: 18px; font-weight: 900; color: #2d3748;">ROULETTE REWARD LIST</div>
+      <button onclick="document.getElementById('q4RewardsModal').style.display='none'" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #a0aec0;">&times;</button>
+    </div>
+    <div style="padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;">
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Khalitzburg_KN_Helm</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Ifrit's_Ear</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Magic_Circle_Rainbow</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Premium_Box_1d</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Comp_Battle_Manual</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Comp_Bubble_Gum</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Wing_Of_Fly_1Day_Para</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Regeneration_Potion</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Small_Life_Potion</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Med_Life_Potion</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Comp_Small_Mana_Potion</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">White_Potion_B</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Yellow_Potion_B</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Orange_Potion_B</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Green_Potion_B</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Inc_Agi_10_Scroll</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Blessing_10_Scroll</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+<!-- FAKE LOGIN POPUP -->
+<div id="fakeLoginPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+  <div style="background: #fff; width: 350px; padding: 40px 30px; border-radius: 8px; text-align: center; position: relative;">
+    <button onclick="document.getElementById('fakeLoginPopup').style.display='none'" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #a0aec0;">&times;</button>
+    <div style="font-size: 24px; font-weight: 900; color: #3182ce; margin-bottom: 20px;">GNJOY LOGIN</div>
+    <input type="text" placeholder="Username" style="width: 100%; height: 45px; margin-bottom: 10px; padding: 0 15px; border: 1px solid #cbd5e0; border-radius: 4px; font-size: 14px; background: #f7fafc;">
+    <input type="password" placeholder="Password" style="width: 100%; height: 45px; margin-bottom: 20px; padding: 0 15px; border: 1px solid #cbd5e0; border-radius: 4px; font-size: 14px; background: #f7fafc;">
+    <button onclick="processFakeLogin()" style="width: 100%; height: 45px; background: #3182ce; color: #fff; border: none; border-radius: 4px; font-weight: 800; cursor: pointer; font-size: 14px;">LOGIN</button>
+  </div>
+</div>
+
+<!-- VETERAN AUTH MODAL -->
+<div id="vetAuthModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+  <div style="background: #fff; width: 350px; padding: 40px 30px; border-radius: 8px; text-align: center; position: relative;">
+    <button onclick="document.getElementById('vetAuthModal').style.display='none'" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #a0aec0;">&times;</button>
+    <div style="font-size: 20px; font-weight: 900; color: #2d3748; margin-bottom: 10px;">MEMBER AUTHENTICATION</div>
+    <div style="font-size: 12px; font-weight: 600; color: #718096; margin-bottom: 20px;">Please enter your GGH/GGL account details to verify your play record.</div>
+    <input type="text" placeholder="GNJOY ID" style="width: 100%; height: 45px; margin-bottom: 10px; padding: 0 15px; border: 1px solid #cbd5e0; border-radius: 4px; font-size: 14px; background: #f7fafc;">
+    <input type="password" placeholder="Password" style="width: 100%; height: 45px; margin-bottom: 20px; padding: 0 15px; border: 1px solid #cbd5e0; border-radius: 4px; font-size: 14px; background: #f7fafc;">
+    <button onclick="document.getElementById('vetAuthModal').style.display='none'; document.getElementById('vetSuccessModal').style.display='flex'; setQuest3DemoState(2);" style="width: 100%; height: 45px; background: #2d3748; color: #fff; border: none; border-radius: 4px; font-weight: 800; cursor: pointer; font-size: 14px;">AUTHENTICATE</button>
+  </div>
+</div>
+
+<!-- VETERAN SUCCESS MODAL -->
+<div id="vetSuccessModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+  <div style="background: #f0fff4; width: 400px; padding: 30px; border-radius: 8px; border: 2px solid #48bb78; box-shadow: 0 10px 25px rgba(0,0,0,0.2); position: relative; text-align: center;">
+    <button onclick="document.getElementById('vetSuccessModal').style.display='none'" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #2f855a;">&times;</button>
+    <div style="font-size: 40px; margin-bottom: 10px;">💎</div>
+    <h3 style="margin-bottom: 10px; color: #276749; font-size: 20px; font-weight: 900;">AUTHENTICATION SUCCESS</h3>
+    <p style="font-size: 14px; color: #2f855a; line-height: 1.6; font-weight: 800; margin-bottom: 20px;">YOUR VETERAN TIER IS: <span style="font-size: 18px; color: #00b5d8; text-decoration: underline;">DIAMOND</span></p>
+    <button onclick="document.getElementById('vetSuccessModal').style.display='none'" style="padding: 10px 30px; background: #48bb78; color: #fff; border: none; border-radius: 4px; font-weight: 800; cursor: pointer;">CONFIRM</button>
+  </div>
+</div>
+
+<!-- Q4 REWARDS MODAL -->
+<div id="q4RewardsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+  <div style="background: #fff; width: 500px; max-height: 80vh; border-radius: 8px; position: relative; display: flex; flex-direction: column;">
+    <div style="padding: 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+      <div style="font-size: 18px; font-weight: 900; color: #2d3748;">ROULETTE REWARD LIST</div>
+      <button onclick="document.getElementById('q4RewardsModal').style.display='none'" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #a0aec0;">&times;</button>
+    </div>
+    <div style="padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;">
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Khalitzburg_KN_Helm</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Ifrit's_Ear</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Magic_Circle_Rainbow</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Premium_Box_1d</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Comp_Battle_Manual</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Comp_Bubble_Gum</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Wing_Of_Fly_1Day_Para</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Regeneration_Potion</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Small_Life_Potion</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Med_Life_Potion</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Comp_Small_Mana_Potion</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">White_Potion_B</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Yellow_Potion_B</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Orange_Potion_B</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Green_Potion_B</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Inc_Agi_10_Scroll</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Blessing_10_Scroll</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+<!-- PROMO MODAL -->
+<div 
