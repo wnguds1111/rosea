@@ -1,0 +1,95 @@
+window.scrollToPrd = function(prdNum) {
+    const targetSec = document.querySelector('.section[data-prd="' + prdNum + '"]');
+    if (targetSec) {
+        targetSec.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idxStr = entry.target.dataset.index;
+        window.currentPrdPageNum = parseInt(entry.target.dataset.prd);
+
+        if (idxStr !== "0") {
+            const i = parseInt(idxStr) - 1;
+            charLevel.innerText = data[i].level;
+            charSprite.innerText = data[i].sprite;
+            hpText.innerText = data[i].hp;
+            spText.innerText = data[i].sp;
+            hookText.innerHTML = data[i].chat;
+            
+            const playerUI = document.querySelector('.ro-player-ui');
+            if (playerUI) {
+                playerUI.style.transform = 'scale(1.03)';
+                setTimeout(() => playerUI.style.transform = 'scale(1)', 200);
+            }
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+
+  sections.forEach(sec => observer.observe(sec));
+
+  // Global Header Scroll Effect
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('globalHeader');
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
+  function togglePrdPanel() {
+      const panel = document.getElementById('pageDescPanel');
+      if (panel) {
+          panel.classList.toggle('active');
+          const btn = document.querySelector('.prd-toggle');
+          btn.innerText = panel.classList.contains('active') ? "PRD DESCRIPTION: ON" : "PRD DESCRIPTION: OFF";
+      } else {
+          // If the user's custom logic hasn't loaded yet
+          console.log("Description Module DB Not Connected yet.");
+      }
+  }
+
+  // Demo Toggle for Quest 1
+  window.setDemoState = function(state) {
+    const loginOverlay = document.getElementById('loginOverlay');
+    const completeOverlay = document.getElementById('completeOverlay');
+    const refInput = document.getElementById('refInput');
+    const agreeCheck = document.getElementById('agreeCheck');
+    const preRegBtn = document.getElementById('preRegBtn');
+    
+    if (state === 0) {
+      loginOverlay.style.display = "flex";
+      completeOverlay.style.display = "none";
+      refInput.disabled = true;
+      agreeCheck.disabled = true;
+      preRegBtn.disabled = true;
+      preRegBtn.style.opacity = "0.5";
+    } else if (state === 1) {
+      loginOverlay.style.display = "none";
+      completeOverlay.style.display = "none";
+      refInput.disabled = false;
+      agreeCheck.disabled = false;
+      preRegBtn.disabled = false;
+      preRegBtn.style.opacity = "1";
+    } else {
+      loginOverlay.style.display = "none";
+      completeOverlay.style.display = "flex";
+      refInput.disabled = true;
+      agreeCheck.disabled = true;
+      preRegBtn.disabled = true;
+      preRegBtn.style.opacity = "0.5";
+    }
+  };
+</script>
+
+<!-- Description Module Container -->
+<div class="page-desc-panel" id="pageDescPanel">
+    <div class="pdp-header">
+        <h2 style="font-size:16px; font-weight:900; color:#0f172a;">ROSEA 상세 기획서</h2>
+        <button id="lockToggleBtn" onclick="toggleLock()" style="background:#0f172a; color:#fff; border:none; padding:6px 12px; border-radius:8px; font-size:12px; font-weight:800; cursor:pointer;">🔒 편집 자물쇠 풀기</button>
+    </div>
+    <div clas

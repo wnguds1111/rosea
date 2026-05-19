@@ -1,0 +1,22 @@
+window.scrollToPrd = function(prdNum) {
+    const targetSec = document.querySelector('.section[data-prd="' + prdNum + '"]');
+    if (targetSec) {
+        targetSec.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idxStr = entry.target.dataset.index;
+        window.currentPrdPageNum = parseInt(entry.target.dataset.prd);
+
+        if (idxStr !== "0") {
+            const i = parseInt(idxStr) - 1;
+            charLevel.innerText = data[i].level;
+            charSprite.innerText = data[i].sprite;
+            hpText.innerText = data[i].hp;
+            spText.innerText = data[i].sp;
+            hookText.innerHTML = data[i].chat;
+            
+            const

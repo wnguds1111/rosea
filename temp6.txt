@@ -1,0 +1,200 @@
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #3182ce; margin-bottom: 4px;">[Costume] Poring Hat</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">A cute in-game headgear.</div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #38a169; margin-bottom: 4px;">[Event] Novice Potion Box</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">Contains essential potions for early levels.</div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #4a5568; margin-bottom: 4px;">500 ROSEA Cash</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">In-game premium currency.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+
+function openPrecautions(title) {
+  document.getElementById('precautionsModalTitle').innerText = title;
+  document.getElementById('precautionsModal').style.display = 'flex';
+}
+</script>
+
+<!-- FAKE LOGIN POPUP -->
+<div id="fakeLoginPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+  <div style="background: #fff; width: 350px; padding: 40px 30px; border-radius: 8px; text-align: center; position: relative;">
+    <button onclick="document.getElementById('fakeLoginPopup').style.display='none'" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #a0aec0;">&times;</button>
+    <div style="font-size: 24px; font-weight: 900; color: #3182ce; margin-bottom: 20px;">GNJOY LOGIN</div>
+    <input type="text" placeholder="Username" style="width: 100%; height: 45px; margin-bottom: 10px; padding: 0 15px; border: 1px solid #cbd5e0; border-radius: 4px; font-size: 14px; background: #f7fafc;">
+    <input type="password" placeholder="Password" style="width: 100%; height: 45px; margin-bottom: 20px; padding: 0 15px; border: 1px solid #cbd5e0; border-radius: 4px; font-size: 14px; background: #f7fafc;">
+    <button onclick="processFakeLogin()" style="width: 100%; height: 45px; background: #3182ce; color: #fff; border: none; border-radius: 4px; font-weight: 800; cursor: pointer; font-size: 14px;">LOGIN</button>
+  </div>
+</div>
+
+<!-- VETERAN AUTH MODAL -->
+<div id="vetAuthModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+  <div style="background: #fff; width: 350px; padding: 40px 30px; border-radius: 8px; text-align: center; position: relative;">
+    <button onclick="document.getElementById('vetAuthModal').style.display='none'" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #a0aec0;">&times;</button>
+    <div style="font-size: 20px; font-weight: 900; color: #2d3748; margin-bottom: 10px;">MEMBER AUTHENTICATION</div>
+    <div style="font-size: 12px; font-weight: 600; color: #718096; margin-bottom: 20px;">Please enter your GGH/GGL account details to verify your play record.</div>
+    <input type="text" placeholder="GNJOY ID" style="width: 100%; height: 45px; margin-bottom: 10px; padding: 0 15px; border: 1px solid #cbd5e0; border-radius: 4px; font-size: 14px; background: #f7fafc;">
+    <input type="password" placeholder="Password" style="width: 100%; height: 45px; margin-bottom: 20px; padding: 0 15px; border: 1px solid #cbd5e0; border-radius: 4px; font-size: 14px; background: #f7fafc;">
+    <button onclick="document.getElementById('vetAuthModal').style.display='none'; document.getElementById('vetSuccessModal').style.display='flex'; setQuest3DemoState(2);" style="width: 100%; height: 45px; background: #2d3748; color: #fff; border: none; border-radius: 4px; font-weight: 800; cursor: pointer; font-size: 14px;">AUTHENTICATE</button>
+  </div>
+</div>
+
+<!-- VETERAN SUCCESS MODAL -->
+<div id="vetSuccessModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+  <div style="background: #f0fff4; width: 400px; padding: 30px; border-radius: 8px; border: 2px solid #48bb78; box-shadow: 0 10px 25px rgba(0,0,0,0.2); position: relative; text-align: center;">
+    <button onclick="document.getElementById('vetSuccessModal').style.display='none'" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #2f855a;">&times;</button>
+    <div style="font-size: 40px; margin-bottom: 10px;">💎</div>
+    <h3 style="margin-bottom: 10px; color: #276749; font-size: 20px; font-weight: 900;">AUTHENTICATION SUCCESS</h3>
+    <p style="font-size: 14px; color: #2f855a; line-height: 1.6; font-weight: 800; margin-bottom: 20px;">YOUR VETERAN TIER IS: <span style="font-size: 18px; color: #00b5d8; text-decoration: underline;">DIAMOND</span></p>
+    <button onclick="document.getElementById('vetSuccessModal').style.display='none'" style="padding: 10px 30px; background: #48bb78; color: #fff; border: none; border-radius: 4px; font-weight: 800; cursor: pointer;">CONFIRM</button>
+  </div>
+</div>
+
+<!-- Q4 REWARDS MODAL -->
+<div id="q4RewardsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+  <div style="background: #fff; width: 500px; max-height: 80vh; border-radius: 8px; position: relative; display: flex; flex-direction: column;">
+    <div style="padding: 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+      <div style="font-size: 18px; font-weight: 900; color: #2d3748;">ROULETTE REWARD LIST</div>
+      <button onclick="document.getElementById('q4RewardsModal').style.display='none'" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #a0aec0;">&times;</button>
+    </div>
+    <div style="padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;">
+      
+      <!-- Reward Item Template -->
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 900; font-size: 15px; color: #e53e3e; margin-bottom: 4px;">Grand Prize: iPhone 15 Pro Max</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">The ultimate physical reward shipped directly to you!</div>
+        </div>
+      </div>
+      
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 900; font-size: 15px; color: #d69e2e; margin-bottom: 4px;">Special Prize: Razer Gaming Headset</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">Premium gaming gear for your adventures.</div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #3182ce; margin-bottom: 4px;">[Costume] Poring Hat</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">A cute in-game headgear.</div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #38a169; margin-bottom: 4px;">[Event] Novice Potion Box</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">Contains essential potions for early levels.</div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #4a5568; margin-bottom: 4px;">500 ROSEA Cash</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">In-game premium currency.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+
+  window.currentQuest3State = 0; // 0: not logged, 1: logged, 2: auth completed
+
+  window.processFakeLogin = function() {
+    document.getElementById('fakeLoginPopup').style.display = 'none';
+    if(window.setDemoState) setDemoState(1);
+    if(window.setQuest3DemoState) setQuest3DemoState(1);
+    if(window.setQuest4DemoState) setQuest4DemoState(1);
+  };
+
+  window.setQuest3DemoState = function(state) {
+    window.currentQuest3State = state;
+    const loginOverlay = document.getElementById('q3LoginOverlay');
+    const completeArea = document.getElementById('q3CompleteArea');
+    const wrapper = document.getElementById('q3ActionWrapper');
+    const btn = document.getElementById('vetAuthBtn');
+    
+    if (state === 0) {
+      if(loginOverlay) loginOverlay.style.display = "flex";
+      if(completeArea) completeArea.style.display = "none";
+      if(wrapper) {
+        wrapper.style.border = "1px solid #cbd5e0";
+        wrapper.style.background = "#fff";
+        wrapper.style.padding = "30px";
+      }
+      if(btn) btn.style.display = "block";
+    } else if (state === 1) {
+      if(loginOverlay) loginOverlay.style.display = "none";
+      if(completeArea) completeArea.style.display = "none";
+      if(wrapper) {
+        wrapper.style.border = "none";
+        wrapper.style.background = "transparent";
+        wrapper.style.padding = "10px 0";
+      }
+      if(btn) btn.style.display = "block";
+    } else if (state === 2) {
+      if(loginOverlay) loginOverlay.style.display = "none";
+      if(completeArea) completeArea.style.display = "flex";
+      if(wrapper) {
+        wrapper.style.border = "none";
+        wrapper.style.background = "transparent";
+        wrapper.style.padding = "0";
+      }
+      if(btn) btn.style.display = "none";
+    }
+  };
+
+  function openVetAuthModal() {
+    if (window.currentQuest3State === 1) {
+      document.getElementById('vetAuthModal').style.display = 'flex';
+    }
+  }
+  
+  // Initialize states
+  setTimeout(() => {
+    if(window.setQuest3DemoState) setQuest3DemoState(0);
+  }, 100);
+</script>
+
+<!-- PROMO MODAL -->
+<div id="promoModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+  <div style="background: #fff; width: 400px; padding: 30px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); position: relative;">
+    <button onclick="document.getElementById('promoModal').style.display='none'" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #a0aec0;">&times;</button>
+    <h3 style="margin-bottom: 15px; color: #2d3748; font-size: 18px; font-weight: 800;">Promotional Messages</h3>
+    <p style="font-size: 14px; color: #4a5568; line-height: 1.6; font-weight: 500;">By agreeing to receive promotional messages, you will be notified of the latest updates, special events, and exclusive rewards for ROSEA.<br><br>You can opt out at any time through your account settings.</p>
+    <!-- CLOSE button removed as requested -->
+  </div>
+</div>
+
+<script src="./description_module/desc-script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+<script>
+
+  window.currentPrdPageNum = 1;
+
+  const sections = document.querySelectorAll('.section');
+  const charLevel = document.getElementById('charLevel');
+  const charSprite = document.getElementById('charSprite');
+  const hookText = document.getElementById('hookText');
+  const hpText = document.getElementById('hpText');
+  const spText = document.getElementById('spText');
+
+  // data index 0 is Section 2 (Participation)
+  const data = [
+    { level: 'Lv. 10', sprite: 'SWORDSMAN', hp: '120 / 120', sp: '30 / 30', chat: '<div class="chat-sys">[System] QUEST FOUND: PARTICIPATION EVENT</div><div class="chat-normal">PRE-REGISTER NOW TO RECEIVE MASSIVE SETTLEMENT FUNDS!</div>' },
+    { level: 'Lv. 40', sprite: 'KNIGHT', hp: '2500 / 2500', sp: '150 / 150', chat: '<div class="chat-sys">[System] QUEST FOUND: MILESTONE EVENT</div><div class="chat-normal">GATHER ADVENTURERS GLOBALLY TO UNLOCK SERVER-WIDE REWARDS!</div>' },
+    { level: 'Lv. 70', sprite: 'LORD KNIGHT', hp: '9800 / 9800', sp: '450 / 450', chat: '<div class="chat-sys">[System] QUEST FOUND: VETERAN REWARDS EVENT</div><div class="chat-normal">APPRAISE YOUR PAST ADVENTURE RECORDS IN MIDGARD.</div>' },
+    { level: 'Lv. 99', sprite: 'RUNE KNIGHT', hp: '24000 / 24000', sp: '1200 / 1200', chat: '<div class="chat-sys">[System] QUEST FOUND: DAILY ROULETTE EVENT</div><div class="chat-normal">COLLECT TICKETS DAILY TO PLAY THE GACHA MACHINE!</div>' }
+  ];
+
+  
+  // QUEST 4 LOGIC
+  window.switchQ4Tab = function(tab) {
+    const tabHowTo = document.getElementById('tabHowTo');
+    const tabHistory = document.getElementById('tabHistory');
+    const contentHowTo = document.getElementById('contentHowTo');
+    const contentHistory = document.getElementById('contentHistory');
+
+    if (tab === 'howto') {
+      tabHowTo.style.background = '#3182ce';
+      tabHowTo.style.color = '#fff';
+      tabHistory.style.background = '#edf2f7';
+      tabHistory.style.color = '#4a5568';
+      contentHowTo.style.display = 'block';
+      contentHistory.style.display = 'none';
+    } else {
+      tabHistory.style.background = '#3182ce';
+      tabHistory.style.color = '#fff';
+      tabHowTo.style.background = '#edf2f7';
+      tabHowTo.style.color = '#4a5568';
+      contentHistory.style.display = 'block';
+      contentHowTo.style.display = 'none';
+    }
+  };
+
+  window.setQuest4DemoState = function(state) {
+    const loginOverlay = document.getElementById('q4LoginOverlay');
+    const startBtn = document.getElementById('q4StartBtn');
+    const ticketCount = document.getElementById('q4TicketCount');
+
+    if (state === 0) {
+      if(loginOverlay) loginOverlay.style.display = 'flex';
+      if(startBtn) {
+        startBtn.disabled = true;
+        startBtn.style.opacity = '0.5';
+        startBtn.style.cursor = 'not-allowed';
+        startBtn.style.background = '#e2e8f0';
+        startBtn.style.color = '#4a5568';
+        startBtn.innerText = 'START';
+      }
+      if(ticketCount) ticketCount.innerText = '0 / 15';
+    } else if (state === 1) {
+      if(loginOverlay) loginOverlay.style.display = 'none';
+      if(startBtn) {
+        startBtn.disabled = false;
+        startBtn.style.opacity = '1';
+        startBtn.style.cursor = 'pointer';
+        startBtn.style.background = '#e2e8f0';
+        startBtn.style.color = '#4a5568';
+        startBtn.innerText = 'START';
+      }
+      if(ticketCount) ticketCount.innerText = '3 / 15';
+    } else if (state === 2) {
+      if(loginOverlay) loginOverlay.style.display = 'none';
+      if(startBtn) {
+        startBtn.disabled = true;
+        startBtn.style.opacity = '0.7';
+        startBtn.style.cursor = 'wait';
+        startBtn.style.background = '#cbd5e0';
+        startBtn.style.color = '#2d3748';
+        startBtn.innerText = 'SPINNING...';
+        
+        setTimeout(() => {
+          startBtn.disabled = false;
+          startBtn.style.opacity = '1';
+          startBtn.style.cursor = 'pointer';
+          startBtn.style.background = '#e2e8f0';
+          startBtn.style.color = '#4a5568';
+          startBtn.innerText = 'START';
+          if(ticketCount) ticketCount.innerText = '2 / 15';
+          alert('You obtained: [Costume] Poring Hat!');
+        }, 1500);
+      }
+    }
+  };
+
+  window.scrollToPrd = function(prdNum) {
+    const targetSec = document.querySelector('.section[data-prd="' + prdNum + '"]');
+    if (targetSec) {
+        targetSec.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idxStr = entry.target.dataset.index;
+        window.currentPrdPageNum = parseInt(entry.target.dataset.prd);
+
+        if (idxStr !== "0") {
+            const i = parseInt(idxStr) - 1;
+            charLevel.innerText = data[i].level;
+            charSprite.innerText = data[i].sprite;
+            hpText.innerText = data[i].hp;
+            spText.innerText = data[i].sp;
+            hookText.innerHTML = data[i].chat;
+            
+            const playerUI = document.querySelector('.ro-player-ui');
+            if (playerUI) {
+                playerUI.style.transform = 'scale(1.03)';
+                setTimeout(() => playerUI.style.transform = 'scale(1)', 200);
+            }
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+
+  sections.forEach(sec => observer.observe(sec));
+
+  // Global Header Scroll Effect
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('globalHeader');
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
+  function togglePrdPanel() {
+      const panel = document.getElementById('pageDescPanel');
+      if (panel) {
+          panel.classList.toggle('active');
+          const btn = document.querySelector('.prd-toggle');
+          btn.innerText = panel.classList.contains('active') ? "PRD DESCRIPTION: ON" : "PRD DESCRIPTION: OFF";
+      } else {
+          // If the user's custom logic hasn't loaded yet
+          console.log("Description Module DB Not Connected yet.");
+      }
+  }
+
+  // Demo Toggle for Quest 1
+  window.setDemoState = function(state) {
+    const loginOverlay = document.getElementById('loginOverlay');
+    const completeOverlay = document.getElementById('completeOverlay');
+    const refInput = document.getElementById('refInput');
+    const agreeCheck = document.getElementById('agreeCheck');
+    const preRegBtn = document.getElementById('preRegBtn');
+    
+    if (state === 0) {
+      loginOverlay.style.display = "flex";
+      completeOverlay.style.display = "none";
+      refInput.disabled = true;
+      agreeCheck.disabled = true;
+      preRegBtn.disabled = true;
+      preRegBtn.style.opacity = "0.5";
+    } else if (state === 1) {
+      loginOverlay.style.display = "none";
+      completeOverlay.style.display = "none";
+      refInput.disabled = false;
+      agreeCheck.disabled = false;
+      preRegBtn.disabled = false;
+      preRegBtn.style.opacity = "1";
+    } else {
+      loginOverlay.style.display = "none";
+      completeOverlay.style.display = "flex";
+      refInput.disabled = true;
+      agreeCheck.disabled = true;
+      preRegBtn.disabled = true;
+      preRegBtn.style.opacity = "0.5";
+    }
+  };
+</script>
