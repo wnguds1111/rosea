@@ -614,7 +614,7 @@
       </div>
     </div>
 
-    <!-- SECTION 5: Daily Spin Event -->
+    <!-- SECTION 5: Daily Roulette Event -->
     <div class="section" data-index="4" data-prd="5">
       <div class="wire-window">
         <div class="wire-header">
@@ -631,15 +631,106 @@
             <div class="wire-tab" onclick="scrollToPrd(4)">Q3</div>
             <div class="wire-tab active" onclick="scrollToPrd(5)">Q4</div>
           </div>
-          <div class="wire-body">
-            <div class="wire-title">DAILY SPIN EVENT</div>
-            <div class="wire-sub">COLLECT TICKETS DAILY TO SPIN THE NIGHT MARKET ROULETTE!<br><span style="font-size: 14px; color: #a0aec0; margin-top: 10px; display: block;">1/9/2026 ~ 1/12/2026 (UTC+8)</span></div>
-            <div class="wire-content-box">
-              <div class="roulette-circle">ROULETTE</div>
-              <div style="font-size:18px; font-weight:800; margin-bottom:10px; color:#2d3748;">TICKETS OWNED: <span style="color:#e53e3e;">3</span></div>
-              <div style="font-size:13px; font-weight:500; color:#718096;">* EARN EXTRA TICKETS THROUGH DAILY ATTENDANCE & INVITES.</div>
+          <div class="wire-body" style="padding-bottom: 20px;">
+            <div class="wire-title">DAILY ROULETTE EVENT</div>
+            <div class="wire-sub">COLLECT TICKETS DAILY TO PLAY THE GACHA MACHINE!<br><span style="font-size: 14px; color: #a0aec0; margin-top: 10px; display: block;">1/9/2026 ~ 1/12/2026 (UTC+8)</span></div>
+            
+            <!-- Left/Right Layout Container -->
+            <div style="display: flex; gap: 25px; margin-top: 20px;">
+              
+              <!-- LEFT: Gacha Machine -->
+              <div style="flex: 1; max-width: 380px; background: linear-gradient(180deg, #2b6cb0 0%, #2c5282 100%); border-radius: 16px; border: 6px solid #1a365d; padding: 20px; display: flex; flex-direction: column; position: relative; box-shadow: inset 0 0 20px rgba(0,0,0,0.3);">
+                
+                <!-- Machine Header -->
+                <div style="background: #1a365d; border-radius: 8px; padding: 12px; text-align: center; border: 2px solid #2a4365;">
+                  <div style="color: #ecc94b; font-weight: 900; font-size: 15px; letter-spacing: 1px;">PONPON MACHINE</div>
+                  <div style="color: #a0aec0; font-size: 10px; margin-top: 4px;">AVAILABILITY PERIOD: 1/9/2026 ~ 1/12/2026</div>
+                </div>
+
+                <!-- Capsule Window -->
+                <div style="flex: 1; min-height: 220px; background: #ebf8ff; border-radius: 50%; border: 12px solid #e2e8f0; margin: 25px 0; display: flex; align-items: center; justify-content: center; position: relative; box-shadow: inset 0 10px 20px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.3);">
+                   <div style="font-size: 50px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));">🔴 🔵 🟡</div>
+                   <!-- Decorative lights -->
+                   <div style="position: absolute; top: -5px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; background: #ecc94b; border-radius: 50%;"></div>
+                   <div style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; background: #ecc94b; border-radius: 50%;"></div>
+                   <div style="position: absolute; left: -5px; top: 50%; transform: translateY(-50%); width: 10px; height: 10px; background: #ecc94b; border-radius: 50%;"></div>
+                   <div style="position: absolute; right: -5px; top: 50%; transform: translateY(-50%); width: 10px; height: 10px; background: #ecc94b; border-radius: 50%;"></div>
+                </div>
+
+                <!-- Control Panel -->
+                <div style="background: #1a365d; border-radius: 8px; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border: 2px solid #2a4365;">
+                  <div>
+                    <div style="color: #a0aec0; font-size: 12px; font-weight: 800;">AVAILABLE ATTEMPTS</div>
+                    <div style="color: #ecc94b; font-size: 24px; font-weight: 900;" id="q4TicketCount">0 / 15</div>
+                  </div>
+                  <button id="q4StartBtn" style="background: #ecc94b; color: #744210; border: none; border-radius: 50px; padding: 12px 30px; font-weight: 900; font-size: 20px; cursor: pointer; box-shadow: 0 6px 0 #b7791f, 0 10px 10px rgba(0,0,0,0.2); transition: 0.1s;" disabled>START</button>
+                </div>
+              </div>
+
+              <!-- RIGHT: Content Area -->
+              <div style="flex: 1; display: flex; flex-direction: column; gap: 15px;">
+                
+                <!-- Info Panel -->
+                <div style="flex: 1; background: #fff; border: 1px solid #cbd5e0; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; position: relative;">
+                  
+                  <!-- Tabs -->
+                  <div style="display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">
+                    <button id="tabHowTo" onclick="switchQ4Tab('howto')" style="flex: 1; padding: 10px; font-weight: 800; border: none; background: #3182ce; color: #fff; border-radius: 4px; cursor: pointer;">HOW TO OBTAIN</button>
+                    <button id="tabHistory" onclick="switchQ4Tab('history')" style="flex: 1; padding: 10px; font-weight: 800; border: none; background: #edf2f7; color: #4a5568; border-radius: 4px; cursor: pointer;">OBTAINED HISTORY</button>
+                  </div>
+
+                  <!-- How To Obtain Content -->
+                  <div id="contentHowTo" style="display: block;">
+                    <h4 style="margin: 0 0 15px 0; color: #2d3748; font-size: 15px;">TICKET ACQUISITION RULES</h4>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                      <div style="display: flex; justify-content: space-between; padding: 10px; background: #f7fafc; border-radius: 4px; border: 1px solid #e2e8f0;">
+                        <span style="font-size: 13px; font-weight: 700; color: #4a5568;">Daily Attendance</span>
+                        <span style="font-size: 13px; font-weight: 800; color: #3182ce;">+1 Ticket</span>
+                      </div>
+                      <div style="display: flex; justify-content: space-between; padding: 10px; background: #f7fafc; border-radius: 4px; border: 1px solid #e2e8f0;">
+                        <span style="font-size: 13px; font-weight: 700; color: #4a5568;">Invite a Friend (Max 5/day)</span>
+                        <span style="font-size: 13px; font-weight: 800; color: #3182ce;">+2 Tickets</span>
+                      </div>
+                      <div style="display: flex; justify-content: space-between; padding: 10px; background: #f7fafc; border-radius: 4px; border: 1px solid #e2e8f0;">
+                        <span style="font-size: 13px; font-weight: 700; color: #4a5568;">Share on Facebook/X</span>
+                        <span style="font-size: 13px; font-weight: 800; color: #3182ce;">+1 Ticket</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Obtained History Content -->
+                  <div id="contentHistory" style="display: none;">
+                    <h4 style="margin: 0 0 15px 0; color: #2d3748; font-size: 15px;">MY REWARD HISTORY</h4>
+                    <div style="height: 150px; display: flex; align-items: center; justify-content: center; background: #f7fafc; border: 1px dashed #cbd5e0; border-radius: 4px;">
+                      <span style="font-size: 13px; color: #a0aec0; font-weight: 600;">No rewards obtained yet.</span>
+                    </div>
+                  </div>
+
+                  <!-- Login Overlay -->
+                  <div id="q4LoginOverlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 8px; backdrop-filter: blur(2px);">
+                    <div style="font-weight: 800; font-size: 16px; margin-bottom: 15px; color: #2d3748;">LOGIN REQUIRED TO VIEW DATA</div>
+                    <button onclick="document.getElementById('fakeLoginPopup').style.display='flex'" style="padding: 12px 24px; background: #e53e3e; color: #fff; border: none; border-radius: 4px; font-weight: 800; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#c53030'" onmouseout="this.style.background='#e53e3e'">GNJOY LOGIN</button>
+                  </div>
+
+                </div>
+
+                <!-- Reward List Button -->
+                <button onclick="document.getElementById('q4RewardsModal').style.display='flex'" style="width: 100%; padding: 15px; background: #4a5568; color: #fff; border: none; border-radius: 8px; font-weight: 900; font-size: 15px; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#2d3748'" onmouseout="this.style.background='#4a5568'">VIEW REWARD LIST</button>
+                
+              </div>
             </div>
-            <button class="wire-btn">SPIN ROULETTE (COST: 1 TICKET)</button>
+            
+            <div style="text-align: center; margin-top: 15px;">
+              <span style="font-size: 12px; font-weight: 700; color: #a0aec0; text-decoration: underline; cursor: pointer;" onclick="openPrecautions('Daily Roulette Precautions')">Daily Roulette Event precautions</span>
+            </div>
+            
+            <!-- QUEST 4 DEMO CONTROLS -->
+            <div style="width: 100%; display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 10px;">
+              <span style="font-size: 11px; font-weight: 800; color: #a0aec0; margin-right: 5px;">QUEST 4 DEMO</span>
+              <button onclick="setQuest4DemoState(0)" style="padding: 4px 8px; background: rgba(255,255,255,0.7); border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[1] Not Logged In</button>
+              <button onclick="setQuest4DemoState(1)" style="padding: 4px 8px; background: rgba(255,255,255,0.7); border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[2] Logged In</button>
+            </div>
+
           </div>
         </div>
       </div>
@@ -648,7 +739,62 @@
   </div> <!-- End Right Panel -->
 </div> <!-- End Main Content -->
 
+<!-- Q4 REWARDS MODAL -->
+<div id="q4RewardsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+  <div style="background: #fff; width: 500px; max-height: 80vh; border-radius: 8px; position: relative; display: flex; flex-direction: column;">
+    <div style="padding: 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+      <div style="font-size: 18px; font-weight: 900; color: #2d3748;">ROULETTE REWARD LIST</div>
+      <button onclick="document.getElementById('q4RewardsModal').style.display='none'" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #a0aec0;">&times;</button>
+    </div>
+    <div style="padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;">
+      
+      <!-- Reward Item Template -->
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 900; font-size: 15px; color: #e53e3e; margin-bottom: 4px;">Grand Prize: iPhone 15 Pro Max</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">The ultimate physical reward shipped directly to you!</div>
+        </div>
+      </div>
+      
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 900; font-size: 15px; color: #d69e2e; margin-bottom: 4px;">Special Prize: Razer Gaming Headset</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">Premium gaming gear for your adventures.</div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #3182ce; margin-bottom: 4px;">[Costume] Poring Hat</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">A cute in-game headgear.</div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #38a169; margin-bottom: 4px;">[Event] Novice Potion Box</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">Contains essential potions for early levels.</div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #4a5568; margin-bottom: 4px;">500 ROSEA Cash</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">In-game premium currency.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <script>
+
   window.currentPrdPageNum = 1;
 
   const sections = document.querySelectorAll('.section');
@@ -663,8 +809,57 @@
     { level: 'Lv. 10', sprite: 'SWORDSMAN', hp: '120 / 120', sp: '30 / 30', chat: '<div class="chat-sys">[System] QUEST FOUND: PARTICIPATION EVENT</div><div class="chat-normal">PRE-REGISTER NOW TO RECEIVE MASSIVE SETTLEMENT FUNDS!</div>' },
     { level: 'Lv. 40', sprite: 'KNIGHT', hp: '2500 / 2500', sp: '150 / 150', chat: '<div class="chat-sys">[System] QUEST FOUND: MILESTONE EVENT</div><div class="chat-normal">GATHER ADVENTURERS GLOBALLY TO UNLOCK SERVER-WIDE REWARDS!</div>' },
     { level: 'Lv. 70', sprite: 'LORD KNIGHT', hp: '9800 / 9800', sp: '450 / 450', chat: '<div class="chat-sys">[System] QUEST FOUND: VETERAN REWARDS EVENT</div><div class="chat-normal">APPRAISE YOUR PAST ADVENTURE RECORDS IN MIDGARD.</div>' },
-    { level: 'Lv. 99', sprite: 'RUNE KNIGHT', hp: '24000 / 24000', sp: '1200 / 1200', chat: '<div class="chat-sys">[System] QUEST FOUND: DAILY SPIN EVENT</div><div class="chat-normal">COLLECT TICKETS DAILY TO SPIN THE NIGHT MARKET ROULETTE!</div>' }
+    { level: 'Lv. 99', sprite: 'RUNE KNIGHT', hp: '24000 / 24000', sp: '1200 / 1200', chat: '<div class="chat-sys">[System] QUEST FOUND: DAILY ROULETTE EVENT</div><div class="chat-normal">COLLECT TICKETS DAILY TO PLAY THE GACHA MACHINE!</div>' }
   ];
+
+  
+  // QUEST 4 LOGIC
+  window.switchQ4Tab = function(tab) {
+    const tabHowTo = document.getElementById('tabHowTo');
+    const tabHistory = document.getElementById('tabHistory');
+    const contentHowTo = document.getElementById('contentHowTo');
+    const contentHistory = document.getElementById('contentHistory');
+
+    if (tab === 'howto') {
+      tabHowTo.style.background = '#3182ce';
+      tabHowTo.style.color = '#fff';
+      tabHistory.style.background = '#edf2f7';
+      tabHistory.style.color = '#4a5568';
+      contentHowTo.style.display = 'block';
+      contentHistory.style.display = 'none';
+    } else {
+      tabHistory.style.background = '#3182ce';
+      tabHistory.style.color = '#fff';
+      tabHowTo.style.background = '#edf2f7';
+      tabHowTo.style.color = '#4a5568';
+      contentHistory.style.display = 'block';
+      contentHowTo.style.display = 'none';
+    }
+  };
+
+  window.setQuest4DemoState = function(state) {
+    const loginOverlay = document.getElementById('q4LoginOverlay');
+    const startBtn = document.getElementById('q4StartBtn');
+    const ticketCount = document.getElementById('q4TicketCount');
+
+    if (state === 0) {
+      if(loginOverlay) loginOverlay.style.display = 'flex';
+      if(startBtn) {
+        startBtn.disabled = true;
+        startBtn.style.opacity = '0.5';
+        startBtn.style.cursor = 'not-allowed';
+      }
+      if(ticketCount) ticketCount.innerText = '0 / 15';
+    } else if (state === 1) {
+      if(loginOverlay) loginOverlay.style.display = 'none';
+      if(startBtn) {
+        startBtn.disabled = false;
+        startBtn.style.opacity = '1';
+        startBtn.style.cursor = 'pointer';
+      }
+      if(ticketCount) ticketCount.innerText = '3 / 15';
+    }
+  };
 
   window.scrollToPrd = function(prdNum) {
     const targetSec = document.querySelector('.section[data-prd="' + prdNum + '"]');
@@ -778,7 +973,62 @@
   </div>
 </div>
 
+<!-- Q4 REWARDS MODAL -->
+<div id="q4RewardsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+  <div style="background: #fff; width: 500px; max-height: 80vh; border-radius: 8px; position: relative; display: flex; flex-direction: column;">
+    <div style="padding: 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+      <div style="font-size: 18px; font-weight: 900; color: #2d3748;">ROULETTE REWARD LIST</div>
+      <button onclick="document.getElementById('q4RewardsModal').style.display='none'" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #a0aec0;">&times;</button>
+    </div>
+    <div style="padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;">
+      
+      <!-- Reward Item Template -->
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 900; font-size: 15px; color: #e53e3e; margin-bottom: 4px;">Grand Prize: iPhone 15 Pro Max</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">The ultimate physical reward shipped directly to you!</div>
+        </div>
+      </div>
+      
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 900; font-size: 15px; color: #d69e2e; margin-bottom: 4px;">Special Prize: Razer Gaming Headset</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">Premium gaming gear for your adventures.</div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #3182ce; margin-bottom: 4px;">[Costume] Poring Hat</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">A cute in-game headgear.</div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #38a169; margin-bottom: 4px;">[Event] Novice Potion Box</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">Contains essential potions for early levels.</div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #4a5568; margin-bottom: 4px;">500 ROSEA Cash</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">In-game premium currency.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <script>
+
 function openPrecautions(title) {
   document.getElementById('precautionsModalTitle').innerText = title;
   document.getElementById('precautionsModal').style.display = 'flex';
@@ -819,13 +1069,69 @@ function openPrecautions(title) {
   </div>
 </div>
 
+<!-- Q4 REWARDS MODAL -->
+<div id="q4RewardsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+  <div style="background: #fff; width: 500px; max-height: 80vh; border-radius: 8px; position: relative; display: flex; flex-direction: column;">
+    <div style="padding: 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+      <div style="font-size: 18px; font-weight: 900; color: #2d3748;">ROULETTE REWARD LIST</div>
+      <button onclick="document.getElementById('q4RewardsModal').style.display='none'" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #a0aec0;">&times;</button>
+    </div>
+    <div style="padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;">
+      
+      <!-- Reward Item Template -->
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 900; font-size: 15px; color: #e53e3e; margin-bottom: 4px;">Grand Prize: iPhone 15 Pro Max</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">The ultimate physical reward shipped directly to you!</div>
+        </div>
+      </div>
+      
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 900; font-size: 15px; color: #d69e2e; margin-bottom: 4px;">Special Prize: Razer Gaming Headset</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">Premium gaming gear for your adventures.</div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #3182ce; margin-bottom: 4px;">[Costume] Poring Hat</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">A cute in-game headgear.</div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #38a169; margin-bottom: 4px;">[Event] Novice Potion Box</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">Contains essential potions for early levels.</div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
+        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #4a5568; margin-bottom: 4px;">500 ROSEA Cash</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">In-game premium currency.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <script>
+
   window.currentQuest3State = 0; // 0: not logged, 1: logged, 2: auth completed
 
   window.processFakeLogin = function() {
     document.getElementById('fakeLoginPopup').style.display = 'none';
     if(window.setDemoState) setDemoState(1);
     if(window.setQuest3DemoState) setQuest3DemoState(1);
+    if(window.setQuest4DemoState) setQuest4DemoState(1);
   };
 
   window.setQuest3DemoState = function(state) {
