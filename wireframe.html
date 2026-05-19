@@ -338,15 +338,59 @@
             <div class="wire-tab" onclick="scrollToPrd(5)">Q4</div>
           </div>
           <div class="wire-body">
+            <button id="demoStateBtn" onclick="toggleDemoState()" style="position:absolute; top:20px; right:20px; padding:6px 12px; background:#e2e8f0; border-radius:4px; font-size:11px; font-weight:800; cursor:pointer; color:#4a5568; border:1px solid #cbd5e0; z-index:20;">[DEMO] Not Logged In</button>
             <div class="wire-title">PRE-REGISTRATION PARTICIPATION EVENT</div>
             <div class="wire-sub">PRE-REGISTER NOW TO RECEIVE MASSIVE SETTLEMENT FUNDS!<br><span style="font-size: 14px; color: #a0aec0; margin-top: 10px; display: block;">1/9/2026 ~ 1/12/2026 (UTC+8)</span></div>
-            <div class="wire-content-box">
-              <div class="input-box">PHONE NUMBER / EMAIL ADDRESS</div>
-              <div style="display:flex; align-items:center; gap:10px; margin-bottom: 40px; font-weight:600; font-size:14px; color:#4a5568;">
-                 <div style="width:16px; height:16px; border:2px solid #a0aec0; border-radius:3px;"></div> I AGREE TO THE PRIVACY POLICY (REQUIRED)
+            <div class="wire-content-box" style="align-items: stretch; text-align: left; justify-content: flex-start; gap: 20px;">
+              
+              <!-- REWARD LIST AREA -->
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 20px;">
+                <div style="font-size: 16px; font-weight: 800; color: #2d3748; margin-bottom: 12px; border-left: 4px solid #3182ce; padding-left: 10px;">BASIC REWARDS (ON COMPLETION)</div>
+                <ul style="font-size: 14px; font-weight: 600; color: #4a5568; line-height: 1.8; margin-left: 25px;">
+                  <li>10Grade Balloon x1</li>
+                  <li>Field Manual x2</li>
+                  <li>Bubble Gum x2</li>
+                  <li>Yellow Potion Box x3</li>
+                  <li>Daily Spin Ticket x3</li>
+                </ul>
+              </div>
+
+              <!-- PRE-REGISTRATION FORM -->
+              <div style="position: relative; border: 1px solid #cbd5e0; border-radius: 6px; padding: 25px; background: #fff;">
+                
+                <!-- STATE 1: NOT LOGGED IN OVERLAY -->
+                <div id="loginOverlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 6px; backdrop-filter: blur(2px);">
+                  <div style="font-weight: 800; font-size: 16px; margin-bottom: 15px; color: #2d3748;">LOGIN REQUIRED FOR PRE-REGISTRATION</div>
+                  <div style="display: flex; gap: 10px;">
+                    <button style="padding: 12px 24px; background: #3182ce; color: #fff; border: none; border-radius: 4px; font-weight: 800; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#2b6cb0'" onmouseout="this.style.background='#3182ce'">GNJOY LOGIN</button>
+                    <button style="padding: 12px 24px; background: #fff; color: #3182ce; border: 1px solid #3182ce; border-radius: 4px; font-weight: 800; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#ebf8ff'" onmouseout="this.style.background='#fff'">SIGN UP</button>
+                  </div>
+                </div>
+
+                <!-- STATE 3: COMPLETED OVERLAY -->
+                <div id="completeOverlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #f0fff4; z-index: 10; display: none; flex-direction: column; align-items: center; justify-content: center; border-radius: 6px; border: 1px solid #9ae6b4;">
+                  <div style="font-weight: 800; font-size: 20px; margin-bottom: 10px; color: #276749;">PRE-REGISTRATION COMPLETED!</div>
+                  <div style="font-size: 14px; font-weight: 600; color: #2f855a; margin-bottom: 25px;">THANK YOU FOR JOINING US IN MIDGARD.</div>
+                  <div style="display: flex; align-items: center; gap: 15px; background: #fff; border: 2px dashed #48bb78; padding: 15px 25px; border-radius: 6px;">
+                    <span style="font-weight: 800; color: #2f855a; font-size: 14px;">MY REFERRAL CODE: <span style="color: #276749; text-decoration: underline; font-size: 18px; margin-left: 5px;">ROSEA2026</span></span>
+                    <button onclick="alert('Copied to clipboard!')" style="padding: 8px 16px; background: #48bb78; color: #fff; border: none; border-radius: 4px; font-size: 12px; font-weight: 800; cursor: pointer;">COPY</button>
+                  </div>
+                </div>
+
+                <!-- STATE 2: FORM CONTENT -->
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                  <div>
+                    <label style="font-size: 13px; font-weight: 800; color: #4a5568; display: block; margin-bottom: 8px;">REFERRAL CODE (OPTIONAL)</label>
+                    <input type="text" id="refInput" placeholder="ENTER REFERRAL CODE" disabled style="width: 100%; height: 45px; padding: 0 15px; border: 1px solid #cbd5e0; border-radius: 4px; font-size: 14px; font-weight: 600; color: #2d3748; background: #fdfbfb;">
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; color: #4a5568;">
+                    <input type="checkbox" id="agreeCheck" disabled style="width: 18px; height: 18px; cursor: pointer;">
+                    <label for="agreeCheck" style="cursor: pointer;">I AGREE TO THE PRIVACY POLICY (REQUIRED)</label>
+                  </div>
+                  <button id="preRegBtn" class="wire-btn" disabled style="width: 100%; margin-top: 10px; opacity: 0.5;">COMPLETE PRE-REGISTRATION</button>
+                </div>
               </div>
             </div>
-            <button class="wire-btn">COMPLETE PRE-REGISTRATION</button>
           </div>
         </div>
       </div>
@@ -511,6 +555,44 @@
           console.log("Description Module DB Not Connected yet.");
       }
   }
+
+  // Demo Toggle for Quest 1
+  let demoState = 0;
+  window.toggleDemoState = function() {
+    demoState = (demoState + 1) % 3;
+    const btn = document.getElementById('demoStateBtn');
+    const loginOverlay = document.getElementById('loginOverlay');
+    const completeOverlay = document.getElementById('completeOverlay');
+    const refInput = document.getElementById('refInput');
+    const agreeCheck = document.getElementById('agreeCheck');
+    const preRegBtn = document.getElementById('preRegBtn');
+    
+    if (demoState === 0) {
+      btn.innerText = "[DEMO] Not Logged In";
+      loginOverlay.style.display = "flex";
+      completeOverlay.style.display = "none";
+      refInput.disabled = true;
+      agreeCheck.disabled = true;
+      preRegBtn.disabled = true;
+      preRegBtn.style.opacity = "0.5";
+    } else if (demoState === 1) {
+      btn.innerText = "[DEMO] Logged In (Not Reg)";
+      loginOverlay.style.display = "none";
+      completeOverlay.style.display = "none";
+      refInput.disabled = false;
+      agreeCheck.disabled = false;
+      preRegBtn.disabled = false;
+      preRegBtn.style.opacity = "1";
+    } else {
+      btn.innerText = "[DEMO] Registered";
+      loginOverlay.style.display = "none";
+      completeOverlay.style.display = "flex";
+      refInput.disabled = true;
+      agreeCheck.disabled = true;
+      preRegBtn.disabled = true;
+      preRegBtn.style.opacity = "0.5";
+    }
+  };
 </script>
 
 <!-- Description Module Container -->
