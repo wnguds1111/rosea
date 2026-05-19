@@ -570,17 +570,30 @@
                  </div>
               </div>
 
-              <div id="q3ActionArea" style="width: 100%; max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
-                <!-- Default Auth Button -->
-                <button id="vetAuthBtn" class="wire-btn" style="width: 100%; background: #fff; color: var(--text-color); opacity: 0.5; border: 1px solid #cbd5e0; transition: 0.2s; box-shadow: 0 4px 6px rgba(49, 130, 206, 0.2);" onclick="openVetAuthModal()">VETERAN AUTHENTICATION</button>
-                
-                <!-- Completed State -->
-                <div id="q3CompleteArea" style="display: none; width: 100%; flex-direction: column; align-items: center; justify-content: center; background: #f0fff4; border: 1px solid #9ae6b4; border-radius: 6px; padding: 20px;">
-                  <div style="font-weight: 900; font-size: 18px; margin-bottom: 5px; color: #276749;">AUTHENTICATION COMPLETED!</div>
-                  <div style="font-size: 13px; font-weight: 600; color: #2f855a; margin-bottom: 15px;">YOUR VETERAN TIER HAS BEEN CONFIRMED.</div>
-                  <div style="display: flex; align-items: center; justify-content: center; background: #fff; border: 2px dashed #48bb78; padding: 10px 20px; border-radius: 6px; width: 100%;">
-                    <span style="font-weight: 800; color: #2f855a; font-size: 14px;">CONFIRMED TIER: <span style="color: #276749; text-decoration: underline; font-size: 18px; margin-left: 5px;">DIAMOND</span></span>
+              <div id="q3ActionArea" style="width: 100%; max-width: 650px; margin: 0 auto;">
+                <div style="position: relative; border: 1px solid #cbd5e0; border-radius: 6px; padding: 25px; background: #fff; display: flex; flex-direction: column; align-items: center; min-height: 120px; justify-content: center;">
+                  
+                  <!-- STATE 0: NOT LOGGED IN OVERLAY -->
+                  <div id="q3LoginOverlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 6px; backdrop-filter: blur(2px);">
+                    <div style="font-weight: 800; font-size: 16px; margin-bottom: 15px; color: #2d3748;">LOGIN REQUIRED FOR AUTHENTICATION</div>
+                    <div style="display: flex; gap: 10px;">
+                      <button onclick="document.getElementById('fakeLoginPopup').style.display='flex'" style="padding: 12px 24px; background: #e53e3e; color: #fff; border: none; border-radius: 4px; font-weight: 800; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#c53030'" onmouseout="this.style.background='#e53e3e'">GNJOY LOGIN</button>
+                      <button style="padding: 12px 24px; background: #fff; color: #000; border: 1px solid #000; border-radius: 4px; font-weight: 800; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#f7fafc'" onmouseout="this.style.background='#fff'">SIGN UP</button>
+                    </div>
                   </div>
+
+                  <!-- STATE 2: COMPLETED OVERLAY -->
+                  <div id="q3CompleteArea" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #f0fff4; z-index: 10; display: none; flex-direction: column; align-items: center; justify-content: center; border-radius: 6px; border: 1px solid #9ae6b4;">
+                    <div style="font-weight: 900; font-size: 18px; margin-bottom: 5px; color: #276749;">AUTHENTICATION COMPLETED!</div>
+                    <div style="font-size: 13px; font-weight: 600; color: #2f855a; margin-bottom: 15px;">YOUR VETERAN TIER HAS BEEN CONFIRMED.</div>
+                    <div style="display: flex; align-items: center; justify-content: center; background: #fff; border: 2px dashed #48bb78; padding: 10px 20px; border-radius: 6px;">
+                      <span style="font-weight: 800; color: #2f855a; font-size: 14px;">CONFIRMED TIER: <span style="color: #276749; text-decoration: underline; font-size: 18px; margin-left: 5px;">DIAMOND</span></span>
+                    </div>
+                  </div>
+
+                  <!-- Default Auth Button (Centered) -->
+                  <button id="vetAuthBtn" class="wire-btn" style="width: 100%; max-width: 400px; height: 50px; padding: 0; background: #3182ce; color: #fff; border: none; border-radius: 6px; transition: 0.2s; box-shadow: 0 4px 6px rgba(49, 130, 206, 0.2); margin: 0 auto; display: block;" onclick="openVetAuthModal()">VETERAN AUTHENTICATION</button>
+
                 </div>
               </div>
             </div>
@@ -816,31 +829,17 @@ function openPrecautions(title) {
 
   window.setQuest3DemoState = function(state) {
     window.currentQuest3State = state;
-    const btn = document.getElementById('vetAuthBtn');
+    const loginOverlay = document.getElementById('q3LoginOverlay');
     const completeArea = document.getElementById('q3CompleteArea');
     
     if (state === 0) {
-      if(btn) {
-        btn.style.display = "flex";
-        btn.style.background = "#fff";
-        btn.style.color = "var(--text-color)";
-        btn.disabled = true;
-        btn.style.opacity = "0.5";
-      }
+      if(loginOverlay) loginOverlay.style.display = "flex";
       if(completeArea) completeArea.style.display = "none";
     } else if (state === 1) {
-      if(btn) {
-        btn.style.display = "flex";
-        btn.style.background = "#3182ce"; // Pre-reg color
-        btn.style.color = "#fff";
-        btn.disabled = false;
-        btn.style.opacity = "1";
-      }
+      if(loginOverlay) loginOverlay.style.display = "none";
       if(completeArea) completeArea.style.display = "none";
     } else if (state === 2) {
-      if(btn) {
-        btn.style.display = "none";
-      }
+      if(loginOverlay) loginOverlay.style.display = "none";
       if(completeArea) completeArea.style.display = "flex";
     }
   };
