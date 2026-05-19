@@ -721,15 +721,14 @@
               <span style="font-size: 12px; font-weight: 700; color: #a0aec0; text-decoration: underline; cursor: pointer;" onclick="openPrecautions('Daily Roulette Precautions')">Daily Roulette Event precautions</span>
             </div>
             
-            <!-- QUEST 4 DEMO CONTROLS -->
-            <div style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 15px;">
-              <span style="font-size: 11px; font-weight: 800; color: #a0aec0; margin-right: 5px;">QUEST 4 DEMO</span>
-              <button onclick="setQuest4DemoState(0)" style="padding: 4px 8px; background: rgba(0,0,0,0.05); border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[1] Not Logged In</button>
-              <button onclick="setQuest4DemoState(1)" style="padding: 4px 8px; background: rgba(0,0,0,0.05); border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[2] Logged In</button>
-            </div>
-
           </div>
         </div>
+      </div>
+      <!-- QUEST 4 DEMO (Moved out of window) -->
+      <div style="width: 100%; max-width: 1100px; display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 10px; padding-right: 10px;">
+        <span style="font-size: 11px; font-weight: 800; color: #a0aec0; margin-right: 5px;">QUEST 4 DEMO</span>
+        <button onclick="setQuest4DemoState(0)" style="padding: 4px 8px; background: rgba(255,255,255,0.7); border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[1] Not Logged In</button>
+        <button onclick="setQuest4DemoState(1)" style="padding: 4px 8px; background: rgba(255,255,255,0.7); border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[2] Logged In</button>
       </div>
     </div>
 
@@ -1054,17 +1053,23 @@
 
 <!-- UNIFIED DEMO CONTROLS (FLOATING) REMOVED -->
 <script>
+function updateHeaderScroll() {
+  var header = document.querySelector('.global-header');
+  var rightPanel = document.querySelector('.right-panel');
+  if (header) {
+    var isScrolled = window.scrollY > 50 || (rightPanel && rightPanel.scrollTop > 10);
+    if (isScrolled) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }
+}
+window.addEventListener('scroll', updateHeaderScroll);
 document.addEventListener('DOMContentLoaded', function() {
   var rightPanel = document.querySelector('.right-panel');
-  var header = document.querySelector('.global-header');
-  if(rightPanel && header) {
-    rightPanel.addEventListener('scroll', function(e) {
-      if (e.target.scrollTop > 10) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
+  if (rightPanel) {
+    rightPanel.addEventListener('scroll', updateHeaderScroll);
   }
 });
 </script>
