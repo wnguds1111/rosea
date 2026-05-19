@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROSEA 기획서 정리 - In-Game Concept</title>
+    <title>ROSEA 기획서 정리 - UI/UX Concept</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <style>
@@ -18,7 +18,7 @@
         .btn-wire:hover { background: #0056b3; }
 
         .hero { background: linear-gradient(135deg, #2d3748 0%, #1a202c 60%, #4a5568 100%); border-radius: 20px; padding: 36px 48px; margin-bottom: 28px; color: white; position: relative; overflow: hidden; }
-        .hero::after { content: 'GAME CLIENT UI CONCEPT'; position: absolute; right: -20px; bottom: -20px; font-size: 80px; font-weight: 900; color: rgba(255,255,255,0.03); white-space: nowrap; }
+        .hero::after { content: 'UI/UX CONCEPT'; position: absolute; right: -20px; bottom: -20px; font-size: 100px; font-weight: 900; color: rgba(255,255,255,0.03); white-space: nowrap; }
         .hero h2 { font-size: 26px; font-weight: 900; margin-bottom: 8px; color: #63b3ed; }
         .hero p { font-size: 15px; font-weight: 500; color: #cbd5e0; line-height: 1.5; max-width: 800px; }
 
@@ -44,7 +44,7 @@
 <body>
 
 <div class="top-bar">
-    <h1>ROSEA 사전예약 게이미피케이션 기획서</h1>
+    <h1>ROSEA 사전예약 UI/UX 기획서</h1>
     <div>
         <a href="index.html" class="btn-home">← 인덱스 홈</a>
         <a href="wireframe.html" class="btn-wire">화면설계서</a>
@@ -53,58 +53,76 @@
 
 <div class="wrap">
     <div class="hero">
-        <h2>ROSEA 웹 클라이언트 사전예약 기획서</h2>
-        <p>기존의 위아래로 스크롤하는 웹사이트 방식을 버리고, 웹 브라우저 전체를 하나의 <b>'라그나로크 온라인 인게임 클라이언트'</b>처럼 작동하게 만드는 혁신적인 게이미피케이션 기획입니다. 캐릭터 생성창에서 사전예약을 완료하고, 인게임 퀘스트 창을 통해 이벤트에 참여합니다.</p>
+        <h2>ROSEA 웹 플랫폼 사전예약 기획서</h2>
+        <p>모던한 웹 UI 트렌드를 반영한 직관적인 사전예약 페이지 기획입니다. 전체 화면을 활용한 <b>2-Panel 레이아웃(좌측 비주얼 고정, 우측 스크롤)</b>을 통해 게임의 핵심 비주얼을 지속적으로 노출하며, 사전예약부터 이벤트 참여까지의 모든 과정을 <b>순차적인 퀘스트(Quest) 형태</b>로 제공하여 유저 편의성을 극대화합니다.</p>
     </div>
 
-    <!-- Phase 1 -->
+    <!-- Quest 1 -->
     <div class="section-card">
         <div class="section-header">
-            <div class="section-icon">1</div>
-            <div class="section-title">Phase 1: 접속 및 사전예약 (캐릭터 생성 UI)</div>
+            <div class="section-icon">Q1</div>
+            <div class="section-title">Quest 1: 사전예약 (Pre-registration)</div>
         </div>
-        <p class="section-desc">일반적인 웹 랜딩 페이지가 아닌, 친숙한 <b>[라그나로크 캐릭터 선택/생성창]</b>이 전체 화면으로 나타납니다. 유저는 실제 게임을 시작하듯 사전예약을 진행합니다.</p>
+        <p class="section-desc">웹사이트 최초 진입 시 우측 상단에 노출되는 가장 기본적인 퀘스트 구역으로 휴대폰 번호나 이메일을 통해 신속하게 참여 가능합니다.</p>
         <table>
             <thead><tr><th>UI 컴포넌트</th><th>기능 상세 및 연출 로직</th></tr></thead>
             <tbody>
-                <tr><td class="item">로그인 제어 (2차 비밀번호 UI)</td><td class="content">빈 캐릭터 슬롯을 클릭하면 '2차 비밀번호 키패드' 팝업이 연출되며, 이를 통해 로그인/본인인증을 유도.</td></tr>
-                <tr><td class="item">캐릭터 생성창 (사전예약 폼)</td><td class="content">닉네임 입력란이 곧 사전예약자 정보/추천인 코드 입력 필드로 작동. (헤어스타일 등 클릭하며 노는 기능 포함)</td></tr>
-                <tr><td class="item">Start Game 버튼 (사전예약 완료)</td><td class="content">우측 하단의 포링 형태 [Start Game] 버튼을 누르면 인게임 진입 사운드와 함께 하얗게 화면이 트랜지션 되며 <b>Phase 2(인게임 월드)</b>로 진입.</td></tr>
-                <tr><td class="item">사전예약 기본 보상</td><td class="content">C_10Grade_Balloon x1, 전투교범 x2, 풍선껌 x2, 노란 포션 상자 x3, <span class="highlight-text">Daily Spin 티켓 3장 즉시 지급</span></td></tr>
+                <tr><td class="item">사전예약 폼 (이메일/번호)</td><td class="content">이메일 주소 또는 전화번호 입력 필드 및 약관 동의 체크박스 구성.</td></tr>
+                <tr><td class="item">마켓 사전등록 연동</td><td class="content">구글 플레이, 앱 스토어 등 스토어 사전예약 바로가기 아이콘 제공.</td></tr>
+                <tr><td class="item">사전예약 보상</td><td class="content">C_10Grade_Balloon x1, 전투교범 x2, 풍선껌 x2, 노란 포션 상자 x3, <span class="highlight-text">Daily Machine 룰렛 티켓 3장 즉시 지급</span></td></tr>
             </tbody>
         </table>
     </div>
 
-    <!-- Phase 2 -->
+    <!-- Quest 2 -->
     <div class="section-card">
         <div class="section-header">
-            <div class="section-icon">2</div>
-            <div class="section-title">Phase 2: 인게임 월드 진입 (이벤트 허브 UI)</div>
+            <div class="section-icon">Q2</div>
+            <div class="section-title">Quest 2: 마일스톤 (Milestone)</div>
         </div>
-        <p class="section-desc">캐릭터를 생성(사전예약)하고 진입한 메인 화면입니다. 스크롤이 없는 1 화면 구조이며, 배경은 라그나로크 아카데미나 프론테라 마을로 설정되고 인게임 HUD가 배치됩니다.</p>
+        <p class="section-desc">글로벌 사전예약 누적 인원 수에 따라 전체 유저에게 보상이 지급되는 공용 퀘스트입니다.</p>
         <table>
-            <thead><tr><th>UI 컴포넌트</th><th>기능 상세 및 연출 로직</th></tr></thead>
+            <thead><tr><th>마일스톤 구간</th><th>보상 데이터</th></tr></thead>
             <tbody>
-                <tr><td class="item">상태창 (좌측 상단 HP/SP 바)</td><td class="content">유저의 프로필, 레벨(가입기간 등), 그리고 <b>보유 중인 데일리 스핀 티켓 수량</b>을 SP 바 형태로 시각화.</td></tr>
-                <tr><td class="item">시스템 채팅창 (좌측 하단)</td><td class="content">마일스톤 돌파 소식, "ㅇㅇㅇ님이 가챠에서 1등에 당첨되었습니다" 등의 서버 알림이 인게임 시스템 폰트로 실시간 타이핑됨.</td></tr>
-                <tr><td class="item">단축키 메뉴 (우측 하단)</td><td class="content">인덱스 이동, 공지사항, FAQ 버튼 등을 인게임 가방/설정 아이콘 형태로 배치.</td></tr>
+                <tr><td class="item">10,000명 달성</td><td class="content">민첩성/블레싱 10레벨 스크롤 x10</td></tr>
+                <tr><td class="item">50,000명 달성</td><td class="content">보험증서x3, 지크프리드x3, 파리의날개 1일 x1</td></tr>
+                <tr><td class="item">100,000명 달성</td><td class="content">전투교범x2, 풍선껌x2, 하얀포션상자x3</td></tr>
+                <tr><td class="item">200,000명 달성</td><td class="content">생명수/마나수 세트</td></tr>
+                <tr><td class="item">300,000명 달성</td><td class="content"><span class="highlight-text">10레벨 요리 세트</span></td></tr>
             </tbody>
         </table>
     </div>
 
-    <!-- Phase 3 -->
+    <!-- Quest 3 -->
     <div class="section-card">
         <div class="section-header">
-            <div class="section-icon">3</div>
-            <div class="section-title">Phase 3: 퀘스트 창을 통한 이벤트 진행</div>
+            <div class="section-icon">Q3</div>
+            <div class="section-title">Quest 3: 베테랑 라운지 (Veteran Lounge)</div>
         </div>
-        <p class="section-desc">기존 웹사이트의 스크롤 구역(섹션)을 완벽히 대체하는 <b>[인게임 Quest 창]</b>입니다. 유저는 화면 중앙에 뜬 퀘스트 목록을 클릭해 이벤트를 수행합니다.</p>
+        <p class="section-desc">기존 라그나로크(RO) 시리즈를 오랫동안 즐긴 유저들의 플레이 타임을 기반으로 특별 등급을 부여하고 보상을 지급하는 이벤트입니다.</p>
         <table>
-            <thead><tr><th>퀘스트 명 (이벤트)</th><th>기능 상세 및 보상 데이터</th></tr></thead>
+            <thead><tr><th>등급 명 (조건)</th><th>제공 보상</th></tr></thead>
             <tbody>
-                <tr><td class="item">Quest 1. 마일스톤 달성</td><td class="content"><b>내용:</b> 글로벌 사전등록 인원 누적 게이지 표시.<br><b>보상:</b><br>- 10k: 민첩성/블레싱 10레벨 스크롤 x10<br>- 50k: 보험증서x3, 지크프리드x3, 파리의날개 1일 x1<br>- 100k: 전투교범x2, 풍선껌x2, 하얀포션상자x3<br>- 200k: 생명수/마나수 세트<br>- 300k: 10레벨 요리 세트</td></tr>
-                <tr><td class="item">Quest 2. 베테랑 라운지 인증</td><td class="content"><b>내용:</b> 기존 GGH/GGL 플랫폼 플레이 타임 감정. 퀘스트 클릭 시 인게임 NPC 대화창 연출 등장.<br><b>보상:</b><br>- 다이아 (5년 이상): Selection Box x1 + 대형 소모품<br>- 플래티넘 (3년 이상): C_Mini_Glasses x1 + 중형 소모품<br>- 골드 (1년 이상): Lincoln_Hat x1 + 소형 소모품<br>- 실버 (1년 이하): 기본 포션 세트</td></tr>
-                <tr><td class="item">Quest 3. 데일리 캡슐 룰렛</td><td class="content"><b>내용:</b> 매일 출석(95% 1장, 5% 2장) 및 초대(건당 3장)로 획득한 티켓 사용처.<br><b>연출:</b> [퀘스트 진행] 클릭 시 퀘스트 창이 닫히고 화면 중앙에 커다란 가챠 머신 UI가 등장하여 17종 보상 룰렛 진행.</td></tr>
+                <tr><td class="item">다이아 (5년 이상)</td><td class="content">Selection Box x1 + 대형 소모품</td></tr>
+                <tr><td class="item">플래티넘 (3년 이상)</td><td class="content">C_Mini_Glasses x1 + 중형 소모품</td></tr>
+                <tr><td class="item">골드 (1년 이상)</td><td class="content">Lincoln_Hat x1 + 소형 소모품</td></tr>
+                <tr><td class="item">실버 (1년 이하)</td><td class="content">기본 포션 세트</td></tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Quest 4 -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-icon">Q4</div>
+            <div class="section-title">Quest 4: 데일리 머신 (Daily Machine)</div>
+        </div>
+        <p class="section-desc">지속적인 웹사이트 방문과 입소문을 유도하기 위해 매일 획득할 수 있는 티켓으로 돌리는 룰렛형 가챠 이벤트입니다.</p>
+        <table>
+            <thead><tr><th>이벤트 항목</th><th>상세 내용</th></tr></thead>
+            <tbody>
+                <tr><td class="item">티켓 획득 방법</td><td class="content">1. 사전예약 시 (+3장)<br>2. 친구 초대 시 건당 (+3장, 최대 5명 제한)<br>3. 매일 출석체크 시 랜덤 획득 (+1~2장)</td></tr>
+                <tr><td class="item">룰렛 참여 및 히스토리</td><td class="content">획득한 티켓으로 중앙의 <b>Daily Machine</b>을 구동하여 17종의 인게임 아이템 획득 가능. 별도의 <b>Reward History</b> 팝업과 <b>Ticket History</b> 팝업을 통해 상세한 내역을 확인할 수 있습니다.</td></tr>
             </tbody>
         </table>
     </div>
