@@ -13,6 +13,7 @@
     --text-color: #2d3748;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
   body { font-family: 'Pretendard', sans-serif; background: var(--bg-color); color: var(--text-color); overflow-x: hidden; }
 
   /* PRD Toggle Button */
@@ -56,6 +57,7 @@
     text-align: center; position: relative;
     /* Adding a subtle background texture/gradient for depth */
     background: radial-gradient(circle at center, #2d3748 0%, #0f172a 100%);
+    scroll-snap-align: start;
   }
   .hero-title { 
     font-size: 85px; font-weight: 900; 
@@ -187,20 +189,30 @@
 
   /* RIGHT SCROLLING PANEL */
   .right-panel { width: calc(100% - 380px); }
-  .section { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px dashed var(--border-color); padding: 40px; }
+  .section { 
+    height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px dashed var(--border-color); 
+    padding: 60px 40px 0 40px; scroll-snap-align: start; 
+  }
 
   /* FLAT WIREFRAME COMPONENTS */
   .wire-window {
-    width: 100%; max-width: 1100px; height: 70vh; min-height: 550px; max-height: 750px;
+    width: 100%; max-width: 1100px; height: calc(100vh - 120px); min-height: 650px; max-height: 850px;
     background: #fff; border: 1px solid var(--border-color); border-radius: 8px;
     display: flex; flex-direction: column; box-shadow: 0 10px 25px rgba(0,0,0,0.05);
     position: relative;
   }
   .wire-header { 
     height: 50px; background: #f7fafc; color: var(--text-color); border-bottom: 1px solid var(--border-color);
-    display: flex; align-items: center; padding: 0 25px; border-radius: 8px 8px 0 0;
+    display: flex; align-items: center; justify-content: space-between; padding: 0 25px; border-radius: 8px 8px 0 0;
     font-weight: 800; font-size: 16px; text-transform: uppercase; 
   }
+  .wire-header-controls { display: flex; gap: 8px; }
+  .wire-header-btn {
+    width: 24px; height: 24px; border: 1px solid #cbd5e0; border-radius: 4px; background: #fff;
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    font-size: 14px; font-weight: 900; color: #718096; transition: 0.2s; line-height: 1;
+  }
+  .wire-header-btn:hover { background: #e2e8f0; color: #2d3748; border-color: #a0aec0; }
   .wire-main { flex: 1; display: flex; overflow: hidden; }
   .wire-tabs {
     width: 45px; border-right: 1px solid var(--border-color); background: #f8fafc;
@@ -213,7 +225,7 @@
   }
   .wire-tab:hover { background: #e2e8f0; }
   .wire-tab.active { background: #fff; color: #2d3748; border-right: 1px solid #fff; margin-right: -1px; }
-  .wire-body { flex: 1; display: flex; flex-direction: column; overflow: hidden; padding: 40px; position: relative; }
+  .wire-body { flex: 1; display: flex; flex-direction: column; overflow-y: auto; overflow-x: hidden; padding: 40px; position: relative; }
   
   .wire-title { font-size: 24px; font-weight: 800; color: var(--text-color); margin-bottom: 10px; text-transform: uppercase; }
   .wire-sub { font-size: 16px; font-weight: 500; color: #718096; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color); text-transform: uppercase; }
@@ -329,7 +341,13 @@
     <!-- SECTION 2: Participation Event -->
     <div class="section" data-index="1" data-prd="2">
       <div class="wire-window">
-        <div class="wire-header">Quest 1</div>
+        <div class="wire-header">
+          <div>Quest 1</div>
+          <div class="wire-header-controls">
+            <div class="wire-header-btn" title="Minimize">−</div>
+            <div class="wire-header-btn" title="Close">×</div>
+          </div>
+        </div>
         <div class="wire-main">
           <div class="wire-tabs">
             <div class="wire-tab active" onclick="scrollToPrd(2)">Q1</div>
@@ -406,7 +424,13 @@
     <!-- SECTION 3: Milestone Event -->
     <div class="section" data-index="2" data-prd="3">
       <div class="wire-window">
-        <div class="wire-header">Quest 2</div>
+        <div class="wire-header">
+          <div>Quest 2</div>
+          <div class="wire-header-controls">
+            <div class="wire-header-btn" title="Minimize">−</div>
+            <div class="wire-header-btn" title="Close">×</div>
+          </div>
+        </div>
         <div class="wire-main">
           <div class="wire-tabs">
             <div class="wire-tab" onclick="scrollToPrd(2)">Q1</div>
@@ -436,7 +460,13 @@
     <!-- SECTION 4: Veteran Rewards Event -->
     <div class="section" data-index="3" data-prd="4">
       <div class="wire-window">
-        <div class="wire-header">Quest 3</div>
+        <div class="wire-header">
+          <div>Quest 3</div>
+          <div class="wire-header-controls">
+            <div class="wire-header-btn" title="Minimize">−</div>
+            <div class="wire-header-btn" title="Close">×</div>
+          </div>
+        </div>
         <div class="wire-main">
           <div class="wire-tabs">
             <div class="wire-tab" onclick="scrollToPrd(2)">Q1</div>
@@ -465,7 +495,13 @@
     <!-- SECTION 5: Daily Spin Event -->
     <div class="section" data-index="4" data-prd="5">
       <div class="wire-window">
-        <div class="wire-header">Quest 4</div>
+        <div class="wire-header">
+          <div>Quest 4</div>
+          <div class="wire-header-controls">
+            <div class="wire-header-btn" title="Minimize">−</div>
+            <div class="wire-header-btn" title="Close">×</div>
+          </div>
+        </div>
         <div class="wire-main">
           <div class="wire-tabs">
             <div class="wire-tab" onclick="scrollToPrd(2)">Q1</div>
