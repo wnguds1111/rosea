@@ -639,17 +639,17 @@
             <!-- Q4 Main Content -->
             <div style="position: relative; margin-top: 15px; background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #cbd5e0; display: flex; flex-direction: column; gap: 25px;">
               
-              <!-- Login Overlay -->
-              <div id="q4LoginOverlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 8px; backdrop-filter: blur(2px);">
-                <div style="font-weight: 800; font-size: 16px; margin-bottom: 15px; color: #2d3748; text-align: center;">You can proceed after logging in.</div>
-                <div style="display: flex; gap: 10px;">
-                  <button onclick="document.getElementById('fakeLoginPopup').style.display='flex'" style="padding: 12px 24px; background: #e53e3e; color: #fff; border: none; border-radius: 4px; font-weight: 800; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#c53030'" onmouseout="this.style.background='#e53e3e'">GNJOY LOGIN</button>
-                  <button style="padding: 12px 24px; background: #fff; color: #000; border: 1px solid #000; border-radius: 4px; font-weight: 800; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#f7fafc'" onmouseout="this.style.background='#fff'">SIGN UP</button>
-                </div>
-              </div>
-
               <!-- TOP: Ticket Rules -->
-              <div style="display: flex; flex-direction: column;">
+              <div style="display: flex; flex-direction: column; position: relative;">
+                
+                <!-- Login Overlay (Now only covering the rules) -->
+                <div id="q4LoginOverlay" style="position: absolute; top: -10px; left: -10px; width: calc(100% + 20px); height: calc(100% + 20px); background: rgba(255,255,255,0.9); z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 8px; backdrop-filter: blur(2px);">
+                  <div style="font-weight: 800; font-size: 16px; margin-bottom: 15px; color: #2d3748; text-align: center;">You can proceed after logging in.</div>
+                  <div style="display: flex; gap: 10px;">
+                    <button onclick="document.getElementById('fakeLoginPopup').style.display='flex'" style="padding: 12px 24px; background: #e53e3e; color: #fff; border: none; border-radius: 4px; font-weight: 800; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#c53030'" onmouseout="this.style.background='#e53e3e'">GNJOY LOGIN</button>
+                    <button style="padding: 12px 24px; background: #fff; color: #000; border: 1px solid #000; border-radius: 4px; font-weight: 800; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#f7fafc'" onmouseout="this.style.background='#fff'">SIGN UP</button>
+                  </div>
+                </div>
                 <div style="font-weight: 900; font-size: 15px; color: #2d3748; margin-bottom: 15px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
                   <span>TICKET ACQUISITION RULES</span>
                   <span style="font-size: 12px; font-weight: 700; color: #a0aec0; text-decoration: underline; cursor: pointer;" onclick="openPrecautions('Daily Roulette Precautions')">Event precautions</span>
