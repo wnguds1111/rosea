@@ -576,7 +576,7 @@
                   
                   <!-- STATE 0: NOT LOGGED IN OVERLAY -->
                   <div id="q3LoginOverlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 6px; backdrop-filter: blur(2px);">
-                    <div style="font-weight: 800; font-size: 16px; margin-bottom: 15px; color: #2d3748; text-align: center;">You can proceed after logging in.</div>
+                    <div style="font-weight: 800; font-size: 16px; margin-bottom: 15px; color: #2d3748;">LOGIN REQUIRED FOR AUTHENTICATION</div>
                     <div style="display: flex; gap: 10px;">
                       <button onclick="document.getElementById('fakeLoginPopup').style.display='flex'" style="padding: 12px 24px; background: #e53e3e; color: #fff; border: none; border-radius: 4px; font-weight: 800; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#c53030'" onmouseout="this.style.background='#e53e3e'">GNJOY LOGIN</button>
                       <button style="padding: 12px 24px; background: #fff; color: #000; border: 1px solid #000; border-radius: 4px; font-weight: 800; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#f7fafc'" onmouseout="this.style.background='#fff'">SIGN UP</button>
@@ -632,7 +632,7 @@
             <div class="wire-tab active" onclick="scrollToPrd(5)">Q4</div>
           </div>
           <div class="wire-body" style="padding-bottom: 5px;">
-            <div class="wire-title">MACHINE EVENT</div>
+            <div class="wire-title">DAILY ROULETTE EVENT</div>
             <div class="wire-sub">COLLECT TICKETS DAILY TO PLAY THE GACHA MACHINE!<br><span style="font-size: 14px; color: #a0aec0; margin-top: 2px; display: block;">1/9/2026 ~ 1/12/2026 (UTC+8)</span></div>
             
             <!-- Left/Right Layout Container -->
@@ -702,11 +702,8 @@
 
                   <!-- Login Overlay -->
                   <div id="q4LoginOverlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 8px; backdrop-filter: blur(2px);">
-                    <div style="font-weight: 800; font-size: 16px; margin-bottom: 15px; color: #2d3748; text-align: center;">You can proceed after logging in.</div>
-                    <div style="display: flex; gap: 10px;">
-                      <button onclick="document.getElementById('fakeLoginPopup').style.display='flex'" style="padding: 12px 24px; background: #e53e3e; color: #fff; border: none; border-radius: 4px; font-weight: 800; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#c53030'" onmouseout="this.style.background='#e53e3e'">GNJOY LOGIN</button>
-                      <button style="padding: 12px 24px; background: #fff; color: #000; border: 1px solid #000; border-radius: 4px; font-weight: 800; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#f7fafc'" onmouseout="this.style.background='#fff'">SIGN UP</button>
-                    </div>
+                    <div style="font-weight: 800; font-size: 16px; margin-bottom: 15px; color: #2d3748;">LOGIN REQUIRED TO VIEW DATA</div>
+                    <button onclick="document.getElementById('fakeLoginPopup').style.display='flex'" style="padding: 12px 24px; background: #e53e3e; color: #fff; border: none; border-radius: 4px; font-weight: 800; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#c53030'" onmouseout="this.style.background='#e53e3e'">GNJOY LOGIN</button>
                   </div>
 
                 </div>
@@ -717,18 +714,20 @@
               </div>
             </div>
             
-            <div style="text-align: center; margin-top: 10px; margin-bottom: -5px;">
+            <div style="text-align: center; margin-top: 10px;">
               <span style="font-size: 12px; font-weight: 700; color: #a0aec0; text-decoration: underline; cursor: pointer;" onclick="openPrecautions('Daily Roulette Precautions')">Daily Roulette Event precautions</span>
             </div>
             
+            <!-- QUEST 4 DEMO CONTROLS -->
+            <div style="width: 100%; display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 5px;">
+              <span style="font-size: 11px; font-weight: 800; color: #a0aec0; margin-right: 5px;">QUEST 4 DEMO</span>
+              <button onclick="setQuest4DemoState(0)" style="padding: 4px 8px; background: rgba(255,255,255,0.7); border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[1] Not Logged In</button>
+              <button onclick="setQuest4DemoState(1)" style="padding: 4px 8px; background: rgba(255,255,255,0.7); border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[2] Logged In</button>
+              <button onclick="setQuest4DemoState(2)" style="padding: 4px 8px; background: rgba(255,255,255,0.7); border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[3] Spin Action</button>
+            </div>
+
           </div>
         </div>
-      </div>
-      <!-- QUEST 4 DEMO (Moved out of window) -->
-      <div style="width: 100%; max-width: 1100px; display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 10px; padding-right: 10px;">
-        <span style="font-size: 11px; font-weight: 800; color: #a0aec0; margin-right: 5px;">QUEST 4 DEMO</span>
-        <button onclick="setQuest4DemoState(0)" style="padding: 4px 8px; background: rgba(255,255,255,0.7); border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[1] Not Logged In</button>
-        <button onclick="setQuest4DemoState(1)" style="padding: 4px 8px; background: rgba(255,255,255,0.7); border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[2] Logged In</button>
       </div>
     </div>
 
@@ -743,79 +742,234 @@
       <button onclick="document.getElementById('q4RewardsModal').style.display='none'" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #a0aec0;">&times;</button>
     </div>
     <div style="padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;">
+      
+      <!-- Reward Item Template -->
       <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
         <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Khalitzburg_KN_Helm</div>
+        <div>
+          <div style="font-weight: 900; font-size: 15px; color: #e53e3e; margin-bottom: 4px;">Grand Prize: iPhone 15 Pro Max</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">The ultimate physical reward shipped directly to you!</div>
+        </div>
       </div>
+      
       <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
         <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Ifrit's_Ear</div>
+        <div>
+          <div style="font-weight: 900; font-size: 15px; color: #d69e2e; margin-bottom: 4px;">Special Prize: Razer Gaming Headset</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">Premium gaming gear for your adventures.</div>
+        </div>
       </div>
+
       <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
         <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Magic_Circle_Rainbow</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #3182ce; margin-bottom: 4px;">[Costume] Poring Hat</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">A cute in-game headgear.</div>
+        </div>
       </div>
+
       <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
         <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Premium_Box_1d</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #38a169; margin-bottom: 4px;">[Event] Novice Potion Box</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">Contains essential potions for early levels.</div>
+        </div>
       </div>
+
       <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
         <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Comp_Battle_Manual</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #4a5568; margin-bottom: 4px;">500 ROSEA Cash</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">In-game premium currency.</div>
+        </div>
       </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Comp_Bubble_Gum</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Wing_Of_Fly_1Day_Para</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Regeneration_Potion</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Small_Life_Potion</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Med_Life_Potion</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Comp_Small_Mana_Potion</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">White_Potion_B</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Yellow_Potion_B</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Orange_Potion_B</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Green_Potion_B</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Inc_Agi_10_Scroll</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Blessing_10_Scroll</div>
-      </div>
+
     </div>
   </div>
 </div>
 
 <script>
+
+  window.currentPrdPageNum = 1;
+
+  const sections = document.querySelectorAll('.section');
+  const charLevel = document.getElementById('charLevel');
+  const charSprite = document.getElementById('charSprite');
+  const hookText = document.getElementById('hookText');
+  const hpText = document.getElementById('hpText');
+  const spText = document.getElementById('spText');
+
+  // data index 0 is Section 2 (Participation)
+  const data = [
+    { level: 'Lv. 10', sprite: 'SWORDSMAN', hp: '120 / 120', sp: '30 / 30', chat: '<div class="chat-sys">[System] QUEST FOUND: PARTICIPATION EVENT</div><div class="chat-normal">PRE-REGISTER NOW TO RECEIVE MASSIVE SETTLEMENT FUNDS!</div>' },
+    { level: 'Lv. 40', sprite: 'KNIGHT', hp: '2500 / 2500', sp: '150 / 150', chat: '<div class="chat-sys">[System] QUEST FOUND: MILESTONE EVENT</div><div class="chat-normal">GATHER ADVENTURERS GLOBALLY TO UNLOCK SERVER-WIDE REWARDS!</div>' },
+    { level: 'Lv. 70', sprite: 'LORD KNIGHT', hp: '9800 / 9800', sp: '450 / 450', chat: '<div class="chat-sys">[System] QUEST FOUND: VETERAN REWARDS EVENT</div><div class="chat-normal">APPRAISE YOUR PAST ADVENTURE RECORDS IN MIDGARD.</div>' },
+    { level: 'Lv. 99', sprite: 'RUNE KNIGHT', hp: '24000 / 24000', sp: '1200 / 1200', chat: '<div class="chat-sys">[System] QUEST FOUND: DAILY ROULETTE EVENT</div><div class="chat-normal">COLLECT TICKETS DAILY TO PLAY THE GACHA MACHINE!</div>' }
+  ];
+
+  
+  // QUEST 4 LOGIC
+  window.switchQ4Tab = function(tab) {
+    const tabHowTo = document.getElementById('tabHowTo');
+    const tabHistory = document.getElementById('tabHistory');
+    const contentHowTo = document.getElementById('contentHowTo');
+    const contentHistory = document.getElementById('contentHistory');
+
+    if (tab === 'howto') {
+      tabHowTo.style.background = '#3182ce';
+      tabHowTo.style.color = '#fff';
+      tabHistory.style.background = '#edf2f7';
+      tabHistory.style.color = '#4a5568';
+      contentHowTo.style.display = 'block';
+      contentHistory.style.display = 'none';
+    } else {
+      tabHistory.style.background = '#3182ce';
+      tabHistory.style.color = '#fff';
+      tabHowTo.style.background = '#edf2f7';
+      tabHowTo.style.color = '#4a5568';
+      contentHistory.style.display = 'block';
+      contentHowTo.style.display = 'none';
+    }
+  };
+
+  window.setQuest4DemoState = function(state) {
+    const loginOverlay = document.getElementById('q4LoginOverlay');
+    const startBtn = document.getElementById('q4StartBtn');
+    const ticketCount = document.getElementById('q4TicketCount');
+
+    if (state === 0) {
+      if(loginOverlay) loginOverlay.style.display = 'flex';
+      if(startBtn) {
+        startBtn.disabled = true;
+        startBtn.style.opacity = '0.5';
+        startBtn.style.cursor = 'not-allowed';
+        startBtn.style.background = '#e2e8f0';
+        startBtn.style.color = '#4a5568';
+        startBtn.innerText = 'START';
+      }
+      if(ticketCount) ticketCount.innerText = '0 / 15';
+    } else if (state === 1) {
+      if(loginOverlay) loginOverlay.style.display = 'none';
+      if(startBtn) {
+        startBtn.disabled = false;
+        startBtn.style.opacity = '1';
+        startBtn.style.cursor = 'pointer';
+        startBtn.style.background = '#e2e8f0';
+        startBtn.style.color = '#4a5568';
+        startBtn.innerText = 'START';
+      }
+      if(ticketCount) ticketCount.innerText = '3 / 15';
+    } else if (state === 2) {
+      if(loginOverlay) loginOverlay.style.display = 'none';
+      if(startBtn) {
+        startBtn.disabled = true;
+        startBtn.style.opacity = '0.7';
+        startBtn.style.cursor = 'wait';
+        startBtn.style.background = '#cbd5e0';
+        startBtn.style.color = '#2d3748';
+        startBtn.innerText = 'SPINNING...';
+        
+        setTimeout(() => {
+          startBtn.disabled = false;
+          startBtn.style.opacity = '1';
+          startBtn.style.cursor = 'pointer';
+          startBtn.style.background = '#e2e8f0';
+          startBtn.style.color = '#4a5568';
+          startBtn.innerText = 'START';
+          if(ticketCount) ticketCount.innerText = '2 / 15';
+          alert('You obtained: [Costume] Poring Hat!');
+        }, 1500);
+      }
+    }
+  };
+
+  window.scrollToPrd = function(prdNum) {
+    const targetSec = document.querySelector('.section[data-prd="' + prdNum + '"]');
+    if (targetSec) {
+        targetSec.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idxStr = entry.target.dataset.index;
+        window.currentPrdPageNum = parseInt(entry.target.dataset.prd);
+
+        if (idxStr !== "0") {
+            const i = parseInt(idxStr) - 1;
+            charLevel.innerText = data[i].level;
+            charSprite.innerText = data[i].sprite;
+            hpText.innerText = data[i].hp;
+            spText.innerText = data[i].sp;
+            hookText.innerHTML = data[i].chat;
+            
+            const playerUI = document.querySelector('.ro-player-ui');
+            if (playerUI) {
+                playerUI.style.transform = 'scale(1.03)';
+                setTimeout(() => playerUI.style.transform = 'scale(1)', 200);
+            }
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+
+  sections.forEach(sec => observer.observe(sec));
+
+  // Global Header Scroll Effect
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('globalHeader');
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
+  function togglePrdPanel() {
+      const panel = document.getElementById('pageDescPanel');
+      if (panel) {
+          panel.classList.toggle('active');
+          const btn = document.querySelector('.prd-toggle');
+          btn.innerText = panel.classList.contains('active') ? "PRD DESCRIPTION: ON" : "PRD DESCRIPTION: OFF";
+      } else {
+          // If the user's custom logic hasn't loaded yet
+          console.log("Description Module DB Not Connected yet.");
+      }
+  }
+
+  // Demo Toggle for Quest 1
+  window.setDemoState = function(state) {
+    const loginOverlay = document.getElementById('loginOverlay');
+    const completeOverlay = document.getElementById('completeOverlay');
+    const refInput = document.getElementById('refInput');
+    const agreeCheck = document.getElementById('agreeCheck');
+    const preRegBtn = document.getElementById('preRegBtn');
+    
+    if (state === 0) {
+      loginOverlay.style.display = "flex";
+      completeOverlay.style.display = "none";
+      refInput.disabled = true;
+      agreeCheck.disabled = true;
+      preRegBtn.disabled = true;
+      preRegBtn.style.opacity = "0.5";
+    } else if (state === 1) {
+      loginOverlay.style.display = "none";
+      completeOverlay.style.display = "none";
+      refInput.disabled = false;
+      agreeCheck.disabled = false;
+      preRegBtn.disabled = false;
+      preRegBtn.style.opacity = "1";
+    } else {
+      loginOverlay.style.display = "none";
+      completeOverlay.style.display = "flex";
+      refInput.disabled = true;
+      agreeCheck.disabled = true;
+      preRegBtn.disabled = true;
+      preRegBtn.style.opacity = "0.5";
+    }
+  };
+</script>
 
 <!-- Description Module Container -->
 <div class="page-desc-panel" id="pageDescPanel">
@@ -849,79 +1003,59 @@
       <button onclick="document.getElementById('q4RewardsModal').style.display='none'" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #a0aec0;">&times;</button>
     </div>
     <div style="padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;">
+      
+      <!-- Reward Item Template -->
       <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
         <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Khalitzburg_KN_Helm</div>
+        <div>
+          <div style="font-weight: 900; font-size: 15px; color: #e53e3e; margin-bottom: 4px;">Grand Prize: iPhone 15 Pro Max</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">The ultimate physical reward shipped directly to you!</div>
+        </div>
       </div>
+      
       <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
         <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Ifrit's_Ear</div>
+        <div>
+          <div style="font-weight: 900; font-size: 15px; color: #d69e2e; margin-bottom: 4px;">Special Prize: Razer Gaming Headset</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">Premium gaming gear for your adventures.</div>
+        </div>
       </div>
+
       <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
         <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Magic_Circle_Rainbow</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #3182ce; margin-bottom: 4px;">[Costume] Poring Hat</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">A cute in-game headgear.</div>
+        </div>
       </div>
+
       <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
         <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Premium_Box_1d</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #38a169; margin-bottom: 4px;">[Event] Novice Potion Box</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">Contains essential potions for early levels.</div>
+        </div>
       </div>
+
       <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
         <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Comp_Battle_Manual</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #4a5568; margin-bottom: 4px;">500 ROSEA Cash</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">In-game premium currency.</div>
+        </div>
       </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Comp_Bubble_Gum</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Wing_Of_Fly_1Day_Para</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Regeneration_Potion</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Small_Life_Potion</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Med_Life_Potion</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Comp_Small_Mana_Potion</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">White_Potion_B</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Yellow_Potion_B</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Orange_Potion_B</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Green_Potion_B</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Inc_Agi_10_Scroll</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Blessing_10_Scroll</div>
-      </div>
+
     </div>
   </div>
 </div>
 
 <script>
+
+function openPrecautions(title) {
+  document.getElementById('precautionsModalTitle').innerText = title;
+  document.getElementById('precautionsModal').style.display = 'flex';
+}
+</script>
 
 <!-- FAKE LOGIN POPUP -->
 <div id="fakeLoginPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
@@ -965,79 +1099,111 @@
       <button onclick="document.getElementById('q4RewardsModal').style.display='none'" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #a0aec0;">&times;</button>
     </div>
     <div style="padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;">
+      
+      <!-- Reward Item Template -->
       <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
         <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Khalitzburg_KN_Helm</div>
+        <div>
+          <div style="font-weight: 900; font-size: 15px; color: #e53e3e; margin-bottom: 4px;">Grand Prize: iPhone 15 Pro Max</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">The ultimate physical reward shipped directly to you!</div>
+        </div>
       </div>
+      
       <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
         <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Ifrit's_Ear</div>
+        <div>
+          <div style="font-weight: 900; font-size: 15px; color: #d69e2e; margin-bottom: 4px;">Special Prize: Razer Gaming Headset</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">Premium gaming gear for your adventures.</div>
+        </div>
       </div>
+
       <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
         <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Magic_Circle_Rainbow</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #3182ce; margin-bottom: 4px;">[Costume] Poring Hat</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">A cute in-game headgear.</div>
+        </div>
       </div>
+
       <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
         <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Premium_Box_1d</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #38a169; margin-bottom: 4px;">[Event] Novice Potion Box</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">Contains essential potions for early levels.</div>
+        </div>
       </div>
+
       <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
         <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Comp_Battle_Manual</div>
+        <div>
+          <div style="font-weight: 800; font-size: 14px; color: #4a5568; margin-bottom: 4px;">500 ROSEA Cash</div>
+          <div style="font-size: 12px; color: #718096; font-weight: 600;">In-game premium currency.</div>
+        </div>
       </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Comp_Bubble_Gum</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">C_Wing_Of_Fly_1Day_Para</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Regeneration_Potion</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Small_Life_Potion</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Med_Life_Potion</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Comp_Small_Mana_Potion</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">White_Potion_B</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Yellow_Potion_B</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Orange_Potion_B</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">Green_Potion_B</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Inc_Agi_10_Scroll</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;">
-        <div style="width: 60px; height: 60px; background: #edf2f7; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #a0aec0; font-weight: 700; border: 1px dashed #cbd5e0;">IMAGE</div>
-        <div style="font-weight: 900; font-size: 15px; color: #2d3748;">E_Blessing_10_Scroll</div>
-      </div>
+
     </div>
   </div>
 </div>
 
 <script>
+
+  window.currentQuest3State = 0; // 0: not logged, 1: logged, 2: auth completed
+
+  window.processFakeLogin = function() {
+    document.getElementById('fakeLoginPopup').style.display = 'none';
+    if(window.setDemoState) setDemoState(1);
+    if(window.setQuest3DemoState) setQuest3DemoState(1);
+    if(window.setQuest4DemoState) setQuest4DemoState(1);
+  };
+
+  window.setQuest3DemoState = function(state) {
+    window.currentQuest3State = state;
+    const loginOverlay = document.getElementById('q3LoginOverlay');
+    const completeArea = document.getElementById('q3CompleteArea');
+    const wrapper = document.getElementById('q3ActionWrapper');
+    const btn = document.getElementById('vetAuthBtn');
+    
+    if (state === 0) {
+      if(loginOverlay) loginOverlay.style.display = "flex";
+      if(completeArea) completeArea.style.display = "none";
+      if(wrapper) {
+        wrapper.style.border = "1px solid #cbd5e0";
+        wrapper.style.background = "#fff";
+        wrapper.style.padding = "30px";
+      }
+      if(btn) btn.style.display = "block";
+    } else if (state === 1) {
+      if(loginOverlay) loginOverlay.style.display = "none";
+      if(completeArea) completeArea.style.display = "none";
+      if(wrapper) {
+        wrapper.style.border = "none";
+        wrapper.style.background = "transparent";
+        wrapper.style.padding = "10px 0";
+      }
+      if(btn) btn.style.display = "block";
+    } else if (state === 2) {
+      if(loginOverlay) loginOverlay.style.display = "none";
+      if(completeArea) completeArea.style.display = "flex";
+      if(wrapper) {
+        wrapper.style.border = "none";
+        wrapper.style.background = "transparent";
+        wrapper.style.padding = "0";
+      }
+      if(btn) btn.style.display = "none";
+    }
+  };
+
+  function openVetAuthModal() {
+    if (window.currentQuest3State === 1) {
+      document.getElementById('vetAuthModal').style.display = 'flex';
+    }
+  }
+  
+  // Initialize states
+  setTimeout(() => {
+    if(window.setQuest3DemoState) setQuest3DemoState(0);
+  }, 100);
+</script>
 
 <!-- PROMO MODAL -->
 <div id="promoModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
@@ -1051,84 +1217,5 @@
 
 <script src="./description_module/desc-script.js"></script>
 
-<!-- UNIFIED DEMO CONTROLS (FLOATING) REMOVED -->
-<script>
-function updateHeaderScroll() {
-  var header = document.querySelector('.global-header');
-  var rightPanel = document.querySelector('.right-panel');
-  if (header) {
-    var isScrolled = window.scrollY > 50 || (rightPanel && rightPanel.scrollTop > 10);
-    if (isScrolled) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  }
-}
-window.addEventListener('scroll', updateHeaderScroll);
-document.addEventListener('DOMContentLoaded', function() {
-  var rightPanel = document.querySelector('.right-panel');
-  if (rightPanel) {
-    rightPanel.addEventListener('scroll', updateHeaderScroll);
-  }
-});
-
-// Demo Control Functions
-window.setDemoState = function(state) {
-  var loginOverlay = document.getElementById('loginOverlay');
-  var completeOverlay = document.getElementById('completeOverlay');
-  var refInput = document.getElementById('refInput');
-  var agreeCheck = document.getElementById('agreeCheck');
-  var preRegBtn = document.getElementById('preRegBtn');
-  
-  if (state === 0) {
-    if(loginOverlay) loginOverlay.style.display = "flex";
-    if(completeOverlay) completeOverlay.style.display = "none";
-    if(refInput) refInput.disabled = true;
-    if(agreeCheck) agreeCheck.disabled = true;
-    if(preRegBtn) { preRegBtn.disabled = true; preRegBtn.style.opacity = "0.5"; }
-  } else if (state === 1) {
-    if(loginOverlay) loginOverlay.style.display = "none";
-    if(completeOverlay) completeOverlay.style.display = "none";
-    if(refInput) refInput.disabled = false;
-    if(agreeCheck) agreeCheck.disabled = false;
-    if(preRegBtn) { preRegBtn.disabled = false; preRegBtn.style.opacity = "1"; }
-  } else {
-    if(loginOverlay) loginOverlay.style.display = "none";
-    if(completeOverlay) completeOverlay.style.display = "flex";
-    if(refInput) refInput.disabled = true;
-    if(agreeCheck) agreeCheck.disabled = true;
-    if(preRegBtn) { preRegBtn.disabled = true; preRegBtn.style.opacity = "0.5"; }
-  }
-};
-
-window.setQuest3DemoState = function(state) {
-  var overlay = document.getElementById('q3LoginOverlay');
-  var complete = document.getElementById('q3CompleteArea');
-  var btn = document.getElementById('vetAuthBtn');
-  if (state === 0) {
-    if(overlay) overlay.style.display = "flex";
-    if(complete) complete.style.display = "none";
-    if(btn) btn.style.display = "block";
-  } else if (state === 1) {
-    if(overlay) overlay.style.display = "none";
-    if(complete) complete.style.display = "none";
-    if(btn) btn.style.display = "block";
-  } else {
-    if(overlay) overlay.style.display = "none";
-    if(complete) complete.style.display = "flex";
-    if(btn) btn.style.display = "none";
-  }
-};
-
-window.setQuest4DemoState = function(state) {
-  var overlay = document.getElementById('q4LoginOverlay');
-  if (state === 0) {
-    if(overlay) overlay.style.display = "flex";
-  } else if (state === 1) {
-    if(overlay) overlay.style.display = "none";
-  }
-};
-</script>
 </body>
 </html>
