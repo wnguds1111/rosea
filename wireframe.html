@@ -401,7 +401,7 @@
                     </div>
                     <div style="display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 800; color: #4a5568;">
                       <input type="checkbox" id="agreeCheck" disabled style="width: 18px; height: 18px; cursor: pointer;">
-                      <label for="agreeCheck" style="cursor: pointer;">I AGREE TO THE PRIVACY POLICY (REQUIRED)</label>
+                      <label for="agreeCheck" style="cursor: pointer;">I agree to pre-register and <span style="text-decoration: underline; font-weight: 900;" onclick="event.preventDefault(); document.getElementById('promoModal').style.display='flex'">receive promotional messages</span></label>
                     </div>
                     <button id="preRegBtn" disabled style="width: 100%; height: 45px; margin-top: 10px; opacity: 0.5; background: #3182ce; color: #fff; border: none; border-radius: 6px; font-size: 14px; font-weight: 900; cursor: pointer; transition: 0.2s; letter-spacing: 1px; box-shadow: 0 4px 6px rgba(49, 130, 206, 0.2);" onmouseover="this.style.background='#2b6cb0'" onmouseout="this.style.background='#3182ce'">PRE-REGISTER</button>
                   </div>
@@ -643,7 +643,18 @@
         <!-- DB / Description Custom Logic loaded here -->
     </div>
 </div>
-<script src="description_module/desc-script.js"></script>
+
+<!-- PROMO MODAL -->
+<div id="promoModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+  <div style="background: #fff; width: 400px; padding: 30px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); position: relative;">
+    <button onclick="document.getElementById('promoModal').style.display='none'" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #a0aec0;">&times;</button>
+    <h3 style="margin-bottom: 15px; color: #2d3748; font-size: 18px; font-weight: 800;">Promotional Messages</h3>
+    <p style="font-size: 14px; color: #4a5568; line-height: 1.6; font-weight: 500;">By agreeing to receive promotional messages, you will be notified of the latest updates, special events, and exclusive rewards for ROSEA.<br><br>You can opt out at any time through your account settings.</p>
+    <button onclick="document.getElementById('promoModal').style.display='none'" style="margin-top: 25px; width: 100%; padding: 12px; background: #3182ce; color: #fff; border: none; border-radius: 6px; font-weight: 800; font-size: 14px; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#2b6cb0'" onmouseout="this.style.background='#3182ce'">CLOSE</button>
+  </div>
+</div>
+
+<script src="./description_module/desc-script.js"></script>
 
 </body>
 </html>
