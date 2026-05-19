@@ -195,7 +195,7 @@
 
   /* FLAT WIREFRAME COMPONENTS */
   .wire-window {
-    width: 100%; max-width: 1100px; height: 65vh; min-height: 550px; max-height: 700px;
+    width: 100%; max-width: 1100px; height: 75vh; min-height: 720px; max-height: 850px;
     background: #fff; border: 1px solid var(--border-color); border-radius: 8px;
     display: flex; flex-direction: column; box-shadow: 0 10px 25px rgba(0,0,0,0.05);
     position: relative;
@@ -224,7 +224,7 @@
   }
   .wire-tab:hover { background: #e2e8f0; }
   .wire-tab.active { background: #fff; color: #2d3748; border-right: 1px solid #fff; margin-right: -1px; }
-  .wire-body { flex: 1; display: flex; flex-direction: column; overflow-y: auto; overflow-x: hidden; padding: 40px; position: relative; }
+  .wire-body { flex: 1; display: flex; flex-direction: column; overflow: hidden; padding: 40px; position: relative; }
   
   .wire-title { font-size: 24px; font-weight: 800; color: var(--text-color); margin-bottom: 10px; text-transform: uppercase; }
   .wire-sub { font-size: 16px; font-weight: 500; color: #718096; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color); text-transform: uppercase; }
@@ -368,9 +368,6 @@
                   <div style="flex: 1; border: 2px dashed #cbd5e0; border-radius: 6px; height: 75px; display: flex; align-items: center; justify-content: center; background: #fff; font-size: 11px; font-weight: 800; color: #a0aec0; text-align: center; padding: 5px;">Yellow<br>Potion</div>
                   <div style="flex: 1; border: 2px dashed #cbd5e0; border-radius: 6px; height: 75px; display: flex; align-items: center; justify-content: center; background: #fff; font-size: 11px; font-weight: 800; color: #a0aec0; text-align: center; padding: 5px;">Daily Spin<br>Ticket</div>
                 </div>
-                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px 20px; font-size: 13px; font-weight: 600; color: #4a5568; line-height: 1.6;">
-                  10Grade Balloon x1, Field Manual x2, Bubble Gum x2, Yellow Potion Box x3, Daily Spin Ticket x3
-                </div>
               </div>
 
               <!-- PRE-REGISTRATION FORM -->
@@ -408,16 +405,18 @@
                   <button id="preRegBtn" class="wire-btn" disabled style="width: 100%; margin-top: 10px; opacity: 0.5;">COMPLETE PRE-REGISTRATION</button>
                 </div>
               </div>
+              
+              <!-- DEMO CONTROLS (QUEST 1 ONLY) -->
+              <div style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 10px;">
+                <span style="font-size: 11px; font-weight: 800; color: #a0aec0; margin-right: 5px;">QUEST 1 DEMO</span>
+                <button onclick="setDemoState(0)" style="padding: 4px 8px; background: #fff; border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[1] Not Logged In</button>
+                <button onclick="setDemoState(1)" style="padding: 4px 8px; background: #fff; border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[2] Logged In</button>
+                <button onclick="setDemoState(2)" style="padding: 4px 8px; background: #fff; border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[3] Registered</button>
+              </div>
+
             </div>
           </div>
         </div>
-      </div>
-      <!-- DEMO CONTROLS (FIXED TO SCREEN) -->
-      <div style="position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 8px; z-index: 1000; background: rgba(255,255,255,0.9); padding: 15px; border-radius: 8px; border: 1px solid #cbd5e0; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-        <div style="font-size: 11px; font-weight: 800; color: #a0aec0; text-align: center; margin-bottom: 5px;">QUEST 1 DEMO</div>
-        <button onclick="setDemoState(0)" style="padding: 8px 16px; background: #fff; border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 12px; cursor: pointer; color: #4a5568; transition: 0.2s;" onmouseover="this.style.background='#f7fafc'" onmouseout="this.style.background='#fff'">[State 1] Not Logged In</button>
-        <button onclick="setDemoState(1)" style="padding: 8px 16px; background: #fff; border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 12px; cursor: pointer; color: #4a5568; transition: 0.2s;" onmouseover="this.style.background='#f7fafc'" onmouseout="this.style.background='#fff'">[State 2] Logged In (Not Reg)</button>
-        <button onclick="setDemoState(2)" style="padding: 8px 16px; background: #fff; border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 12px; cursor: pointer; color: #4a5568; transition: 0.2s;" onmouseover="this.style.background='#f7fafc'" onmouseout="this.style.background='#fff'">[State 3] Registered</button>
       </div>
     </div>
 
