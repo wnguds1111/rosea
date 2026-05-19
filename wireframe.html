@@ -532,15 +532,42 @@
             <div class="wire-content-box">
               <div style="font-size:15px; font-weight:600; margin-bottom:20px; color:#4a5568;">RECEIVE SPECIAL REWARDS BASED ON YOUR GGH/GGL SERVICE HISTORY.</div>
               <div class="tier-container">
-                 <div class="tier-box"><div class="tier-title">DIAMOND</div><div class="tier-desc">5+ YEARS</div></div>
-                 <div class="tier-box"><div class="tier-title">PLATINUM</div><div class="tier-desc">3+ YEARS</div></div>
-                 <div class="tier-box"><div class="tier-title">GOLD</div><div class="tier-desc">1+ YEARS</div></div>
-                 <div class="tier-box"><div class="tier-title">SILVER</div><div class="tier-desc">< 1 YEAR</div></div>
+                 <div class="tier-box">
+                   <div class="tier-title">DIAMOND</div>
+                   <div class="tier-desc">OVER 5 YEARS</div>
+                   <div style="margin-top: 10px; font-size: 11px; color: #38a169; font-weight: 800;">Exclusive Title +<br>5000 Cash</div>
+                 </div>
+                 <div class="tier-box">
+                   <div class="tier-title">PLATINUM</div>
+                   <div class="tier-desc">OVER 3 YEARS</div>
+                   <div style="margin-top: 10px; font-size: 11px; color: #3182ce; font-weight: 800;">Rare Costume +<br>3000 Cash</div>
+                 </div>
+                 <div class="tier-box">
+                   <div class="tier-title">GOLD</div>
+                   <div class="tier-desc">OVER 1 YEAR</div>
+                   <div style="margin-top: 10px; font-size: 11px; color: #d69e2e; font-weight: 800;">Costume Box +<br>1000 Cash</div>
+                 </div>
+                 <div class="tier-box">
+                   <div class="tier-title">SILVER</div>
+                   <div class="tier-desc">UNDER 1 YEAR</div>
+                   <div style="margin-top: 10px; font-size: 11px; color: #718096; font-weight: 800;">Newbie Pack +<br>500 Cash</div>
+                 </div>
               </div>
             </div>
-            <button class="wire-btn">APPRAISE MY PLAY RECORD</button>
+            <button id="vetAuthBtn" class="wire-btn" onclick="openVetAuthModal()">VETERAN AUTHENTICATION</button>
+
+            <div style="text-align: center; margin-top: 10px; padding-bottom: 20px;">
+              <span style="font-size: 12px; font-weight: 700; color: #a0aec0; text-decoration: underline; cursor: pointer;" onclick="openPrecautions('Veteran Rewards Precautions')">Veteran Rewards precautions</span>
+            </div>
           </div>
         </div>
+      </div>
+      <!-- QUEST 3 DEMO (Moved out of window) -->
+      <div style="width: 100%; max-width: 1100px; display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 10px; padding-right: 10px;">
+        <span style="font-size: 11px; font-weight: 800; color: #a0aec0; margin-right: 5px;">QUEST 3 DEMO</span>
+        <button onclick="setQuest3DemoState(0)" style="padding: 4px 8px; background: rgba(255,255,255,0.7); border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[1] Not Logged In</button>
+        <button onclick="setQuest3DemoState(1)" style="padding: 4px 8px; background: rgba(255,255,255,0.7); border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[2] Logged In</button>
+        <button onclick="setQuest3DemoState(2)" style="padding: 4px 8px; background: rgba(255,255,255,0.7); border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 11px; cursor: pointer; color: #4a5568;">[3] Authenticated</button>
       </div>
     </div>
 
@@ -713,6 +740,60 @@ function openPrecautions(title) {
   document.getElementById('precautionsModalTitle').innerText = title;
   document.getElementById('precautionsModal').style.display = 'flex';
 }
+</script>
+
+<!-- VETERAN LOGIN MODAL -->
+<div id="vetLoginModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+  <div style="background: #fff; width: 400px; padding: 30px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); position: relative; text-align: center;">
+    <button onclick="document.getElementById('vetLoginModal').style.display='none'" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #a0aec0;">&times;</button>
+    <h3 style="margin-bottom: 15px; color: #2d3748; font-size: 18px; font-weight: 800;">LOGIN REQUIRED</h3>
+    <p style="font-size: 14px; color: #4a5568; line-height: 1.6; font-weight: 600; margin-bottom: 20px;">You must be logged in to authenticate your veteran status.</p>
+    <div style="display: flex; gap: 10px; justify-content: center;">
+      <button onclick="document.getElementById('vetLoginModal').style.display='none'; setQuest3DemoState(1);" style="padding: 10px 20px; background: #e53e3e; color: #fff; border: none; border-radius: 4px; font-weight: 800; cursor: pointer;">GNJOY LOGIN (DEMO)</button>
+    </div>
+  </div>
+</div>
+
+<!-- VETERAN SUCCESS MODAL -->
+<div id="vetSuccessModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+  <div style="background: #f0fff4; width: 400px; padding: 30px; border-radius: 8px; border: 2px solid #48bb78; box-shadow: 0 10px 25px rgba(0,0,0,0.2); position: relative; text-align: center;">
+    <button onclick="document.getElementById('vetSuccessModal').style.display='none'" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #2f855a;">&times;</button>
+    <div style="font-size: 40px; margin-bottom: 10px;">💎</div>
+    <h3 style="margin-bottom: 10px; color: #276749; font-size: 20px; font-weight: 900;">AUTHENTICATION SUCCESS</h3>
+    <p style="font-size: 14px; color: #2f855a; line-height: 1.6; font-weight: 800; margin-bottom: 20px;">YOUR VETERAN TIER IS: <span style="font-size: 18px; color: #22543d; text-decoration: underline;">DIAMOND</span></p>
+    <button onclick="document.getElementById('vetSuccessModal').style.display='none'" style="padding: 10px 30px; background: #48bb78; color: #fff; border: none; border-radius: 4px; font-weight: 800; cursor: pointer;">CONFIRM</button>
+  </div>
+</div>
+
+<script>
+  window.currentQuest3State = 0; // 0: not logged, 1: logged, 2: auth completed
+
+  window.setQuest3DemoState = function(state) {
+    window.currentQuest3State = state;
+    const btn = document.getElementById('vetAuthBtn');
+    if(state === 2) {
+      btn.innerText = "AUTHENTICATION COMPLETED (DIAMOND)";
+      btn.style.background = "#48bb78";
+      btn.style.color = "#fff";
+      btn.style.borderColor = "#48bb78";
+      btn.disabled = true;
+    } else {
+      btn.innerText = "VETERAN AUTHENTICATION";
+      btn.style.background = "#fff";
+      btn.style.color = "var(--text-color)";
+      btn.style.borderColor = "#cbd5e0";
+      btn.disabled = false;
+    }
+  };
+
+  function openVetAuthModal() {
+    if (window.currentQuest3State === 0) {
+      document.getElementById('vetLoginModal').style.display = 'flex';
+    } else if (window.currentQuest3State === 1) {
+      document.getElementById('vetSuccessModal').style.display = 'flex';
+      setQuest3DemoState(2);
+    }
+  }
 </script>
 
 <!-- PROMO MODAL -->
