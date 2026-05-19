@@ -145,28 +145,6 @@
     text-shadow: 1px 1px 0 #000;
   }
   
-  /* RO Basic Info Menu (Section Navigation) */
-  .ro-nav-window {
-    width: 100%; max-width: 280px; margin-bottom: 20px;
-    background: rgba(255,255,255,0.9); border: 1px solid #cbd5e0;
-    border-radius: 4px; display: flex; flex-direction: column;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.05); font-family: 'Tahoma', sans-serif;
-  }
-  .ro-nav-header {
-    background: #e2e8f0; height: 24px; border-bottom: 1px solid #cbd5e0;
-    display: flex; align-items: center; padding: 0 10px; font-size: 11px;
-    font-weight: 800; color: #475569;
-  }
-  .ro-nav-grid {
-    display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px; padding: 8px;
-  }
-  .ro-nav-btn {
-    background: #f8fafc; border: 1px solid #cbd5e0; border-radius: 2px;
-    padding: 6px 0; font-size: 11px; font-weight: 700; color: #475569;
-    cursor: pointer; text-align: center; transition: 0.2s;
-  }
-  .ro-nav-btn:hover { background: #e2e8f0; }
-  .ro-nav-btn.active { background: #64748b; color: #fff; border-color: #475569; }
   .ro-character-area {
     width: 100%; flex: 1; min-height: 200px;
     margin: 20px 0;
@@ -223,6 +201,18 @@
     display: flex; align-items: center; padding: 0 25px; border-radius: 8px 8px 0 0;
     font-weight: 800; font-size: 16px; text-transform: uppercase; 
   }
+  .wire-main { flex: 1; display: flex; overflow: hidden; }
+  .wire-tabs {
+    width: 45px; border-right: 1px solid var(--border-color); background: #f8fafc;
+    display: flex; flex-direction: column;
+  }
+  .wire-tab {
+    writing-mode: vertical-rl; text-orientation: mixed; padding: 20px 0; text-align: center;
+    border-bottom: 1px solid var(--border-color); font-size: 12px; cursor: pointer; color: #94a3b8; font-weight: bold;
+    display: flex; align-items: center; justify-content: center; transition: 0.2s;
+  }
+  .wire-tab:hover { background: #e2e8f0; }
+  .wire-tab.active { background: #fff; color: #2d3748; border-right: 1px solid #fff; margin-right: -1px; }
   .wire-body { flex: 1; display: flex; flex-direction: column; overflow: hidden; padding: 40px; position: relative; }
   
   .wire-title { font-size: 24px; font-weight: 800; color: var(--text-color); margin-bottom: 10px; text-transform: uppercase; }
@@ -317,16 +307,7 @@
       CHARACTER AREA
     </div>
 
-    <!-- RO Basic Info Menu (Section Navigation) -->
-    <div class="ro-nav-window">
-      <div class="ro-nav-header">Basic Info / Events</div>
-      <div class="ro-nav-grid">
-        <div class="ro-nav-btn" onclick="scrollToPrd(2)">Quest: Participation</div>
-        <div class="ro-nav-btn" onclick="scrollToPrd(3)">Quest: Milestone</div>
-        <div class="ro-nav-btn" onclick="scrollToPrd(4)">Quest: Veteran</div>
-        <div class="ro-nav-btn" onclick="scrollToPrd(5)">Quest: Daily Spin</div>
-      </div>
-    </div>
+
 
     <div class="ro-chat-box">
       <div class="ro-chat-tabs">
@@ -348,17 +329,25 @@
     <!-- SECTION 2: Participation Event -->
     <div class="section" data-index="1" data-prd="2">
       <div class="wire-window">
-        <div class="wire-header">2. Pre-registration Participation Event</div>
-        <div class="wire-body">
-          <div class="wire-title">PRE-REGISTRATION PARTICIPATION EVENT</div>
-          <div class="wire-sub">PRE-REGISTER NOW TO RECEIVE MASSIVE SETTLEMENT FUNDS!</div>
-          <div class="wire-content-box">
-            <div class="input-box">PHONE NUMBER / EMAIL ADDRESS</div>
-            <div style="display:flex; align-items:center; gap:10px; margin-bottom: 40px; font-weight:600; font-size:14px; color:#4a5568;">
-               <div style="width:16px; height:16px; border:2px solid #a0aec0; border-radius:3px;"></div> I AGREE TO THE PRIVACY POLICY (REQUIRED)
-            </div>
+        <div class="wire-header">Quest Window</div>
+        <div class="wire-main">
+          <div class="wire-tabs">
+            <div class="wire-tab active" onclick="scrollToPrd(2)">PRE-REGISTER</div>
+            <div class="wire-tab" onclick="scrollToPrd(3)">MILESTONE</div>
+            <div class="wire-tab" onclick="scrollToPrd(4)">VETERAN</div>
+            <div class="wire-tab" onclick="scrollToPrd(5)">DAILY SPIN</div>
           </div>
-          <button class="wire-btn">COMPLETE PRE-REGISTRATION</button>
+          <div class="wire-body">
+            <div class="wire-title">PRE-REGISTRATION PARTICIPATION EVENT</div>
+            <div class="wire-sub">PRE-REGISTER NOW TO RECEIVE MASSIVE SETTLEMENT FUNDS!</div>
+            <div class="wire-content-box">
+              <div class="input-box">PHONE NUMBER / EMAIL ADDRESS</div>
+              <div style="display:flex; align-items:center; gap:10px; margin-bottom: 40px; font-weight:600; font-size:14px; color:#4a5568;">
+                 <div style="width:16px; height:16px; border:2px solid #a0aec0; border-radius:3px;"></div> I AGREE TO THE PRIVACY POLICY (REQUIRED)
+              </div>
+            </div>
+            <button class="wire-btn">COMPLETE PRE-REGISTRATION</button>
+          </div>
         </div>
       </div>
     </div>
@@ -366,21 +355,29 @@
     <!-- SECTION 3: Milestone Event -->
     <div class="section" data-index="2" data-prd="3">
       <div class="wire-window">
-        <div class="wire-header">3. Pre-registration Milestone Event</div>
-        <div class="wire-body">
-          <div class="wire-title">GLOBAL MILESTONE EVENT</div>
-          <div class="wire-sub">GATHER ADVENTURERS GLOBALLY TO UNLOCK SERVER-WIDE REWARDS!</div>
-          <div class="wire-content-box">
-            <div style="font-size:20px; font-weight:800; color:#e53e3e;">CURRENT GLOBAL PARTICIPANTS: 12,450</div>
-            <div class="gauge-box">
-              <div class="gauge-fill"></div>
-              <div class="gauge-text">PROGRESS 45%</div>
-            </div>
-            <div style="display:flex; gap:20px; width:100%; max-width:700px; font-weight:700; font-size:12px; justify-content:space-between; color:#718096;">
-               <div>10K REACHED</div><div>50K REACHED</div><div>100K REACHED</div><div>200K REACHED</div><div>300K REACHED</div>
-            </div>
+        <div class="wire-header">Quest Window</div>
+        <div class="wire-main">
+          <div class="wire-tabs">
+            <div class="wire-tab" onclick="scrollToPrd(2)">PRE-REGISTER</div>
+            <div class="wire-tab active" onclick="scrollToPrd(3)">MILESTONE</div>
+            <div class="wire-tab" onclick="scrollToPrd(4)">VETERAN</div>
+            <div class="wire-tab" onclick="scrollToPrd(5)">DAILY SPIN</div>
           </div>
-          <button class="wire-btn">CHECK ACCUMULATED REWARDS</button>
+          <div class="wire-body">
+            <div class="wire-title">GLOBAL MILESTONE EVENT</div>
+            <div class="wire-sub">GATHER ADVENTURERS GLOBALLY TO UNLOCK SERVER-WIDE REWARDS!</div>
+            <div class="wire-content-box">
+              <div style="font-size:20px; font-weight:800; color:#e53e3e;">CURRENT GLOBAL PARTICIPANTS: 12,450</div>
+              <div class="gauge-box">
+                <div class="gauge-fill"></div>
+                <div class="gauge-text">PROGRESS 45%</div>
+              </div>
+              <div style="display:flex; gap:20px; width:100%; max-width:700px; font-weight:700; font-size:12px; justify-content:space-between; color:#718096;">
+                 <div>10K REACHED</div><div>50K REACHED</div><div>100K REACHED</div><div>200K REACHED</div><div>300K REACHED</div>
+              </div>
+            </div>
+            <button class="wire-btn">CHECK ACCUMULATED REWARDS</button>
+          </div>
         </div>
       </div>
     </div>
@@ -388,20 +385,28 @@
     <!-- SECTION 4: Veteran Rewards Event -->
     <div class="section" data-index="3" data-prd="4">
       <div class="wire-window">
-        <div class="wire-header">4. Veteran Rewards Event</div>
-        <div class="wire-body">
-          <div class="wire-title">VETERAN REWARDS EVENT</div>
-          <div class="wire-sub">APPRAISE YOUR PAST ADVENTURE RECORDS IN MIDGARD.</div>
-          <div class="wire-content-box">
-            <div style="font-size:15px; font-weight:600; margin-bottom:20px; color:#4a5568;">RECEIVE SPECIAL REWARDS BASED ON YOUR GGH/GGL SERVICE HISTORY.</div>
-            <div class="tier-container">
-               <div class="tier-box"><div class="tier-title">DIAMOND</div><div class="tier-desc">5+ YEARS</div></div>
-               <div class="tier-box"><div class="tier-title">PLATINUM</div><div class="tier-desc">3+ YEARS</div></div>
-               <div class="tier-box"><div class="tier-title">GOLD</div><div class="tier-desc">1+ YEARS</div></div>
-               <div class="tier-box"><div class="tier-title">SILVER</div><div class="tier-desc">< 1 YEAR</div></div>
-            </div>
+        <div class="wire-header">Quest Window</div>
+        <div class="wire-main">
+          <div class="wire-tabs">
+            <div class="wire-tab" onclick="scrollToPrd(2)">PRE-REGISTER</div>
+            <div class="wire-tab" onclick="scrollToPrd(3)">MILESTONE</div>
+            <div class="wire-tab active" onclick="scrollToPrd(4)">VETERAN</div>
+            <div class="wire-tab" onclick="scrollToPrd(5)">DAILY SPIN</div>
           </div>
-          <button class="wire-btn">APPRAISE MY PLAY RECORD</button>
+          <div class="wire-body">
+            <div class="wire-title">VETERAN REWARDS EVENT</div>
+            <div class="wire-sub">APPRAISE YOUR PAST ADVENTURE RECORDS IN MIDGARD.</div>
+            <div class="wire-content-box">
+              <div style="font-size:15px; font-weight:600; margin-bottom:20px; color:#4a5568;">RECEIVE SPECIAL REWARDS BASED ON YOUR GGH/GGL SERVICE HISTORY.</div>
+              <div class="tier-container">
+                 <div class="tier-box"><div class="tier-title">DIAMOND</div><div class="tier-desc">5+ YEARS</div></div>
+                 <div class="tier-box"><div class="tier-title">PLATINUM</div><div class="tier-desc">3+ YEARS</div></div>
+                 <div class="tier-box"><div class="tier-title">GOLD</div><div class="tier-desc">1+ YEARS</div></div>
+                 <div class="tier-box"><div class="tier-title">SILVER</div><div class="tier-desc">< 1 YEAR</div></div>
+              </div>
+            </div>
+            <button class="wire-btn">APPRAISE MY PLAY RECORD</button>
+          </div>
         </div>
       </div>
     </div>
@@ -409,16 +414,24 @@
     <!-- SECTION 5: Daily Spin Event -->
     <div class="section" data-index="4" data-prd="5">
       <div class="wire-window">
-        <div class="wire-header">5. Pre-Registration Daily Spin Event</div>
-        <div class="wire-body">
-          <div class="wire-title">DAILY SPIN EVENT</div>
-          <div class="wire-sub">COLLECT TICKETS DAILY TO SPIN THE NIGHT MARKET ROULETTE!</div>
-          <div class="wire-content-box">
-            <div class="roulette-circle">ROULETTE</div>
-            <div style="font-size:18px; font-weight:800; margin-bottom:10px; color:#2d3748;">TICKETS OWNED: <span style="color:#e53e3e;">3</span></div>
-            <div style="font-size:13px; font-weight:500; color:#718096;">* EARN EXTRA TICKETS THROUGH DAILY ATTENDANCE & INVITES.</div>
+        <div class="wire-header">Quest Window</div>
+        <div class="wire-main">
+          <div class="wire-tabs">
+            <div class="wire-tab" onclick="scrollToPrd(2)">PRE-REGISTER</div>
+            <div class="wire-tab" onclick="scrollToPrd(3)">MILESTONE</div>
+            <div class="wire-tab" onclick="scrollToPrd(4)">VETERAN</div>
+            <div class="wire-tab active" onclick="scrollToPrd(5)">DAILY SPIN</div>
           </div>
-          <button class="wire-btn">SPIN ROULETTE (COST: 1 TICKET)</button>
+          <div class="wire-body">
+            <div class="wire-title">DAILY SPIN EVENT</div>
+            <div class="wire-sub">COLLECT TICKETS DAILY TO SPIN THE NIGHT MARKET ROULETTE!</div>
+            <div class="wire-content-box">
+              <div class="roulette-circle">ROULETTE</div>
+              <div style="font-size:18px; font-weight:800; margin-bottom:10px; color:#2d3748;">TICKETS OWNED: <span style="color:#e53e3e;">3</span></div>
+              <div style="font-size:13px; font-weight:500; color:#718096;">* EARN EXTRA TICKETS THROUGH DAILY ATTENDANCE & INVITES.</div>
+            </div>
+            <button class="wire-btn">SPIN ROULETTE (COST: 1 TICKET)</button>
+          </div>
         </div>
       </div>
     </div>
