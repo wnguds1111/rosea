@@ -338,21 +338,22 @@
             <div class="wire-tab" onclick="scrollToPrd(5)">Q4</div>
           </div>
           <div class="wire-body">
-            <button id="demoStateBtn" onclick="toggleDemoState()" style="position:absolute; top:20px; right:20px; padding:6px 12px; background:#e2e8f0; border-radius:4px; font-size:11px; font-weight:800; cursor:pointer; color:#4a5568; border:1px solid #cbd5e0; z-index:20;">[DEMO] Not Logged In</button>
             <div class="wire-title">PRE-REGISTRATION PARTICIPATION EVENT</div>
             <div class="wire-sub">PRE-REGISTER NOW TO RECEIVE MASSIVE SETTLEMENT FUNDS!<br><span style="font-size: 14px; color: #a0aec0; margin-top: 10px; display: block;">1/9/2026 ~ 1/12/2026 (UTC+8)</span></div>
             <div class="wire-content-box" style="align-items: stretch; text-align: left; justify-content: flex-start; gap: 20px;">
               
               <!-- REWARD LIST AREA -->
-              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 20px;">
-                <div style="font-size: 16px; font-weight: 800; color: #2d3748; margin-bottom: 12px; border-left: 4px solid #3182ce; padding-left: 10px;">BASIC REWARDS (ON COMPLETION)</div>
-                <ul style="font-size: 14px; font-weight: 600; color: #4a5568; line-height: 1.8; margin-left: 25px;">
-                  <li>10Grade Balloon x1</li>
-                  <li>Field Manual x2</li>
-                  <li>Bubble Gum x2</li>
-                  <li>Yellow Potion Box x3</li>
-                  <li>Daily Spin Ticket x3</li>
-                </ul>
+              <div style="margin-bottom: 10px;">
+                <div style="display: flex; gap: 10px; justify-content: space-between; margin-bottom: 15px;">
+                  <div style="flex: 1; border: 2px dashed #cbd5e0; border-radius: 6px; height: 75px; display: flex; align-items: center; justify-content: center; background: #fff; font-size: 11px; font-weight: 800; color: #a0aec0; text-align: center; padding: 5px;">10Grade<br>Balloon</div>
+                  <div style="flex: 1; border: 2px dashed #cbd5e0; border-radius: 6px; height: 75px; display: flex; align-items: center; justify-content: center; background: #fff; font-size: 11px; font-weight: 800; color: #a0aec0; text-align: center; padding: 5px;">Field<br>Manual</div>
+                  <div style="flex: 1; border: 2px dashed #cbd5e0; border-radius: 6px; height: 75px; display: flex; align-items: center; justify-content: center; background: #fff; font-size: 11px; font-weight: 800; color: #a0aec0; text-align: center; padding: 5px;">Bubble<br>Gum</div>
+                  <div style="flex: 1; border: 2px dashed #cbd5e0; border-radius: 6px; height: 75px; display: flex; align-items: center; justify-content: center; background: #fff; font-size: 11px; font-weight: 800; color: #a0aec0; text-align: center; padding: 5px;">Yellow<br>Potion</div>
+                  <div style="flex: 1; border: 2px dashed #cbd5e0; border-radius: 6px; height: 75px; display: flex; align-items: center; justify-content: center; background: #fff; font-size: 11px; font-weight: 800; color: #a0aec0; text-align: center; padding: 5px;">Daily Spin<br>Ticket</div>
+                </div>
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px 20px; font-size: 13px; font-weight: 600; color: #4a5568; line-height: 1.6;">
+                  10Grade Balloon x1, Field Manual x2, Bubble Gum x2, Yellow Potion Box x3, Daily Spin Ticket x3
+                </div>
               </div>
 
               <!-- PRE-REGISTRATION FORM -->
@@ -362,8 +363,8 @@
                 <div id="loginOverlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 6px; backdrop-filter: blur(2px);">
                   <div style="font-weight: 800; font-size: 16px; margin-bottom: 15px; color: #2d3748;">LOGIN REQUIRED FOR PRE-REGISTRATION</div>
                   <div style="display: flex; gap: 10px;">
-                    <button style="padding: 12px 24px; background: #3182ce; color: #fff; border: none; border-radius: 4px; font-weight: 800; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#2b6cb0'" onmouseout="this.style.background='#3182ce'">GNJOY LOGIN</button>
-                    <button style="padding: 12px 24px; background: #fff; color: #3182ce; border: 1px solid #3182ce; border-radius: 4px; font-weight: 800; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#ebf8ff'" onmouseout="this.style.background='#fff'">SIGN UP</button>
+                    <button style="padding: 12px 24px; background: #e53e3e; color: #fff; border: none; border-radius: 4px; font-weight: 800; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#c53030'" onmouseout="this.style.background='#e53e3e'">GNJOY LOGIN</button>
+                    <button style="padding: 12px 24px; background: #fff; color: #000; border: 1px solid #000; border-radius: 4px; font-weight: 800; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#f7fafc'" onmouseout="this.style.background='#fff'">SIGN UP</button>
                   </div>
                 </div>
 
@@ -393,6 +394,12 @@
             </div>
           </div>
         </div>
+      </div>
+      <!-- DEMO CONTROLS BELOW WINDOW -->
+      <div style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 50;">
+        <button onclick="setDemoState(0)" style="padding: 8px 16px; background: #fff; border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 12px; cursor: pointer; color: #4a5568;">[DEMO] Not Logged In</button>
+        <button onclick="setDemoState(1)" style="padding: 8px 16px; background: #fff; border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 12px; cursor: pointer; color: #4a5568;">[DEMO] Logged In (Not Reg)</button>
+        <button onclick="setDemoState(2)" style="padding: 8px 16px; background: #fff; border: 1px solid #cbd5e0; border-radius: 4px; font-weight: 800; font-size: 12px; cursor: pointer; color: #4a5568;">[DEMO] Registered</button>
       </div>
     </div>
 
@@ -557,26 +564,21 @@
   }
 
   // Demo Toggle for Quest 1
-  let demoState = 0;
-  window.toggleDemoState = function() {
-    demoState = (demoState + 1) % 3;
-    const btn = document.getElementById('demoStateBtn');
+  window.setDemoState = function(state) {
     const loginOverlay = document.getElementById('loginOverlay');
     const completeOverlay = document.getElementById('completeOverlay');
     const refInput = document.getElementById('refInput');
     const agreeCheck = document.getElementById('agreeCheck');
     const preRegBtn = document.getElementById('preRegBtn');
     
-    if (demoState === 0) {
-      btn.innerText = "[DEMO] Not Logged In";
+    if (state === 0) {
       loginOverlay.style.display = "flex";
       completeOverlay.style.display = "none";
       refInput.disabled = true;
       agreeCheck.disabled = true;
       preRegBtn.disabled = true;
       preRegBtn.style.opacity = "0.5";
-    } else if (demoState === 1) {
-      btn.innerText = "[DEMO] Logged In (Not Reg)";
+    } else if (state === 1) {
       loginOverlay.style.display = "none";
       completeOverlay.style.display = "none";
       refInput.disabled = false;
@@ -584,7 +586,6 @@
       preRegBtn.disabled = false;
       preRegBtn.style.opacity = "1";
     } else {
-      btn.innerText = "[DEMO] Registered";
       loginOverlay.style.display = "none";
       completeOverlay.style.display = "flex";
       refInput.disabled = true;
